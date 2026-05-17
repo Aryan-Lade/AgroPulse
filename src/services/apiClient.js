@@ -8,6 +8,19 @@ const apiClient = axios.create({
   },
 })
 
+// Attach stored JWT bearer token to authenticated requests
+apiClient.interceptors.request.use((config) => {
+  try {
+    const token = localStorage.getItem('agropulse_token')
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+  } catch (e) {
+    // Graceful fallback for non-browser or storage restricted environments
+  }
+  return config
+})
+
 apiClient.interceptors.response.use(
   (response) => response.data,
   (error) => {
