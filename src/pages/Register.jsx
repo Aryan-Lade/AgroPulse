@@ -39,6 +39,15 @@ function Register() {
     }
   }
 
+  const handleDemoLogin = () => {
+    login('demo_token_agropulse_2026', {
+      id: 99,
+      name: 'Aryan Lade',
+      email: 'aryan@agropulse.com',
+    })
+    navigate(ROUTES.DASHBOARD, { replace: true })
+  }
+
   return (
     <div className="min-h-screen force-dark flex items-center justify-center bg-night-950 px-4 py-12">
       <motion.div
@@ -138,6 +147,16 @@ function Register() {
               {loading ? 'Creating account…' : 'Create Account'}
             </Button>
           </form>
+
+          <div className="mt-4 pt-4 border-t border-white/10">
+            <Button
+              variant="secondary"
+              className="w-full justify-center text-xs"
+              onClick={handleDemoLogin}
+            >
+              ⚡ Quick Demo Sign-In
+            </Button>
+          </div>
 
           <p className="text-center text-night-400 text-sm mt-6">
             Already have an account?{' '}
