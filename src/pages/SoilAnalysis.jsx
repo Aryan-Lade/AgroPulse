@@ -79,19 +79,45 @@ function PhGauge({ ph }) {
   )
 }
 
+function formatSoilResult(sample, formInputs = {}) {
+  const n = Number(formInputs.nitrogen) || sample?.nitrogen || sample?.npk?.n || 42
+  const p = Number(formInputs.phosphorus) || sample?.phosphorus || sample?.npk?.p || 38
+  const k = Number(formInputs.potassium) || sample?.potassium || sample?.npk?.k || 61
+  const ph = Number(formInputs.ph) || sample?.pH || sample?.ph || 6.8
+  const moisture = Number(formInputs.moisture) || sample?.moisturePercent || sample?.moisture || 45
+  const oc = Number(formInputs.organicCarbon) || sample?.organicCarbon || 1.8
+  const healthScore = sample?.healthScore || Math.round((Math.min(n/55, 1) + Math.min(p/40, 1) + Math.min(k/50, 1) + (ph >= 6 && ph <= 7.5 ? 1 : 0.7)) * 25)
+
+  return {
+    ...sample,
+    healthScore,
+    healthLabel: healthScore >= 80 ? 'Optimal' : healthScore >= 60 ? 'Good' : 'Needs Remediation',
+    ph,
+    moisture,
+    organicCarbon: oc,
+    npk: { n, p, k },
+    suitableCrops: ['Wheat', 'Maize', 'Soybean', 'Rice', 'Cotton'],
+    improvements: [
+      n < 50 ? 'Apply 20 kg/ha nitrogen before next sowing' : 'Nitrogen level is in optimal range',
+      ph < 6.5 ? 'Apply agricultural lime to raise soil pH to 6.8' : ph > 7.5 ? 'Apply gypsum to lower alkalinity' : 'Soil pH is well-balanced',
+      'Add compost or farmyard manure to improve soil moisture retention',
+    ]
+  }
+}
+
 function SoilAnalysis() {
   const { palette, axisProps, gridProps, animationProps, tooltipProps } = useChartTheme()
   const [form, setForm] = useState({
     nitrogen: '', phosphorus: '', potassium: '',
     ph: '', moisture: '', organicCarbon: '',
   })
-  const [result, setResult] = useState(soilData?.samples?.[0] ?? null)
+  const initialSample = soilData?.data?.[0] || soilData?.samples?.[0]
+  const [result, setResult] = useState(() => formatSoilResult(initialSample))
 
   const handleChange = (key) => (e) => setForm((p) => ({ ...p, [key]: e.target.value }))
 
   const handleAnalyse = () => {
-    // For demo we use the first sample from the JSON data
-    setResult(soilData?.samples?.[0] ?? null)
+    setResult(formatSoilResult(initialSample, form))
   }
 
   const nutrients = result ? [
