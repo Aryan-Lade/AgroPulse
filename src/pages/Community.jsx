@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   HiOutlineUserGroup,
   HiOutlineMagnifyingGlass,
@@ -8,6 +8,7 @@ import {
   HiOutlineEye,
   HiOutlinePencilSquare,
   HiOutlineCheckBadge,
+  HiOutlineXMark,
 } from "react-icons/hi2";
 import PageWrapper from "@/components/common/PageWrapper.jsx";
 import PageHeader from "@/components/common/PageHeader.jsx";
@@ -118,8 +119,15 @@ function Community() {
   const toast = useToast();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
+  const [posts, setPosts] = useState(() => communityData?.posts ?? []);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    title: "",
+    category: "Pest Control",
+    tag: "Question",
+    body: "",
+  });
 
-  const posts = communityData?.posts ?? [];
   const categories = communityData?.categories ?? [];
   const contributors = communityData?.topContributors ?? [];
 
@@ -135,6 +143,37 @@ function Community() {
     toast.success("Post liked", `You liked "${post.title.slice(0, 40)}…"`);
   };
 
+  const handleCreatePost = (e) => {
+    e.preventDefault();
+    if (!formData.title.trim() || !formData.body.trim()) {
+      toast.warning("Incomplete post", "Please fill in title and post content.");
+      return;
+    }
+
+    const createdPost = {
+      id: `post-${Date.now()}`,
+      author: {
+        name: "Aryan Lade",
+        role: "Agronomist & Farmer",
+        initials: "AL",
+      },
+      title: formData.title.trim(),
+      body: formData.body.trim(),
+      category: formData.category,
+      tag: formData.tag,
+      timeAgo: "Just now",
+      likes: 1,
+      comments: 0,
+      views: 1,
+      solved: false,
+    };
+
+    setPosts((prev) => [createdPost, ...prev]);
+    setIsModalOpen(false);
+    setFormData({ title: "", category: "Pest Control", tag: "Question", body: "" });
+    toast.success("Post published", "Your question is now live in the community!");
+  };
+
   return (
     <PageWrapper>
       <PageHeader
@@ -147,9 +186,7 @@ function Community() {
           <Button
             icon={HiOutlinePencilSquare}
             size="sm"
-            onClick={() =>
-              toast.info("Create Post", "Post creation coming soon.")
-            }
+            onClick={() => setIsModalOpen(true)}
           >
             New Post
           </Button>
@@ -265,6 +302,112 @@ function Community() {
           </Card>
         </div>
       </div>
+
+      {/* New Post Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-night-950/80 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 16 }}
+              className="w-full max-w-lg glass-card rounded-2xl p-6 border border-line shadow-2xl flex flex-col gap-5"
+            >
+              <div className="flex items-center justify-between border-b border-line pb-3">
+                <div className="flex items-center gap-2 text-ink font-semibold">
+                  <HiOutlinePencilSquare className="text-primary-400 text-lg" />
+                  <h3>Create Community Post</h3>
+                </div>
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="size-8 rounded-full glass flex items-center justify-center text-ink-3 hover:text-ink cursor-pointer"
+                >
+                  <HiOutlineXMark />
+                </button>
+              </div>
+
+              <form onSubmit={handleCreatePost} className="flex flex-col gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-ink-2 mb-1">
+                    Question / Discussion Title
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. How to prevent yellow leaf curl in summer tomato crop?"
+                    value={formData.title}
+                    onChange={(e) => setFormData((p) => ({ ...p, title: e.target.value }))}
+                    className="w-full px-3.5 py-2.5 rounded-xl glass text-ink text-sm placeholder:text-ink-3 outline-none focus:border-primary-500/50"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-ink-2 mb-1">
+                      Category
+                    </label>
+                    <select
+                      value={formData.category}
+                      onChange={(e) => setFormData((p) => ({ ...p, category: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl glass text-ink text-sm outline-none cursor-pointer"
+                    >
+                      <option value="Pest Control" className="bg-night-900 text-white">Pest Control</option>
+                      <option value="Irrigation" className="bg-night-900 text-white">Irrigation</option>
+                      <option value="Soil Health" className="bg-night-900 text-white">Soil Health</option>
+                      <option value="Crop Diseases" className="bg-night-900 text-white">Crop Diseases</option>
+                      <option value="Market & Pricing" className="bg-night-900 text-white">Market & Pricing</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-ink-2 mb-1">
+                      Post Tag
+                    </label>
+                    <select
+                      value={formData.tag}
+                      onChange={(e) => setFormData((p) => ({ ...p, tag: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-xl glass text-ink text-sm outline-none cursor-pointer"
+                    >
+                      <option value="Question" className="bg-night-900 text-white">Question</option>
+                      <option value="Tip" className="bg-night-900 text-white">Tip</option>
+                      <option value="Alert" className="bg-night-900 text-white">Alert</option>
+                      <option value="Guide" className="bg-night-900 text-white">Guide</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-ink-2 mb-1">
+                    Details & Notes
+                  </label>
+                  <textarea
+                    rows={4}
+                    required
+                    placeholder="Describe the issue, symptoms observed, soil type, and any treatments already attempted..."
+                    value={formData.body}
+                    onChange={(e) => setFormData((p) => ({ ...p, body: e.target.value }))}
+                    className="w-full px-3.5 py-2.5 rounded-xl glass text-ink text-sm placeholder:text-ink-3 outline-none resize-none focus:border-primary-500/50"
+                  />
+                </div>
+
+                <div className="flex items-center justify-end gap-3 pt-2 border-t border-line">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="submit" size="sm">
+                    Publish Post
+                  </Button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </PageWrapper>
   );
 }
