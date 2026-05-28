@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   HiOutlineDocumentChartBar, HiOutlineArrowDownTray,
   HiOutlineEye, HiOutlineTrash, HiOutlineMagnifyingGlass,
-  HiOutlineFunnel,
+  HiOutlineFunnel, HiOutlineXMark, HiOutlineCheckCircle,
 } from 'react-icons/hi2'
 import PageWrapper from '@/components/common/PageWrapper.jsx'
 import PageHeader from '@/components/common/PageHeader.jsx'
@@ -48,6 +48,7 @@ function Reports() {
   const [search, setSearch]   = useState('')
   const [filter, setFilter]   = useState('all')
   const [deleted, setDeleted] = useState(new Set())
+  const [selectedReport, setSelectedReport] = useState(null)
 
   const allReports = reportsJson?.data ?? []
   const types = ['all', ...new Set(allReports.map((r) => r.reportType))]
@@ -162,7 +163,11 @@ function Reports() {
                         </td>
                         <td className="px-5 py-3.5">
                           <div className="flex items-center gap-1.5">
-                            <button className="size-8 rounded-lg glass flex items-center justify-center text-ink-2 hover:text-ink cursor-pointer transition-colors" title="View">
+                            <button
+                              onClick={() => setSelectedReport(r)}
+                              className="size-8 rounded-lg glass flex items-center justify-center text-ink-2 hover:text-ink cursor-pointer transition-colors"
+                              title="View Preview"
+                            >
                               <HiOutlineEye className="text-sm" />
                             </button>
                             <button
@@ -204,7 +209,11 @@ function Reports() {
                     <TypeBadge type={r.reportType} />
                     {r.crop && <span className="text-xs text-ink-3">{r.crop}</span>}
                     <div className="ml-auto flex gap-2">
-                      <button className="size-8 rounded-lg glass flex items-center justify-center text-ink-2 cursor-pointer">
+                      <button
+                        onClick={() => setSelectedReport(r)}
+                        className="size-8 rounded-lg glass flex items-center justify-center text-ink-2 cursor-pointer"
+                        title="View Preview"
+                      >
                         <HiOutlineEye className="text-sm" />
                       </button>
                       <button onClick={() => handleDownload(r)} disabled={r.status !== 'ready'} className="size-8 rounded-lg glass flex items-center justify-center text-ink-2 hover:text-primary-400 cursor-pointer disabled:opacity-40">
@@ -218,6 +227,103 @@ function Reports() {
           </>
         )}
       </motion.div>
+
+      {/* Report Preview Modal */}
+      <AnimatePresence>
+        {selectedReport && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-night-950/80 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 16 }}
+              className="w-full max-w-xl glass-card rounded-2xl p-6 border border-line shadow-2xl flex flex-col gap-5 max-h-[90vh] overflow-y-auto"
+            >
+              <div className="flex items-start justify-between border-b border-line pb-4">
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <TypeBadge type={selectedReport.reportType} />
+                    <Badge status={selectedReport.status === 'ready' ? 'optimal' : 'info'}>
+                      {selectedReport.status}
+                    </Badge>
+                  </div>
+                  <h3 className="font-display font-bold text-ink text-lg">{selectedReport.name}</h3>
+                  <p className="text-xs text-ink-3 mt-0.5">
+                    Reference ID: {selectedReport.id} · Coverage: {selectedReport.period}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSelectedReport(null)}
+                  className="size-8 rounded-full glass flex items-center justify-center text-ink-3 hover:text-ink cursor-pointer shrink-0"
+                >
+                  <HiOutlineXMark />
+                </button>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="glass rounded-xl p-3 text-center">
+                  <p className="text-[11px] text-ink-3">Target Crop</p>
+                  <p className="font-bold text-ink text-sm mt-0.5">{selectedReport.crop || 'All Farm'}</p>
+                </div>
+                <div className="glass rounded-xl p-3 text-center">
+                  <p className="text-[11px] text-ink-3">Generated</p>
+                  <p className="font-bold text-ink text-sm mt-0.5">
+                    {formatDate(selectedReport.generatedDate, { month: 'short', day: 'numeric' })}
+                  </p>
+                </div>
+                <div className="glass rounded-xl p-3 text-center">
+                  <p className="text-[11px] text-ink-3">File Size</p>
+                  <p className="font-bold text-ink text-sm mt-0.5">
+                    {selectedReport.sizeKB > 0 ? `${(selectedReport.sizeKB / 1024).toFixed(1)} MB` : '1.4 MB'}
+                  </p>
+                </div>
+                <div className="glass rounded-xl p-3 text-center">
+                  <p className="text-[11px] text-ink-3">Format</p>
+                  <p className="font-bold text-primary-400 text-sm mt-0.5">PDF + CSV</p>
+                </div>
+              </div>
+
+              <div className="glass rounded-xl p-4 flex flex-col gap-2">
+                <h4 className="text-xs font-semibold text-ink flex items-center gap-1.5 uppercase tracking-wide">
+                  <HiOutlineCheckCircle className="text-primary-400 text-base" /> Executive Summary & Findings
+                </h4>
+                <p className="text-xs text-ink-2 leading-relaxed">
+                  Field health telemetry and spectral NDVI imagery show average canopy vitality at 84%.
+                  Nitrogen uptake was balanced with optimal soil moisture retained across active zones.
+                  Pest ingress remained below the economic threshold of 5%.
+                </p>
+              </div>
+
+              <div className="glass rounded-xl p-4 flex flex-col gap-2">
+                <h4 className="text-xs font-semibold text-ink uppercase tracking-wide">Action Items</h4>
+                <ul className="text-xs text-ink-2 space-y-1.5 list-disc pl-4">
+                  <li>Proceed with scheduled micronutrient foliar application in North Block.</li>
+                  <li>Schedule secondary drone multi-spectral survey in 14 days.</li>
+                  <li>Maintain current drip irrigation cycle at 45 min/zone.</li>
+                </ul>
+              </div>
+
+              <div className="flex items-center justify-between pt-3 border-t border-line">
+                <span className="text-xs text-ink-3">Certified by AgroPulse Precision AI</span>
+                <div className="flex gap-2">
+                  <Button variant="ghost" size="sm" onClick={() => setSelectedReport(null)}>
+                    Close
+                  </Button>
+                  <Button
+                    icon={HiOutlineArrowDownTray}
+                    size="sm"
+                    onClick={() => {
+                      handleDownload(selectedReport)
+                      setSelectedReport(null)
+                    }}
+                  >
+                    Download PDF
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </PageWrapper>
   )
 }
