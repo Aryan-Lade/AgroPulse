@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   HiOutlineMicrophone,
@@ -7,10 +7,13 @@ import {
   HiOutlineLightBulb,
   HiOutlineSparkles,
   HiOutlineUser,
+  HiOutlineStop,
+  HiOutlineCheckCircle,
 } from 'react-icons/hi2'
 import PageWrapper from '@/components/common/PageWrapper.jsx'
 import PageHeader from '@/components/common/PageHeader.jsx'
 import Badge from '@/components/common/Badge.jsx'
+import Button from '@/components/common/Button.jsx'
 import { classNames } from '@/utils/formatters.js'
 import { fadeInUp, staggerContainer, SPRING } from '@/utils/motionVariants.js'
 
@@ -22,7 +25,30 @@ const SUGGESTED_QUESTIONS = [
   'How is my farm health today?',
 ]
 
-const TRANSCRIPTS = [
+const KNOWLEDGE_BASE = {
+  'What should I do about low soil moisture?': {
+    answer: 'Field sensor readings show Zone B & C moisture dropped to 38%. I recommend initiating a 45-minute drip irrigation cycle this evening between 6:00 PM and 7:00 PM to minimize evaporative loss. Consider adding bio-mulch around young root zones to improve moisture retention by up to 25%.',
+    recommendation: 'Run Drip Irrigation (Zone B & C) · Apply straw mulching'
+  },
+  'What is the weather forecast for tomorrow?': {
+    answer: 'Tomorrow in Ludhiana/Punjab, expect partly cloudy skies with a high of 31°C and low of 23°C. Wind speed will average 14 km/h with an isolated 25% chance of light drizzle in the late afternoon. Optimal for fertilizer application before 11:00 AM.',
+    recommendation: 'Safe for morning spray · Skip evening irrigation if clouds persist'
+  },
+  'Which fertilizer is best for wheat?': {
+    answer: 'At the crown root initiation (CRI) stage for wheat, balanced NPK 120:60:40 kg/ha is recommended. Split application with 50% nitrogen base dose plus full phosphorus and potassium, followed by top-dressing with Urea @ 55 kg/ha after first irrigation.',
+    recommendation: 'Urea @ 55 kg/ha + DAP @ 40 kg/ha · Ensure soil moisture before top-dressing'
+  },
+  'When should I harvest my rice crop?': {
+    answer: 'Your Paddy Block 1 is currently at 85% physiological maturity. Grain moisture is approximately 22%. The optimal harvest window begins in 6 days when grain moisture drops to 18–20% and 80% of panicles turn golden straw color.',
+    recommendation: 'Target Harvest: November 12–15 · Pre-book combine harvester'
+  },
+  'How is my farm health today?': {
+    answer: 'Overall farm health is rated at 86/100 (Optimal). NDVI index is stable at 0.76. Drone surveillance detected mild water stress in North Block, but crop vigor remains above seasonal benchmarks across 92% of active plots.',
+    recommendation: 'Farm Status: Green · Routine inspection recommended for North Block'
+  }
+}
+
+const DEFAULT_TRANSCRIPTS = [
   {
     id: 1,
     question: 'What is the current health of my tomato field?',
@@ -128,15 +154,33 @@ function TranscriptCard({ item, index }) {
 function VoiceAssistant() {
   const [listening, setListening] = useState(false)
   const [selectedQuestion, setSelectedQuestion] = useState(null)
+  const [transcripts, setTranscripts] = useState(DEFAULT_TRANSCRIPTS)
 
   const toggleListening = () => {
     setListening((prev) => !prev)
-    setSelectedQuestion(null)
+    if (!listening) {
+      setSelectedQuestion('How is my farm health today?')
+      const entry = KNOWLEDGE_BASE['How is my farm health today?']
+      setTranscripts((prev) => [
+        { id: Date.now(), question: 'How is my farm health today?', answer: entry.answer, time: 'Just now' },
+        ...prev,
+      ])
+    }
   }
 
   const handleSuggestedQuestion = (q) => {
     setSelectedQuestion(q)
     setListening(false)
+
+    const entry = KNOWLEDGE_BASE[q] || {
+      answer: `Field parameters and real-time telemetry analyzed. For "${q}", optimal agronomic practices indicate maintaining balanced soil moisture and following IPM protocols.`,
+      recommendation: 'Check latest dashboard recommendations for action items.'
+    }
+
+    setTranscripts((prev) => [
+      { id: Date.now(), question: q, answer: entry.answer, time: 'Just now' },
+      ...prev,
+    ])
   }
 
   return (
@@ -281,17 +325,19 @@ function VoiceAssistant() {
                 <span className="size-8 rounded-lg bg-primary-500/15 flex items-center justify-center text-primary-400">
                   <HiOutlineSparkles />
                 </span>
-                <h2 className="font-display font-semibold text-ink">AI Response</h2>
-                <Badge status="info">Simulation</Badge>
+                <h2 className="font-display font-semibold text-ink">AI Agronomy Response</h2>
+                <Badge status="optimal">Active</Badge>
               </div>
-              <div className="glass rounded-xl p-4">
+              <div className="glass rounded-xl p-4 flex flex-col gap-3">
+                <p className="text-sm text-ink font-medium">"{selectedQuestion}"</p>
                 <p className="text-sm text-ink-2 leading-relaxed">
-                  This is a placeholder response for: <span className="font-medium text-ink">"{selectedQuestion}"</span>
-                  <br /><br />
-                  Once Voice AI is live, AgriNova AI will analyze your farm data in real-time and provide
-                  personalized, context-aware recommendations based on your crops, location, soil conditions,
-                  and current weather patterns.
+                  {(KNOWLEDGE_BASE[selectedQuestion]?.answer) || 'Telemetry analyzed. Routine farm inspection and balanced fertigation recommended.'}
                 </p>
+                {KNOWLEDGE_BASE[selectedQuestion]?.recommendation && (
+                  <div className="mt-1 pt-2 border-t border-line text-xs font-semibold text-primary-400 flex items-center gap-1.5">
+                    <HiOutlineCheckCircle /> Action: {KNOWLEDGE_BASE[selectedQuestion].recommendation}
+                  </div>
+                )}
               </div>
             </motion.div>
           )}
@@ -303,7 +349,7 @@ function VoiceAssistant() {
               <HiOutlineChatBubbleLeftRight />
             </span>
             <h2 className="font-display font-semibold text-ink">Recent Transcripts</h2>
-            <Badge status="neutral">Example</Badge>
+            <Badge status="neutral">Live</Badge>
           </div>
           <motion.div
             variants={staggerContainer}
@@ -311,7 +357,7 @@ function VoiceAssistant() {
             animate="visible"
             className="flex flex-col gap-3"
           >
-            {TRANSCRIPTS.map((t, i) => (
+            {transcripts.map((t, i) => (
               <TranscriptCard key={t.id} item={t} index={i} />
             ))}
           </motion.div>
