@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { HiArrowRight, HiOutlineSparkles, HiPlayCircle } from 'react-icons/hi2'
 import Button from '../common/Button.jsx'
-import TextReveal from '../common/TextReveal.jsx'
 import Particles from '../common/Particles.jsx'
 import FarmIllustration from './FarmIllustration.jsx'
 import { ROUTES } from '../../utils/constants.js'
@@ -67,16 +66,16 @@ function Hero() {
             Next-Gen Smart Farming Platform
           </motion.span>
 
-          {}
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white text-balance leading-[1.1] mb-6">
-            <TextReveal text="AI Powered" as="span" className="inline" />{' '}
-            <TextReveal
-              text="Precision Agriculture"
-              as="span"
-              delay={0.35}
-              className="inline text-gradient-animated"
-            />
-          </h1>
+          {/* Headline */}
+          <motion.h1
+            variants={fadeInUp}
+            className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white text-balance leading-[1.1] mb-6"
+          >
+            AI Powered{' '}
+            <span className="text-gradient-animated inline-block">
+              Precision Agriculture
+            </span>
+          </motion.h1>
 
           <motion.p
             variants={fadeInUp}
