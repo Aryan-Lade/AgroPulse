@@ -1,24 +1,38 @@
-const { Pool } = require('pg')
-require('dotenv').config()
+/**
+ * AgroPulse Database Engine
+ * Primary local database: SQLite3 (`backend/data/agropulse.sqlite`)
+ * Optional cloud sync: PostgreSQL (`DATABASE_URL`)
+ */
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
-  connectionTimeoutMillis: 5000,
-})
+const sqlDb = require('./sqlite')
 
-// Prevent unhandled errors from crashing the Node.js process
-pool.on('error', (err) => {
-  console.warn('Postgres pool background error:', err.message)
-})
+// Backwards-compatible query method mapping
+const dbAdapter = {
+  ...sqlDb,
 
-pool.connect((err, client, release) => {
-  if (err) {
-    console.warn('Primary database connection failed (fallback storage active):', err.message)
-  } else {
-    console.log('Connected to Railway PostgreSQL')
-    release()
+  /**
+   * pg-compatible query wrapper
+   * Converts $1, $2, ... to ? for SQLite compatibility
+   */
+  async query(text, params = []) {
+    let sqliteSql = text
+    if (params && params.length > 0) {
+      sqliteSql = text.replace(/\$(\d+)/g, '?')
+    }
+
+    const trimmed = text.trim().toUpperCase()
+    if (trimmed.startsWith('SELECT')) {
+      const rows = await sqlDb.all(sqliteSql, params)
+      return { rows, rowCount: rows.length }
+    } else {
+      const result = await sqlDb.run(sqliteSql, params)
+      return { rows: [], rowCount: result.changes, lastID: result.lastID }
+    }
+  },
+
+  on(event, handler) {
+    // Event listener stub for compatibility
   }
-})
+}
 
-module.exports = pool
+module.exports = dbAdapter
