@@ -7,6 +7,7 @@ import { useAuth } from '@/context/AuthContext.jsx'
 import Logo from '@/components/common/Logo.jsx'
 import Button from '@/components/common/Button.jsx'
 import { ROUTES } from '@/utils/constants.js'
+import { sqlValidateLogin } from '@/services/localSqlDb.js'
 
 function Login() {
   const { login, isLoggedIn } = useAuth()
@@ -20,20 +21,50 @@ function Login() {
   const onSubmit = async ({ email, password }) => {
     setLoading(true)
     try {
-      const res  = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) {
-        setError('root', { message: data.message || 'Login failed. Invalid email or password.' })
-        return
+      let loggedIn = false
+      let authResult = null
+      let failureReason = ''
+
+      // 1. Try Backend API (fetches and validates against backend SQLite database `agropulse.sqlite`)
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        })
+        const data = await res.json().catch(() => ({}))
+
+        if (res.ok && data.user) {
+          loggedIn = true
+          authResult = data
+        } else if (res.status === 401 || res.status === 400) {
+          failureReason = data.message
+        }
+      } catch (networkErr) {
+        console.warn('Backend server unreachable, validating against local SQL database:', networkErr)
       }
-      login(data.token, data.user)
-      navigate(ROUTES.DASHBOARD, { replace: true })
+
+      // 2. If backend is offline or returned failure, check against Local SQL Database
+      if (!loggedIn) {
+        const localValidation = sqlValidateLogin(email, password)
+        if (localValidation.success) {
+          loggedIn = true
+          authResult = localValidation
+        } else {
+          failureReason = failureReason || localValidation.message || 'Invalid email or password.'
+        }
+      }
+
+      if (loggedIn && authResult) {
+        login(authResult.token, authResult.user)
+        navigate(ROUTES.DASHBOARD, { replace: true })
+      } else {
+        setError('root', {
+          message: failureReason || 'Login failed. Please check your credentials and try again.'
+        })
+      }
     } catch {
-      setError('root', { message: 'Cannot reach server. Is the backend running?' })
+      setError('root', { message: 'Unexpected login error. Please try again.' })
     } finally {
       setLoading(false)
     }

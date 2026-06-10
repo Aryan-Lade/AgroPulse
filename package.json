@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "node backend/server.js",
+    "start:all": "node scripts/start-all.js",
     "build": "vite build",
     "preview": "vite preview",
     "test:benchmark": "node backend/scripts/benchmark_100_images.js"

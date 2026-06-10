@@ -7,6 +7,7 @@ import { useAuth } from '@/context/AuthContext.jsx'
 import Logo from '@/components/common/Logo.jsx'
 import Button from '@/components/common/Button.jsx'
 import { ROUTES } from '@/utils/constants.js'
+import { sqlInsertUser } from '@/services/localSqlDb.js'
 
 function Register() {
   const { login, isLoggedIn } = useAuth()
@@ -20,20 +21,51 @@ function Register() {
   const onSubmit = async ({ name, email, password }) => {
     setLoading(true)
     try {
-      const res  = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) {
-        setError('root', { message: data.message || 'Registration failed. Please try again.' })
-        return
+      let registered = false
+      let authResult = null
+
+      // 1. Try Backend API (saves to backend SQLite database `agropulse.sqlite`)
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password }),
+        })
+        const data = await res.json().catch(() => ({}))
+
+        if (res.ok && data.user) {
+          registered = true
+          authResult = data
+          // Mirror in local SQL database for offline availability
+          try {
+            sqlInsertUser(name, email, password)
+          } catch {}
+        } else if (res.status === 409) {
+          setError('root', { message: data.message || 'An account with this email already exists. Please sign in.' })
+          return
+        }
+      } catch (networkErr) {
+        console.warn('Backend server unreachable, saving to local SQL database:', networkErr)
       }
-      login(data.token, data.user)
-      navigate(ROUTES.DASHBOARD, { replace: true })
+
+      // 2. Fallback to Local SQL Database if backend server is not active
+      if (!registered) {
+        try {
+          const localRes = sqlInsertUser(name, email, password)
+          registered = true
+          authResult = localRes
+        } catch (localErr) {
+          setError('root', { message: localErr.message || 'Registration failed. Please try again.' })
+          return
+        }
+      }
+
+      if (registered && authResult) {
+        login(authResult.token, authResult.user)
+        navigate(ROUTES.DASHBOARD, { replace: true })
+      }
     } catch {
-      setError('root', { message: 'Cannot reach server. Is the backend running?' })
+      setError('root', { message: 'Unexpected registration error. Please try again.' })
     } finally {
       setLoading(false)
     }
