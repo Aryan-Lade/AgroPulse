@@ -7,7 +7,7 @@ function MainLayout() {
   const location = useLocation()
 
   return (
-    <div className="force-dark min-h-screen bg-night-950 bg-mesh flex flex-col">
+    <div className="min-h-screen bg-canvas text-ink bg-mesh flex flex-col transition-colors duration-300">
       <Navbar />
       <main className="flex-1 pt-16">
         <AnimatePresence mode="wait" initial={false}>

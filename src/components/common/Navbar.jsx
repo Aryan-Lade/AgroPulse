@@ -60,25 +60,25 @@ function Navbar() {
     classNames(
       'px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200',
       isActive
-        ? 'text-primary-300 bg-primary-500/10'
-        : 'text-night-200 hover:text-white hover:bg-white/5',
+        ? 'text-primary-600 dark:text-primary-300 bg-primary-500/10'
+        : 'text-ink-2 hover:text-ink hover:bg-surface-2',
     )
 
   const mobileLinkClasses = (isActive) =>
     classNames(
       'block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors duration-200',
       isActive
-        ? 'text-primary-300 bg-primary-500/10'
-        : 'text-night-200 hover:text-white hover:bg-white/5',
+        ? 'text-primary-600 dark:text-primary-300 bg-primary-500/10'
+        : 'text-ink-2 hover:text-ink hover:bg-surface-2',
     )
 
   return (
     <>
       <header
         className={classNames(
-          'fixed top-0 inset-x-0 z-50 force-dark transition-all duration-300',
+          'fixed top-0 inset-x-0 z-50 transition-all duration-300',
           scrolled
-            ? 'glass-strong border-b border-white/10 shadow-glass'
+            ? 'glass-strong border-b border-line-2 shadow-glass'
             : 'bg-transparent border-b border-transparent',
         )}
       >
@@ -121,7 +121,8 @@ function Navbar() {
               transition={SPRING_SOFT}
               onClick={toggleTheme}
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="size-9 rounded-lg flex items-center justify-center text-night-200 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="size-9 rounded-lg flex items-center justify-center text-ink-2 hover:text-ink hover:bg-surface-2 transition-colors cursor-pointer"
             >
               {isDark ? (
                 <HiOutlineSun className="text-xl" />
@@ -166,7 +167,8 @@ function Navbar() {
               transition={SPRING_SOFT}
               onClick={toggleTheme}
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="size-9 rounded-lg flex items-center justify-center text-night-200 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="size-9 rounded-lg flex items-center justify-center text-ink-2 hover:text-ink hover:bg-surface-2 transition-colors cursor-pointer"
             >
               {isDark ? (
                 <HiOutlineSun className="text-xl" />
@@ -177,7 +179,7 @@ function Navbar() {
 
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="size-9 rounded-lg flex items-center justify-center text-xl text-night-100 hover:bg-white/5 transition-colors cursor-pointer"
+              className="size-9 rounded-lg flex items-center justify-center text-xl text-ink-2 hover:text-ink hover:bg-surface-2 transition-colors cursor-pointer"
               aria-label="Toggle navigation menu"
               aria-expanded={menuOpen}
             >
@@ -199,7 +201,7 @@ function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-night-950/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
               aria-hidden="true"
             />
 
@@ -210,15 +212,15 @@ function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={SPRING_SOFT}
-              className="fixed top-0 right-0 bottom-0 z-50 w-80 max-w-full force-dark glass-strong border-l border-white/10 flex flex-col lg:hidden"
+              className="fixed top-0 right-0 bottom-0 z-50 w-80 max-w-full glass-strong border-l border-line flex flex-col lg:hidden"
             >
               {}
-              <div className="flex items-center justify-between px-5 h-16 border-b border-white/10 flex-shrink-0">
+              <div className="flex items-center justify-between px-5 h-16 border-b border-line flex-shrink-0">
                 <Logo size="sm" />
                 <button
                   onClick={() => setMenuOpen(false)}
                   aria-label="Close menu"
-                  className="size-9 rounded-lg flex items-center justify-center text-xl text-night-100 hover:bg-white/5 transition-colors cursor-pointer"
+                  className="size-9 rounded-lg flex items-center justify-center text-xl text-ink-2 hover:text-ink hover:bg-surface-2 transition-colors cursor-pointer"
                 >
                   <HiXMark />
                 </button>
