@@ -69,7 +69,7 @@ function Hero() {
           {/* Headline */}
           <motion.h1
             variants={fadeInUp}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white text-balance leading-[1.1] mb-6"
+            className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-ink text-balance leading-[1.1] mb-6"
           >
             AI Powered{' '}
             <span className="text-gradient-animated inline-block">
@@ -79,7 +79,7 @@ function Hero() {
 
           <motion.p
             variants={fadeInUp}
-            className="max-w-xl text-night-300 text-base sm:text-lg leading-relaxed mb-10"
+            className="max-w-xl text-ink-2 text-base sm:text-lg leading-relaxed mb-10"
           >
             Detect crop diseases in seconds, forecast yields with confidence,
             and command your drone fleet — all from one intelligent dashboard
@@ -122,8 +122,8 @@ function Hero() {
                 ),
               )}
             </div>
-            <p className="text-xs sm:text-sm text-night-300">
-              Trusted by <span className="text-white font-semibold">25,000+</span>{' '}
+            <p className="text-xs sm:text-sm text-ink-2">
+              Trusted by <span className="text-ink font-semibold">25,000+</span>{' '}
               farmers worldwide
             </p>
           </motion.div>

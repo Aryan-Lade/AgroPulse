@@ -68,14 +68,14 @@ function StatsSection() {
               >
                 <stat.icon />
               </div>
-              <p className="font-display text-2xl sm:text-4xl font-bold text-white mb-1">
+              <p className="font-display text-2xl sm:text-4xl font-bold text-ink mb-1">
                 <AnimatedCounter
                   target={stat.target}
                   decimals={stat.decimals}
                   suffix={stat.suffix}
                 />
               </p>
-              <p className="text-xs sm:text-sm text-night-300">{stat.label}</p>
+              <p className="text-xs sm:text-sm text-ink-2">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
