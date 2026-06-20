@@ -7,9 +7,9 @@ import { fadeInUp, staggerContainer, EASE } from '../../utils/motionVariants.js'
 
 function CTASection() {
   return (
-    <section className="force-dark relative py-24 sm:py-32 overflow-hidden">
+    <section className="relative py-24 sm:py-32 overflow-hidden">
       {}
-      <div className="absolute inset-0 bg-night-950">
+      <div className="absolute inset-0 bg-canvas">
         <div className="absolute inset-0 bg-mesh" />
       </div>
 
@@ -73,19 +73,19 @@ function CTASection() {
             Powering 25,000+ Farms Worldwide
           </motion.span>
 
-          {}
+          {/* Headline */}
           <motion.h2
             variants={fadeInUp}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] text-balance"
+            className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-ink leading-[1.1] text-balance"
           >
             Make Smarter{' '}
             <span className="text-gradient-animated">Farming Decisions</span>
           </motion.h2>
 
-          {}
+          {/* Description */}
           <motion.p
             variants={fadeInUp}
-            className="max-w-xl text-night-300 text-base sm:text-lg leading-relaxed"
+            className="max-w-xl text-ink-2 text-base sm:text-lg leading-relaxed"
           >
             Join thousands of farmers using AI to grow more with less. From
             real-time crop health alerts to precision fertilizer plans — your

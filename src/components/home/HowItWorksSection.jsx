@@ -63,7 +63,7 @@ function HowItWorksSection() {
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               className="relative glass-card p-7 sm:p-8 text-center group"
             >
-              <span className="absolute top-5 right-6 font-display text-4xl font-extrabold text-white/5 group-hover:text-white/10 transition-colors">
+              <span className="absolute top-5 right-6 font-display text-4xl font-extrabold text-ink/5 group-hover:text-ink/10 transition-colors">
                 {step.number}
               </span>
               <div
@@ -71,10 +71,10 @@ function HowItWorksSection() {
               >
                 <step.icon />
               </div>
-              <h3 className="font-display text-xl font-bold text-white mb-3">
+              <h3 className="font-display text-xl font-bold text-ink mb-3">
                 {step.title}
               </h3>
-              <p className="text-sm text-night-300 leading-relaxed">
+              <p className="text-sm text-ink-2 leading-relaxed">
                 {step.description}
               </p>
             </motion.div>

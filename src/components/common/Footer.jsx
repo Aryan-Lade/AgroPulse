@@ -61,7 +61,7 @@ const socials = [
 
 function FooterHeading({ children }) {
   return (
-    <h3 className="font-display font-semibold text-sm uppercase tracking-widest text-white/70 mb-5">
+    <h3 className="font-display font-semibold text-sm uppercase tracking-widest text-ink/80 mb-5">
       {children}
     </h3>
   )
@@ -69,7 +69,7 @@ function FooterHeading({ children }) {
 
 function FooterLink({ to, anchor, children, onClick }) {
   const cls =
-    'text-sm text-night-300 hover:text-primary-300 transition-colors duration-200'
+    'text-sm text-ink-2 hover:text-primary-500 dark:hover:text-primary-300 transition-colors duration-200'
 
   if (anchor) {
     return (
@@ -99,7 +99,7 @@ function Footer() {
   return (
     <footer
       id="contact"
-      className="force-dark relative border-t border-white/5 bg-night-950/80 scroll-mt-20"
+      className="relative border-t border-line bg-surface-2/80 scroll-mt-20"
     >
       {/* Top accent line */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" />
@@ -110,7 +110,7 @@ function Footer() {
           {/* Column 1 — Brand */}
           <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1">
             <Logo size="sm" />
-            <p className="text-sm text-night-300 leading-relaxed max-w-xs">
+            <p className="text-sm text-ink-2 leading-relaxed max-w-xs">
               {APP_TAGLINE}. Precision agriculture powered by computer vision,
               satellite data and machine learning.
             </p>
@@ -122,7 +122,7 @@ function Footer() {
                   href={href}
                   aria-label={label}
                   title={title}
-                  className="size-9 rounded-xl glass flex items-center justify-center text-night-300 hover:text-primary-300 hover:bg-white/10 transition-colors duration-200"
+                  className="size-9 rounded-xl glass flex items-center justify-center text-ink-2 hover:text-primary-500 dark:hover:text-primary-300 hover:bg-surface-2 transition-colors duration-200"
                 >
                   <Icon className="text-base" />
                 </a>
@@ -174,11 +174,11 @@ function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-night-400">
+        <div className="mt-14 pt-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-ink-3">
             © {new Date().getFullYear()} {APP_NAME}. All rights reserved.
           </p>
-          <p className="text-xs text-night-500">
+          <p className="text-xs text-ink-3">
             Built for the future of farming 🌱
           </p>
         </div>

@@ -110,11 +110,11 @@ function FeaturesSection() {
                     >
                       <feature.icon />
                     </div>
-                    <h3 className="font-display text-lg font-bold text-white mb-2.5 flex items-center gap-2">
+                    <h3 className="font-display text-lg font-bold text-ink mb-2.5 flex items-center gap-2">
                       {feature.title}
-                      <HiArrowUpRight className="text-sm text-primary-300 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                      <HiArrowUpRight className="text-sm text-primary-500 dark:text-primary-300 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                     </h3>
-                    <p className="text-sm text-night-300 leading-relaxed">
+                    <p className="text-sm text-ink-2 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>

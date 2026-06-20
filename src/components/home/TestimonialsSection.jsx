@@ -72,20 +72,20 @@ function TestimonialsSection() {
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               className="relative glass-card p-6 sm:p-7 flex flex-col gap-5 group hover:shadow-glow transition-shadow duration-300"
             >
-              <HiOutlineChatBubbleLeftRight className="absolute top-6 right-6 text-3xl text-white/5 group-hover:text-primary-500/20 transition-colors" />
+              <HiOutlineChatBubbleLeftRight className="absolute top-6 right-6 text-3xl text-ink/5 group-hover:text-primary-500/20 transition-colors" />
               <Stars count={t.rating} />
-              <p className="text-sm text-night-200 leading-relaxed flex-1">
+              <p className="text-sm text-ink-2 leading-relaxed flex-1">
                 “{t.quote}”
               </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+              <div className="flex items-center gap-3 pt-4 border-t border-line">
                 <span
                   className={`size-11 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-sm font-bold text-white shadow-lg`}
                 >
                   {t.initials}
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-white">{t.name}</p>
-                  <p className="text-xs text-night-400">{t.role}</p>
+                  <p className="text-sm font-semibold text-ink">{t.name}</p>
+                  <p className="text-xs text-ink-3">{t.role}</p>
                 </div>
               </div>
             </motion.div>
