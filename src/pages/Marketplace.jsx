@@ -48,45 +48,66 @@ function ProductCard({ product, onAddToCart }) {
     <motion.div
       variants={fadeInUp}
       whileHover={{ y: -4 }}
-      className="glass-card p-4 flex flex-col gap-3 card-glow group"
+      className="glass-card p-4 flex flex-col gap-3.5 card-glow group h-full"
     >
-      {}
-      <div className="rounded-xl bg-surface-2 aspect-square flex items-center justify-center relative overflow-hidden">
+      {/* Product Image Container */}
+      <div className="rounded-xl bg-surface-2 aspect-[4/3] flex items-center justify-center relative overflow-hidden border border-line/40">
         {!imgError && product.imageUrl ? (
           <img
             src={product.imageUrl}
             alt={product.name}
             onError={() => setImgError(true)}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <HiOutlineShoppingBag className="text-5xl text-ink-3/40" />
+          <div className="flex flex-col items-center justify-center gap-1.5 p-4 text-ink-3/40">
+            <HiOutlineShoppingBag className="text-4xl" />
+            <span className="text-[10px] font-medium text-ink-3">Agricultural Supply</span>
+          </div>
         )}
         {product.discount > 0 && (
-          <span className="absolute top-2 left-2 bg-accent-rose text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm z-10">
+          <span className="absolute top-2.5 left-2.5 bg-accent-rose text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm z-10">
             -{product.discount}%
           </span>
         )}
+        <span className="absolute top-2.5 right-2.5 glass px-2 py-0.5 rounded-md text-[10px] font-semibold text-ink uppercase tracking-wider backdrop-blur-md shadow-sm">
+          {product.category}
+        </span>
       </div>
 
-      {}
-      <div className="flex-1">
-        <p className="text-[10px] text-ink-3 uppercase tracking-wide">{product.category}</p>
-        <p className="font-semibold text-ink text-sm leading-snug mt-0.5 line-clamp-2">{product.name}</p>
-        <p className="text-xs text-ink-3 mt-0.5">{product.brand}</p>
-        <StarRating rating={product.rating} />
-        <p className="text-[10px] text-ink-3">{product.reviewCount} reviews</p>
+      {/* Product Meta */}
+      <div className="flex flex-col gap-1.5 flex-1">
+        <div className="flex items-center justify-between text-[11px] text-ink-3">
+          <span className="font-medium text-primary-500 dark:text-primary-400">{product.brand}</span>
+          <div className="flex items-center gap-1">
+            <HiOutlineStar className="text-xs text-accent-amber" />
+            <span className="font-semibold text-ink text-xs">{product.rating}</span>
+            <span className="text-[10px] text-ink-3">({product.reviewCount})</span>
+          </div>
+        </div>
+
+        {/* Title with exact 2-line fixed height to guarantee vertical alignment */}
+        <div className="h-10 flex items-start">
+          <h3 className="font-semibold text-ink text-sm leading-snug line-clamp-2">
+            {product.name}
+          </h3>
+        </div>
       </div>
 
-      {}
-      <div className="flex items-end justify-between gap-2">
-        <div>
-          <p className="font-display text-lg font-bold text-ink">
-            ₹{finalPrice.toLocaleString('en-IN')}
-          </p>
-          {product.discount > 0 && (
-            <p className="text-xs text-ink-3 line-through">₹{product.priceINR.toLocaleString('en-IN')}</p>
-          )}
+      {/* Pricing & Stock Status */}
+      <div className="flex items-end justify-between gap-2 pt-2.5 border-t border-line/50 mt-auto">
+        <div className="min-h-[40px] flex flex-col justify-end">
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-display text-lg font-bold text-ink">
+              ₹{finalPrice.toLocaleString('en-IN')}
+            </span>
+            {product.discount > 0 && (
+              <span className="text-xs text-ink-3 line-through">
+                ₹{product.priceINR.toLocaleString('en-IN')}
+              </span>
+            )}
+          </div>
           <p className="text-[10px] text-ink-3">{product.unit}</p>
         </div>
         <Badge status={stock.status}>{stock.label}</Badge>
@@ -245,7 +266,7 @@ function Marketplace() {
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 items-stretch"
           >
             {visible.map((product) => (
               <ProductCard key={product.id} product={product} onAddToCart={handleAddToCart} />
