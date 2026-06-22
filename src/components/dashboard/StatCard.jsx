@@ -8,7 +8,7 @@ function StatCard({ label, value, unit, trend, status, icon: Icon }) {
   const TrendIcon =
     trend > 0 ? HiArrowTrendingUp : trend < 0 ? HiArrowTrendingDown : HiMinusSmall
   const trendColor =
-    trend > 0 ? 'text-primary-400' : trend < 0 ? 'text-accent-rose' : 'text-night-400'
+    trend > 0 ? 'text-primary-500 dark:text-primary-400' : trend < 0 ? 'text-accent-rose' : 'text-ink-3'
   const decimals = Number.isInteger(value) ? 0 : 1
 
   return (
@@ -19,18 +19,18 @@ function StatCard({ label, value, unit, trend, status, icon: Icon }) {
           <motion.span
             whileHover={{ scale: 1.1, rotate: 4 }}
             transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-            className="size-11 rounded-xl bg-primary-500/15 flex items-center justify-center text-primary-300 text-xl"
+            className="size-11 rounded-xl bg-primary-500/15 flex items-center justify-center text-primary-500 dark:text-primary-300 text-xl"
           >
             <Icon />
           </motion.span>
         )}
         {status && <Badge status={status}>{status}</Badge>}
       </div>
-      <p className="text-sm text-night-300 mb-1">{label}</p>
+      <p className="text-sm text-ink-2 mb-1">{label}</p>
       <div className="flex items-end gap-2 flex-wrap">
-        <span className="font-display text-3xl font-bold text-white">
+        <span className="font-display text-3xl font-bold text-ink">
           <CountUp value={value} decimals={decimals} />
-          {unit && <span className="text-lg text-night-300 ml-1">{unit}</span>}
+          {unit && <span className="text-lg text-ink-3 ml-1">{unit}</span>}
         </span>
         <motion.span
           initial={{ opacity: 0, y: 6 }}
