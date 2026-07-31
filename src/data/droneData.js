@@ -1,0 +1,23 @@
+export const droneData = {
+  fleet: [
+    { id: 'AV-01', name: 'Falcon', status: 'active', battery: 84, task: 'NDVI survey — North Field', flightTime: '00:42' },
+    { id: 'AV-02', name: 'Kestrel', status: 'active', battery: 67, task: 'Spraying — East Valley', flightTime: '01:12' },
+    { id: 'AV-03', name: 'Osprey', status: 'charging', battery: 31, task: 'Idle', flightTime: '00:00' },
+    { id: 'AV-04', name: 'Harrier', status: 'active', battery: 91, task: 'Thermal scan — South Ridge', flightTime: '00:18' },
+    { id: 'AV-05', name: 'Condor', status: 'maintenance', battery: 100, task: 'Rotor inspection', flightTime: '00:00' },
+  ],
+  coverage: [
+    { day: 'Mon', hectares: 34 },
+    { day: 'Tue', hectares: 41 },
+    { day: 'Wed', hectares: 28 },
+    { day: 'Thu', hectares: 46 },
+    { day: 'Fri', hectares: 39 },
+    { day: 'Sat', hectares: 52 },
+    { day: 'Sun', hectares: 44 },
+  ],
+  missions: [
+    { id: 'm-101', type: 'NDVI Mapping', field: 'North Field', eta: '14:30', progress: 68 },
+    { id: 'm-102', type: 'Precision Spraying', field: 'East Valley', eta: '15:10', progress: 42 },
+    { id: 'm-103', type: 'Thermal Imaging', field: 'South Ridge', eta: '14:05', progress: 87 },
+  ],
+}
