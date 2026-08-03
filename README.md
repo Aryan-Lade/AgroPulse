@@ -9,8 +9,6 @@ An AI-powered Smart Agriculture Platform helping farmers make data-driven decisi
 
 <br/>
 
-<!-- BADGES -->
-<!-- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE) -->
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -31,9 +29,6 @@ An AI-powered Smart Agriculture Platform helping farmers make data-driven decisi
 </div>
 
 <br/>
-
-<!-- BANNER IMAGE -->
-![AgriNova AI Banner](docs/assets/banner.png)
 
 ---
 
@@ -259,7 +254,6 @@ AgriNova AI bridges the gap between cutting-edge AI research and the farmer's fi
 ## 🏗️ System Architecture
 
 <!-- ARCHITECTURE DIAGRAM -->
-![System Architecture](docs/assets/architecture.png)
 
 ```mermaid
 flowchart LR
