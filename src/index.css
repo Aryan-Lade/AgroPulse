@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/*  Design tokens                                                      */
+/*  Brand scales are static; surface/ink tokens are runtime CSS vars   */
+/*  so the whole dashboard re-themes from a single data-theme switch.  */
+/* ------------------------------------------------------------------ */
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -59,17 +64,86 @@
   }
 }
 
+/* Semantic tokens — resolved at runtime so `data-theme` swaps them live */
+@theme inline {
+  --color-canvas: var(--ap-canvas);
+  --color-surface: var(--ap-surface);
+  --color-surface-2: var(--ap-surface-2);
+  --color-ink: var(--ap-ink);
+  --color-ink-2: var(--ap-ink-2);
+  --color-ink-3: var(--ap-ink-3);
+  --color-line: var(--ap-line);
+  --color-line-2: var(--ap-line-2);
+  --color-badge-primary: var(--ap-badge-primary);
+  --color-badge-amber: var(--ap-badge-amber);
+  --color-badge-sky: var(--ap-badge-sky);
+  --color-badge-rose: var(--ap-badge-rose);
+}
+
+/* Dark theme (default) */
+:root {
+  --ap-canvas: #0b120e;
+  --ap-surface: rgb(255 255 255 / 0.05);
+  --ap-surface-2: rgb(255 255 255 / 0.1);
+  --ap-ink: #ffffff;
+  --ap-ink-2: #9fb2a6;
+  --ap-ink-3: #779181;
+  --ap-line: rgb(255 255 255 / 0.1);
+  --ap-line-2: rgb(255 255 255 / 0.15);
+  --ap-badge-primary: #86efac;
+  --ap-badge-amber: #fcd34d;
+  --ap-badge-sky: #7dd3fc;
+  --ap-badge-rose: #fda4af;
+  --ap-scroll-track: #0b120e;
+  --ap-scroll-thumb: #394b42;
+}
+
+/* Scope override — keeps the marketing/landing pages permanently dark
+   regardless of the dashboard theme choice */
+.force-dark {
+  --ap-canvas: #0b120e;
+  --ap-surface: rgb(255 255 255 / 0.05);
+  --ap-surface-2: rgb(255 255 255 / 0.1);
+  --ap-ink: #ffffff;
+  --ap-ink-2: #9fb2a6;
+  --ap-ink-3: #779181;
+  --ap-line: rgb(255 255 255 / 0.1);
+  --ap-line-2: rgb(255 255 255 / 0.15);
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+  --ap-canvas: #f2f6f0;
+  --ap-surface: rgb(255 255 255 / 0.72);
+  --ap-surface-2: rgb(255 255 255 / 0.9);
+  --ap-ink: #101914;
+  --ap-ink-2: #46564c;
+  --ap-ink-3: #64756a;
+  --ap-line: rgb(16 25 20 / 0.08);
+  --ap-line-2: rgb(16 25 20 / 0.12);
+  --ap-badge-primary: #15803d;
+  --ap-badge-amber: #b45309;
+  --ap-badge-sky: #0369a1;
+  --ap-badge-rose: #be123c;
+  --ap-scroll-track: #e8efe6;
+  --ap-scroll-thumb: #b9c8bd;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-night-950 text-night-100 font-sans antialiased;
+    @apply bg-canvas text-ink font-sans antialiased;
   }
 
   ::selection {
     @apply bg-primary-500/30 text-primary-100;
+  }
+
+  :root[data-theme="light"] ::selection {
+    @apply bg-primary-500/25 text-primary-900;
   }
 
   ::-webkit-scrollbar {
@@ -78,11 +152,12 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-night-950;
+    background: var(--ap-scroll-track);
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-night-700 rounded-full;
+    background: var(--ap-scroll-thumb);
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -90,12 +165,13 @@
   }
 }
 
+/* Glassmorphism helpers — surface tokens keep them correct in both themes */
 @utility glass {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-glass;
+  @apply bg-surface backdrop-blur-xl border border-line shadow-glass;
 }
 
 @utility glass-strong {
-  @apply bg-white/10 backdrop-blur-2xl border border-white/15 shadow-glass;
+  @apply bg-surface-2 backdrop-blur-2xl border border-line-2 shadow-glass;
 }
 
 @utility glass-card {
@@ -106,9 +182,25 @@
   @apply bg-gradient-to-r from-primary-300 via-primary-400 to-emerald-300 bg-clip-text text-transparent;
 }
 
+:root[data-theme="light"] .text-gradient {
+  background-image: linear-gradient(to right, #15803d, #16a34a, #059669);
+}
+
+/* Inside a force-dark scope the bright gradient must win, even in light mode */
+:root[data-theme="light"] .force-dark .text-gradient {
+  background-image: linear-gradient(to right, #86efac, #4ade80, #6ee7b7);
+}
+
 @utility bg-mesh {
   background-image:
     radial-gradient(at 20% 15%, rgb(34 197 94 / 0.12) 0px, transparent 50%),
     radial-gradient(at 80% 85%, rgb(14 165 233 / 0.08) 0px, transparent 50%),
     radial-gradient(at 60% 40%, rgb(22 163 74 / 0.06) 0px, transparent 50%);
+}
+
+:root[data-theme="light"] .bg-mesh {
+  background-image:
+    radial-gradient(at 20% 15%, rgb(34 197 94 / 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 85%, rgb(14 165 233 / 0.08) 0px, transparent 50%),
+    radial-gradient(at 60% 40%, rgb(245 158 11 / 0.05) 0px, transparent 50%);
 }
