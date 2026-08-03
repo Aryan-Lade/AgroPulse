@@ -1,7 +1,5 @@
 <div align="center">
 
-<!-- PROJECT LOGO -->
-<img src="docs/assets/logo.png" alt="AgriNova AI Logo" width="140" height="140" />
 
 # 🌾 AgriNova AI
 
