@@ -14,8 +14,6 @@ const metrics = [
   { id: 'wind', label: 'Wind', value: `${currentWeather.windSpeed} km/h`, icon: WiStrongWind },
   { id: 'rain', label: 'Rain', value: `${currentWeather.rainProbability}%`, icon: WiRaindrops },
 ]
-
-/** WeatherCard — current conditions summary for the active farm. */
 function WeatherCard() {
   return (
     <Card hover={false} className="flex flex-col">
