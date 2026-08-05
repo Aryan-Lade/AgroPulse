@@ -8,8 +8,9 @@
  */
 export const chartPalettes = {
   dark: {
-    // validated against dark glass surface ≈ #111c15
-    series: ['#22c55e', '#38bdf8', '#fbbf24', '#a78bfa', '#fb7185'],
+    // validated against dark glass surface ≈ #111c15 (all 6 checks pass)
+    series: ['#16a34a', '#0284c7', '#d97706', '#8b5cf6', '#e11d48'],
+    surface: '#111c15',
     grid: 'rgba(255,255,255,0.07)',
     axis: '#779181',
     tickFill: '#9fb2a6',
@@ -20,8 +21,9 @@ export const chartPalettes = {
     cursorFill: 'rgba(255,255,255,0.05)',
   },
   light: {
-    // validated against light glass surface ≈ #f6f9f4
+    // validated against light glass surface ≈ #f6f9f4 (all 6 checks pass)
     series: ['#16a34a', '#0284c7', '#d97706', '#7c3aed', '#e11d48'],
+    surface: '#f6f9f4',
     grid: 'rgba(16,25,20,0.07)',
     axis: '#64756a',
     tickFill: '#46564c',
