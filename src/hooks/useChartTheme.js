@@ -18,9 +18,9 @@ export function useChartTheme() {
       tickLine: false,
       axisLine: false,
     },
+    // Solid hairline grid, horizontal only — recessive, never dashed
     gridProps: {
       stroke: palette.grid,
-      strokeDasharray: '3 6',
       vertical: false,
     },
     tooltipProps: {
