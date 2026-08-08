@@ -1,5 +1,6 @@
+import { useReducedMotion } from 'framer-motion'
 import { useTheme } from '../../context/ThemeContext.jsx'
-import { getChartTheme } from '../../utils/chartTheme.js'
+import { getChartTheme } from '../utils/chartTheme.js'
 
 /**
  * useChartTheme — resolves the validated chart palette + shared
@@ -9,6 +10,7 @@ import { getChartTheme } from '../../utils/chartTheme.js'
 export function useChartTheme() {
   const { theme } = useTheme()
   const palette = getChartTheme(theme)
+  const prefersReduced = useReducedMotion()
 
   return {
     palette,
@@ -22,6 +24,15 @@ export function useChartTheme() {
     gridProps: {
       stroke: palette.grid,
       vertical: false,
+    },
+    // Shared series animation — smooth ease-out draw on load; recharts
+    // re-runs it on data changes so value updates glide too. Disabled
+    // entirely for users with prefers-reduced-motion.
+    animationProps: {
+      isAnimationActive: !prefersReduced,
+      animationDuration: 1100,
+      animationEasing: 'ease-out',
+      animationBegin: 120,
     },
     tooltipProps: {
       contentStyle: {

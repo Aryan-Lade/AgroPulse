@@ -58,15 +58,37 @@ function SidebarLink({ item, collapsed, onNavigate }) {
     >
       {({ isActive }) => (
         <>
-          {/* Active route indicator bar */}
+          {/* Active route indicator — shared layout element glides
+              between rows with a spring when the selection changes */}
           {isActive && (
             <motion.span
               layoutId="sidebar-active"
+              transition={{ type: 'spring', stiffness: 380, damping: 32 }}
               className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 rounded-r-full bg-primary-500"
             />
           )}
-          <item.icon className="text-xl shrink-0 transition-transform duration-200 group-hover/link:scale-110" />
-          {!collapsed && <span className="truncate">{item.label}</span>}
+          <motion.span
+            whileHover={{ scale: 1.15, rotate: isActive ? 0 : 4 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+            className="flex shrink-0"
+          >
+            <item.icon className="text-xl" />
+          </motion.span>
+          {/* Label fades + slides while the rail width animates */}
+          <AnimatePresence initial={false}>
+            {!collapsed && (
+              <motion.span
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -8 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="truncate"
+              >
+                {item.label}
+              </motion.span>
+            )}
+          </AnimatePresence>
           {/* Tooltip — only rendered while collapsed */}
           {collapsed && (
             <span className="pointer-events-none absolute left-full ml-3 z-50 whitespace-nowrap rounded-lg glass-strong px-3 py-1.5 text-xs font-medium text-ink opacity-0 -translate-x-1 transition-all duration-200 group-hover/link:opacity-100 group-hover/link:translate-x-0">
@@ -94,10 +116,15 @@ function SidebarContent({ collapsed = false, onNavigate }) {
           </p>
         )}
         <ul className="flex flex-col gap-1">
-          {menuItems.map((item) => (
-            <li key={item.to}>
+          {menuItems.map((item, index) => (
+            <motion.li
+              key={item.to}
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.04 * index, duration: 0.3, ease: 'easeOut' }}
+            >
               <SidebarLink item={item} collapsed={collapsed} onNavigate={onNavigate} />
-            </li>
+            </motion.li>
           ))}
         </ul>
       </nav>
@@ -153,24 +180,26 @@ function Sidebar() {
       {/* Desktop rail */}
       <motion.aside
         animate={{ width: sidebarCollapsed ? 72 : 264 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ type: 'spring', stiffness: 300, damping: 34 }}
         className="hidden lg:flex flex-col fixed inset-y-0 left-0 glass-strong border-y-0 border-l-0 rounded-none z-40"
       >
         <SidebarContent collapsed={sidebarCollapsed} />
         {/* Collapse handle */}
-        <button
+        <motion.button
           onClick={toggleCollapse}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
           aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           className="absolute -right-3 top-20 size-6 rounded-full glass-strong flex items-center justify-center text-ink-2 hover:text-primary-400 transition-colors cursor-pointer"
         >
           <motion.span
             animate={{ rotate: sidebarCollapsed ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 24 }}
             className="flex"
           >
             <HiOutlineChevronDoubleLeft className="text-xs" />
           </motion.span>
-        </button>
+        </motion.button>
       </motion.aside>
 
       {/* Mobile drawer */}

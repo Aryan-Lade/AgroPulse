@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Card from '../common/Card.jsx'
+import CountUp from '../common/CountUp.jsx'
 import { farmHealth } from '../../data/dashboardData.js'
 
 const RADIUS = 56
@@ -46,19 +47,29 @@ function FarmHealthCard() {
               initial={{ strokeDashoffset: CIRCUMFERENCE }}
               whileInView={{ strokeDashoffset: offset }}
               viewport={{ once: true }}
-              transition={{ duration: 1.1, ease: 'easeOut' }}
+              transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
               transform="rotate(-90 68 68)"
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-display text-3xl font-bold text-ink">{score}</span>
-            <span className="text-[11px] font-medium text-primary-400">{label}</span>
+            <span className="font-display text-3xl font-bold text-ink">
+              <CountUp value={score} />
+            </span>
+            <motion.span
+              initial={{ opacity: 0, y: 4 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8, duration: 0.4 }}
+              className="text-[11px] font-medium text-primary-400"
+            >
+              {label}
+            </motion.span>
           </div>
         </div>
 
         {/* Factor breakdown */}
         <div className="flex-1 flex flex-col gap-3">
-          {breakdown.map((factor) => (
+          {breakdown.map((factor, index) => (
             <div key={factor.id}>
               <div className="flex items-center justify-between text-xs mb-1">
                 <span className="text-ink-2">{factor.label}</span>
@@ -69,7 +80,11 @@ function FarmHealthCard() {
                   initial={{ width: 0 }}
                   whileInView={{ width: `${factor.value}%` }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                  transition={{
+                    duration: 0.9,
+                    delay: 0.15 + index * 0.1,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                   className="h-full rounded-full bg-primary-500"
                 />
               </div>
