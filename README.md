@@ -384,7 +384,7 @@ agrinova-ai/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/agrinova-ai.git
+git clone https://github.com/Aryan-Lade/agrinova-ai.git
 cd agrinova-ai
 ```
 
@@ -777,7 +777,7 @@ Contributions make open source amazing — **all contributions are welcome!** �
 ### 🔀 Git Workflow
 
 1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/<your-username>/agrinova-ai.git`
+2. **Clone** your fork: `git clone https://github.com/Aryan-Lade/agrinova-ai.git`
 3. **Create a branch** from `main` (see naming below)
 4. **Commit** your changes (see commit format below)
 5. **Push** and open a **Pull Request** against `main`
@@ -869,11 +869,11 @@ See [`LICENSE`](LICENSE) for the full text.
 
 | Avatar | Name | Role | Links |
 |---|---|---|---|
-| 🧑‍💻 | **Your Name** *(placeholder)* | Creator & Lead Developer | [GitHub](https://github.com/your-username) · [LinkedIn](https://linkedin.com/in/your-profile) |
+| 🧑‍💻 | **Aryan Lade* | Creator & Lead Developer | [GitHub](https://github.com/Aryan-Lade) · [LinkedIn](https://linkedin.com/in/aryan-lade) |
 | 🤝 | *Open for contributors!* | — | [Contribute →](#-contributing) |
 
-<a href="https://github.com/your-username/agrinova-ai/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=your-username/agrinova-ai" alt="Contributors" />
+<a href="https://github.com/Aryan-Lade/agrinova-ai/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Aryan-Lade/agrinova-ai" alt="Contributors" />
 </a>
 
 ---
@@ -897,10 +897,10 @@ See [`LICENSE`](LICENSE) for the full text.
 
 | Channel | Link |
 |---|---|
-| 🐙 GitHub | [github.com/your-username](https://github.com/your-username) *(placeholder)* |
-| 💼 LinkedIn | [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile) *(placeholder)* |
-| 📧 Email | `your-email@example.com` *(placeholder)* |
-| 🌐 Portfolio | [your-portfolio.com](https://your-portfolio.com) *(placeholder)* |
+| 🐙 GitHub | [github.com/Aryan-Lade](https://github.com/Aryan-Lade) *Aryan Lade* |
+| 💼 LinkedIn | [linkedin.com/in/aryan-lade](https://linkedin.com/in/aryan-lade) *Aryan Lade* |
+| 📧 Email | `aryanlade55@gmail.com` *Aryan_Lade* |
+| 🌐 Portfolio | [mr-aryansportfolio.vercel.app](https://mr-aryansportfolio.vercel.app/) *Aryans Portfolio* |
 
 ---
 
@@ -912,9 +912,8 @@ If AgriNova AI helps you or inspires you, please consider:
 - 🍴 **Forking** and building on top of it
 - 📢 **Sharing** it with your network
 - 🐛 **Opening issues** with bugs or ideas
-- ☕ **Buying us a coffee** → [buymeacoffee.com/your-username](https://buymeacoffee.com/your-username) *(placeholder)*
 
-[![Star History](https://img.shields.io/badge/⭐-Star%20this%20repo-2ea44f?style=for-the-badge)](https://github.com/your-username/agrinova-ai)
+[![Star History](https://img.shields.io/badge/⭐-Star%20this%20repo-2ea44f?style=for-the-badge)](https://github.com/Aryan-Lade/agrinova-ai)
 
 ---
 
