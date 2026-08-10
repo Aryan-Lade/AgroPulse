@@ -1,0 +1,103 @@
+{
+  "categories": [
+    { "id": "all",      "label": "All Posts",       "count": 248 },
+    { "id": "rice",     "label": "Rice",            "count": 64  },
+    { "id": "wheat",    "label": "Wheat",           "count": 51  },
+    { "id": "tomato",   "label": "Tomato",          "count": 38  },
+    { "id": "cotton",   "label": "Cotton",          "count": 29  },
+    { "id": "organic",  "label": "Organic Farming", "count": 43  },
+    { "id": "pest",     "label": "Pest Control",    "count": 23  }
+  ],
+  "posts": [
+    {
+      "id": "p1",
+      "author": { "name": "Rajesh Kumar", "role": "Farmer · Punjab", "initials": "RK" },
+      "category": "rice",
+      "tag": "Question",
+      "title": "Rice blast spreading fast — what fungicide works best in August?",
+      "body": "My West Plains field has rice blast lesions spreading to about 15% of the crop. Applied carbendazim last season but it didn't work well. Anyone had success with tricyclazole 75WP this year?",
+      "image": null,
+      "likes": 42,
+      "comments": 18,
+      "views": 312,
+      "timeAgo": "2h ago",
+      "solved": false
+    },
+    {
+      "id": "p2",
+      "author": { "name": "Dr. Meera Sharma", "role": "Agronomist · ICAR", "initials": "MS" },
+      "category": "organic",
+      "tag": "Tip",
+      "title": "How I increased wheat yield by 22% using biostimulants — a 3-season case study",
+      "body": "Sharing results from our trial plots in Haryana using seaweed extract + humic acid. Breakdown of application timing, dosage, and observed gains across three varieties.",
+      "image": null,
+      "likes": 128,
+      "comments": 34,
+      "views": 891,
+      "timeAgo": "1d ago",
+      "solved": false
+    },
+    {
+      "id": "p3",
+      "author": { "name": "Suresh Patel", "role": "Farmer · Gujarat", "initials": "SP" },
+      "category": "cotton",
+      "tag": "Alert",
+      "title": "Pink bollworm pressure unusually high this season — Gujarat farmers take note",
+      "body": "Trap counts in Saurashtra region at 12–15 per trap per week. That's 3× the economic threshold. Sharing scouting protocol and recommended IPM measures.",
+      "image": null,
+      "likes": 76,
+      "comments": 29,
+      "views": 534,
+      "timeAgo": "2d ago",
+      "solved": false
+    },
+    {
+      "id": "p4",
+      "author": { "name": "Anita Desai", "role": "Farmer · Maharashtra", "initials": "AD" },
+      "category": "tomato",
+      "tag": "Success",
+      "title": "My tomato farm hit ₹8.4L this season — here's what changed",
+      "body": "Switched to drip irrigation + soil moisture sensors + weekly soil testing. Sharing the exact schedule, input costs, and final P&L breakdown. Happy to answer questions.",
+      "image": null,
+      "likes": 214,
+      "comments": 67,
+      "views": 1820,
+      "timeAgo": "3d ago",
+      "solved": false
+    },
+    {
+      "id": "p5",
+      "author": { "name": "Mohammed Farooq", "role": "Farmer · Andhra Pradesh", "initials": "MF" },
+      "category": "pest",
+      "tag": "Question",
+      "title": "Yellow mosaic virus in moong dal — is there any resistant variety available?",
+      "body": "Lost about 30% of my crop to YMV this season. Whitefly vector population is very high. Is anyone using resistant varieties or bio-pesticides effectively?",
+      "image": null,
+      "likes": 31,
+      "comments": 15,
+      "views": 278,
+      "timeAgo": "4d ago",
+      "solved": true
+    },
+    {
+      "id": "p6",
+      "author": { "name": "Priya Nair", "role": "Agri Researcher · Kerala", "initials": "PN" },
+      "category": "organic",
+      "tag": "Guide",
+      "title": "Complete guide to composting with farm waste — step by step",
+      "body": "Turn crop residue, kitchen waste, and animal manure into high-quality compost in 45 days. Covers C:N ratio, turning schedule, moisture management, and quality testing.",
+      "image": null,
+      "likes": 189,
+      "comments": 52,
+      "views": 1240,
+      "timeAgo": "5d ago",
+      "solved": false
+    }
+  ],
+  "topContributors": [
+    { "name": "Dr. Meera Sharma", "role": "Agronomist",  "initials": "MS", "posts": 84,  "reputation": 2340 },
+    { "name": "Anita Desai",      "role": "Farmer",      "initials": "AD", "posts": 61,  "reputation": 1820 },
+    { "name": "Priya Nair",       "role": "Researcher",  "initials": "PN", "posts": 47,  "reputation": 1540 },
+    { "name": "Rajesh Kumar",     "role": "Farmer",      "initials": "RK", "posts": 38,  "reputation": 980  }
+  ]
+}

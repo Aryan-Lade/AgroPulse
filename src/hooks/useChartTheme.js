@@ -1,6 +1,6 @@
 import { useReducedMotion } from 'framer-motion'
-import { useTheme } from '../../context/ThemeContext.jsx'
-import { getChartTheme } from '../utils/chartTheme.js'
+import { useTheme } from '@/context/ThemeContext.jsx'
+import { getChartTheme } from '@/utils/chartTheme.js'
 
 /**
  * useChartTheme — resolves the validated chart palette + shared

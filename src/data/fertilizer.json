@@ -1,0 +1,49 @@
+{
+  "crops": ["Rice","Wheat","Cotton","Maize","Soybean","Tomato","Potato","Sugarcane","Groundnut","Sunflower"],
+  "soilTypes": ["Sandy","Loamy","Clay","Sandy Loam","Clay Loam","Silty Loam","Black Cotton","Red Laterite"],
+  "growthStages": ["Seedling","Vegetative","Flowering","Fruiting","Grain Filling","Maturity"],
+  "recommendations": [
+    {
+      "id": "r1",
+      "crop": "Rice",
+      "soilType": "Clay Loam",
+      "growthStage": "Vegetative",
+      "npk": { "n": 38, "p": 22, "k": 44 },
+      "ph": 6.2,
+      "moisture": 72,
+      "area": 1,
+      "primaryFertilizer": {
+        "name": "Urea (46-0-0)",
+        "quantity": 82,
+        "unit": "kg/ha",
+        "method": "Broadcasting + incorporation",
+        "timing": "21–25 days after transplanting",
+        "cost": 1640
+      },
+      "secondaryFertilizer": {
+        "name": "DAP (18-46-0)",
+        "quantity": 48,
+        "unit": "kg/ha",
+        "method": "Basal application",
+        "timing": "At transplanting",
+        "cost": 1440
+      },
+      "micronutrients": [
+        { "name": "Zinc Sulphate", "quantity": 25, "unit": "kg/ha", "reason": "Zinc deficiency common in flooded paddy" }
+      ],
+      "organicAlternative": {
+        "name": "Vermicompost + Neem Cake",
+        "quantity": "2 t/ha + 250 kg/ha",
+        "benefit": "Improves soil organic carbon, slow-release nitrogen"
+      },
+      "estimatedCost": 3080,
+      "expectedYieldGain": 12,
+      "safetyNotes": [
+        "Wear gloves and mask during urea application.",
+        "Do not apply during heavy rain — leaching risk.",
+        "Observe 7-day waiting period before flooding field post-application."
+      ],
+      "warnings": ["Nitrogen split application recommended to reduce leaching."]
+    }
+  ]
+}

@@ -17,8 +17,8 @@ import {
   HiOutlineArrowLeftOnRectangle,
 } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
-import { useApp } from '../../context/AppContext.jsx'
-import { useTheme } from '../../context/ThemeContext.jsx'
+import { useApp } from '@/context/AppContext.jsx'
+import { useTheme } from '@/context/ThemeContext.jsx'
 import {
   currentWeather,
   currentUser,

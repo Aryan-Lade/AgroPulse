@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiOutlineXMark, HiOutlineBellAlert, HiOutlineCheckCircle } from 'react-icons/hi2'
 import Badge from '../common/Badge.jsx'
-import { useApp } from '../../context/AppContext.jsx'
+import { useApp } from '@/context/AppContext.jsx'
 import { notifications } from '../../data/dashboardData.js'
 import { classNames } from '../../utils/formatters.js'
 
