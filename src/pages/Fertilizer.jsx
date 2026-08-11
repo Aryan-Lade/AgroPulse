@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import {
   HiOutlineBeaker, HiOutlineSparkles, HiOutlineExclamationTriangle,
@@ -26,8 +26,18 @@ function Fertilizer() {
   const [form, setForm] = useState({ crop: '', soilType: '', growthStage: '', area: '', ph: '', moisture: '' })
   const [result, setResult] = useState(null)
   const [loading, setLoading] = useState(false)
+  // Track mounted state to prevent state updates after unmount (async leak fix)
+  const mountedRef = useRef(true)
+  useEffect(() => {
+    mountedRef.current = true
+    return () => { mountedRef.current = false }
+  }, [])
 
-  const set = (k) => (e) => setForm((p) => ({ ...p, [k]: typeof e === 'string' ? e : e.target.value }))
+  // Bug fix #1 — clear stale result whenever the user changes any form field
+  const set = (k) => (e) => {
+    setResult(null)
+    setForm((p) => ({ ...p, [k]: typeof e === 'string' ? e : e.target.value }))
+  }
 
   const handleSubmit = async () => {
     if (!form.crop || !form.soilType) {
@@ -36,6 +46,8 @@ function Fertilizer() {
     }
     setLoading(true)
     await new Promise((r) => setTimeout(r, 1600))
+    // Bug fix #2 — only update state if still mounted (guard against sidebar navigation mid-load)
+    if (!mountedRef.current) return
     setLoading(false)
     setResult(MOCK_REC)
     toast.success('Recommendation ready', `Fertilizer plan generated for ${form.crop || MOCK_REC.crop}.`)
