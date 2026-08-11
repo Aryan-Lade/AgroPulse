@@ -1,4 +1,5 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 import Sidebar from '../components/dashboard/Sidebar.jsx'
 import Topbar from '../components/dashboard/Topbar.jsx'
 import NotificationDrawer from '../components/dashboard/NotificationDrawer.jsx'
@@ -8,10 +9,13 @@ import { useApp } from '../context/AppContext.jsx'
  * DashboardLayout — application shell:
  * collapsible sidebar rail · sticky topbar · main scroll area ·
  * right-side notification drawer (overlay).
- * The left padding animates in sync with the sidebar width (CSS var + transition).
+ *
+ * AnimatePresence lives HERE so the sidebar/topbar shell never
+ * unmounts during navigation — only the <Outlet> content transitions.
  */
 function DashboardLayout() {
   const { sidebarCollapsed } = useApp()
+  const location = useLocation()
 
   return (
     <div className="min-h-screen bg-canvas bg-mesh">
@@ -23,7 +27,10 @@ function DashboardLayout() {
         <Topbar />
         <main className="flex-1 p-4 sm:p-6 lg:p-8">
           <div className="max-w-[1600px] mx-auto">
-            <Outlet />
+            <AnimatePresence mode="wait" initial={false}>
+              {/* key drives page-level enter/exit — layout shell stays mounted */}
+              <Outlet key={location.pathname} />
+            </AnimatePresence>
           </div>
         </main>
       </div>
