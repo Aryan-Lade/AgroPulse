@@ -26,12 +26,17 @@ const Select = forwardRef(function Select(
             'w-full appearance-none glass rounded-xl px-4 py-2.5 pr-10 text-sm text-ink',
             'outline-none focus:border-primary-500/50 focus:ring-2 focus:ring-primary-500/20 transition-all cursor-pointer',
             error && 'border-accent-rose/50 focus:ring-accent-rose/20',
+            // Dim the text when the placeholder (empty) value is selected
+            !props.value && 'text-ink-3',
           )}
           aria-invalid={error ? 'true' : undefined}
           {...props}
         >
+          {/* Bug fix #3 — placeholder must not be "disabled" alone; pairing with
+              a hidden value="" ensures the controlled <select> always shows it
+              when value="" on mount / after navigation resets the parent state. */}
           {placeholder && (
-            <option value="" disabled>{placeholder}</option>
+            <option value="" disabled hidden>{placeholder}</option>
           )}
           {options.map((opt) =>
             typeof opt === 'string'
