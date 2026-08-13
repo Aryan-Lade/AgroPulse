@@ -1,0 +1,81 @@
+{
+  "currentUser": {
+    "id": "user-001",
+    "name": "Arjun Mehta",
+    "email": "arjun@greenfieldfarm.in",
+    "phone": "+91 98765 43210",
+    "role": "Farm Owner",
+    "initials": "AM",
+    "avatar": null,
+    "farm": "Greenfield Farm",
+    "location": "Ludhiana, Punjab",
+    "joinedDate": "2024-03-15",
+    "subscription": "Professional",
+    "totalAcres": 120.5,
+    "primaryCrops": ["Wheat", "Soybean", "Mustard"],
+    "language": "en",
+    "notificationsEnabled": true
+  },
+  "team": [
+    {
+      "id": "team-001",
+      "name": "Priya Sharma",
+      "email": "priya.sharma@greenfieldfarm.in",
+      "phone": "+91 94502 18730",
+      "role": "Senior Agronomist",
+      "initials": "PS",
+      "avatar": null,
+      "joinedDate": "2024-04-01",
+      "specialisation": "Soil Health & Crop Nutrition",
+      "fields": ["Block A – Wheat", "North Soybean Zone"]
+    },
+    {
+      "id": "team-002",
+      "name": "Ravi Kumar Yadav",
+      "email": "ravi.yadav@greenfieldfarm.in",
+      "phone": "+91 87321 56492",
+      "role": "Field Supervisor",
+      "initials": "RY",
+      "avatar": null,
+      "joinedDate": "2024-05-10",
+      "specialisation": "Irrigation & Field Operations",
+      "fields": ["Mustard Plot M1", "South Wheat Field"]
+    },
+    {
+      "id": "team-003",
+      "name": "Sunita Devi Patel",
+      "email": "sunita.patel@greenfieldfarm.in",
+      "phone": "+91 91245 78023",
+      "role": "Drone Operator",
+      "initials": "SP",
+      "avatar": null,
+      "joinedDate": "2024-06-20",
+      "specialisation": "Aerial Imaging & NDVI Analysis",
+      "fields": ["All Blocks"]
+    },
+    {
+      "id": "team-004",
+      "name": "Mohan Singh Chauhan",
+      "email": "mohan.chauhan@greenfieldfarm.in",
+      "phone": "+91 99871 34056",
+      "role": "Farm Technician",
+      "initials": "MC",
+      "avatar": null,
+      "joinedDate": "2024-07-05",
+      "specialisation": "Equipment Maintenance & Pest Scouting",
+      "fields": ["Block B – Wheat", "East Soybean Zone"]
+    },
+    {
+      "id": "team-005",
+      "name": "Anjali Reddy",
+      "email": "anjali.reddy@greenfieldfarm.in",
+      "phone": "+91 82034 61290",
+      "role": "Data Analyst",
+      "initials": "AR",
+      "avatar": null,
+      "joinedDate": "2024-08-15",
+      "specialisation": "Yield Forecasting & Market Analytics",
+      "fields": ["All Blocks"]
+    }
+  ]
+}
