@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   HiOutlineSquares2X2,
@@ -13,12 +13,14 @@ import {
   HiOutlineShoppingBag,
   HiOutlineUserGroup,
   HiOutlineCog6Tooth,
+  HiOutlineBell,
+  HiOutlineSpeakerWave,
   HiOutlineArrowLeftOnRectangle,
   HiOutlineChevronDoubleLeft,
 } from 'react-icons/hi2'
 import Logo from '../common/Logo.jsx'
 import { useApp } from '@/context/AppContext.jsx'
-import { currentUser } from '../../data/dashboardData.js'
+import { useAuth } from '@/context/AuthContext.jsx'
 import { ROUTES } from '../../utils/constants.js'
 import { classNames } from '../../utils/formatters.js'
 
@@ -36,6 +38,8 @@ const menuItems = [
   { label: 'Marketplace', to: ROUTES.MARKETPLACE, icon: HiOutlineShoppingBag },
   { label: 'Community', to: ROUTES.COMMUNITY, icon: HiOutlineUserGroup },
   { label: 'Settings', to: ROUTES.SETTINGS, icon: HiOutlineCog6Tooth },
+  { label: 'Notifications', to: ROUTES.NOTIFICATIONS, icon: HiOutlineBell },
+  { label: 'Voice Assistant', to: ROUTES.VOICE, icon: HiOutlineSpeakerWave },
 ]
 
 /** Single nav row. Shows a floating tooltip when the rail is collapsed. */
@@ -103,6 +107,19 @@ function SidebarLink({ item, collapsed, onNavigate }) {
 
 /** Shared content used by both the desktop rail and the mobile drawer. */
 function SidebarContent({ collapsed = false, onNavigate }) {
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
+
+  const initials = user?.name
+    ? user.name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
+    : '?'
+
+  const handleLogout = () => {
+    logout()
+    onNavigate?.()
+    navigate(ROUTES.HOME, { replace: true })
+  }
+
   return (
     <div className="flex flex-col h-full">
       <div className={classNames('py-5', collapsed ? 'px-2 flex justify-center' : 'px-5')}>
@@ -138,21 +155,20 @@ function SidebarContent({ collapsed = false, onNavigate }) {
           )}
         >
           <div className="size-9 shrink-0 rounded-xl bg-gradient-to-br from-primary-500 to-emerald-700 flex items-center justify-center font-display font-bold text-white text-xs">
-            {currentUser.initials}
+            {initials}
           </div>
           {!collapsed && (
             <div className="min-w-0 leading-tight">
-              <p className="text-sm font-semibold text-ink truncate">{currentUser.name}</p>
-              <p className="text-xs text-ink-3 truncate">{currentUser.role}</p>
+              <p className="text-sm font-semibold text-ink truncate">{user?.name ?? 'User'}</p>
+              <p className="text-xs text-ink-3 truncate">{user?.email ?? ''}</p>
             </div>
           )}
         </div>
-        <NavLink
-          to={ROUTES.HOME}
-          onClick={onNavigate}
+        <button
+          onClick={handleLogout}
           className={classNames(
-            'group/link relative flex items-center gap-3 rounded-xl text-sm font-medium text-ink-2 hover:text-accent-rose hover:bg-accent-rose/10 transition-colors',
-            collapsed ? 'justify-center px-0 py-2.5 w-full' : 'px-3 py-2.5',
+            'group/link relative flex items-center gap-3 rounded-xl text-sm font-medium text-ink-2 hover:text-accent-rose hover:bg-accent-rose/10 transition-colors cursor-pointer',
+            collapsed ? 'justify-center px-0 py-2.5 w-full' : 'px-3 py-2.5 w-full',
           )}
         >
           <HiOutlineArrowLeftOnRectangle className="text-xl shrink-0" />
@@ -162,7 +178,7 @@ function SidebarContent({ collapsed = false, onNavigate }) {
               Logout
             </span>
           )}
-        </NavLink>
+        </button>
       </div>
     </div>
   )

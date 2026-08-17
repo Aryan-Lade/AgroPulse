@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import {
   HiOutlineBeaker, HiOutlineSparkles, HiOutlineExclamationTriangle,
-  HiOutlineCurrencyRupee, HiOutlineLeaf,
+  HiOutlineCurrencyRupee, HiOutlineGlobeAlt,
 } from 'react-icons/hi2'
 import PageWrapper from '@/components/common/PageWrapper.jsx'
 import PageHeader from '@/components/common/PageHeader.jsx'
@@ -137,7 +137,7 @@ function Fertilizer() {
               {/* Organic alternative */}
               <motion.div variants={fadeInUp} className="glass-card p-5">
                 <div className="flex items-center gap-2 text-primary-400 mb-3">
-                  <HiOutlineLeaf className="text-lg" />
+                  <HiOutlineGlobeAlt className="text-lg" />
                   <h3 className="font-semibold text-ink">Organic Alternative</h3>
                 </div>
                 <p className="font-semibold text-ink">{result.organicAlternative.name}</p>

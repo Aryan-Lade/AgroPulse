@@ -1,5 +1,7 @@
 export const ROUTES = {
   HOME: '/',
+  LOGIN: '/login',
+  REGISTER: '/register',
   DASHBOARD: '/dashboard',
   DISEASE: '/dashboard/disease-detection',
   WEATHER: '/dashboard/weather',
@@ -12,6 +14,8 @@ export const ROUTES = {
   MARKETPLACE: '/dashboard/marketplace',
   COMMUNITY: '/dashboard/community',
   SETTINGS: '/dashboard/settings',
+  NOTIFICATIONS: '/dashboard/notifications',
+  VOICE: '/dashboard/voice-assistant',
   NOT_FOUND: '*',
 }
 

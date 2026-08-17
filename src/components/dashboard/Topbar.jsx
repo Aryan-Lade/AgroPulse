@@ -16,12 +16,12 @@ import {
   HiOutlineCog6Tooth,
   HiOutlineArrowLeftOnRectangle,
 } from 'react-icons/hi2'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useApp } from '@/context/AppContext.jsx'
 import { useTheme } from '@/context/ThemeContext.jsx'
+import { useAuth } from '@/context/AuthContext.jsx'
 import {
   currentWeather,
-  currentUser,
   messages,
   notifications,
 } from '../../data/dashboardData.js'
@@ -92,9 +92,21 @@ function Dropdown({ open, children, className }) {
 function Topbar() {
   const { toggleSidebar, toggleNotifications, language, setLanguage } = useApp()
   const { isDark, toggleTheme } = useTheme()
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
   // Which dropdown is open: 'messages' | 'language' | 'profile' | null
   const [menu, setMenu] = useState(null)
   const menuRef = useClickOutside(() => setMenu(null))
+
+  const initials = user?.name
+    ? user.name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
+    : '?'
+
+  const handleLogout = () => {
+    setMenu(null)
+    logout()
+    navigate(ROUTES.LOGIN, { replace: true })
+  }
 
   const today = formatDate(new Date('2026-08-03'), {
     weekday: 'short',
@@ -234,11 +246,11 @@ function Topbar() {
               aria-label="Profile menu"
             >
               <div className="size-10 rounded-xl bg-gradient-to-br from-primary-500 to-emerald-700 flex items-center justify-center font-display font-bold text-white text-sm">
-                {currentUser.initials}
+                {initials}
               </div>
               <div className="hidden md:block leading-tight text-left">
-                <p className="text-sm font-semibold text-ink">{currentUser.name}</p>
-                <p className="text-xs text-ink-3">{currentUser.plan}</p>
+                <p className="text-sm font-semibold text-ink">{user?.name ?? 'User'}</p>
+                <p className="text-xs text-ink-3">{user?.email ?? ''}</p>
               </div>
               <HiOutlineChevronDown
                 className={classNames(
@@ -249,8 +261,8 @@ function Topbar() {
             </button>
             <Dropdown open={menu === 'profile'} className="w-56">
               <div className="px-4 py-3 border-b border-line">
-                <p className="text-sm font-semibold text-ink">{currentUser.name}</p>
-                <p className="text-xs text-ink-3">{currentUser.farm} · {currentUser.role}</p>
+                <p className="text-sm font-semibold text-ink">{user?.name ?? 'User'}</p>
+                <p className="text-xs text-ink-3">{user?.email ?? ''}</p>
               </div>
               <ul className="p-1.5">
                 <li>
@@ -272,13 +284,12 @@ function Topbar() {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to={ROUTES.HOME}
-                    onClick={() => setMenu(null)}
-                    className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-accent-rose hover:bg-accent-rose/10 transition-colors"
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-accent-rose hover:bg-accent-rose/10 transition-colors w-full text-left cursor-pointer"
                   >
                     <HiOutlineArrowLeftOnRectangle className="text-base" /> Logout
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </Dropdown>

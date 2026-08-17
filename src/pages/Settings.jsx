@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
   HiOutlineCog6Tooth, HiOutlineUser, HiOutlineHome,
@@ -13,6 +13,7 @@ import Select from '@/components/common/Select.jsx'
 import Badge from '@/components/common/Badge.jsx'
 import { useTheme } from '@/context/ThemeContext.jsx'
 import { useToast } from '@/context/ToastContext.jsx'
+import { useAuth } from '@/context/AuthContext.jsx'
 import { classNames } from '@/utils/formatters.js'
 import { fadeInUp, staggerContainer } from '@/utils/motionVariants.js'
 
@@ -59,13 +60,26 @@ function Section({ icon: Icon, title, children }) {
 
 function Settings() {
   const { theme, setTheme } = useTheme()
+  const { user } = useAuth()
   const toast = useToast()
 
-  /* ── Profile state */
-  const [profile, setProfile] = useState({
-    name: 'Arjun Mehta', email: 'arjun@greenfieldfarm.in',
-    phone: '+91 98765 43210', role: 'Farm Owner',
-  })
+  /* ── Profile state (initialized from logged-in user) */
+  const [profile, setProfile] = useState(() => ({
+    name: user?.name || 'Farmer User',
+    email: user?.email || 'user@example.com',
+    phone: user?.phone || '+91 98765 43210',
+    role: user?.role || 'Farm Owner',
+  }))
+
+  useEffect(() => {
+    if (user) {
+      setProfile((prev) => ({
+        ...prev,
+        name: user.name ?? prev.name,
+        email: user.email ?? prev.email,
+      }))
+    }
+  }, [user])
 
   /* ── Farm state */
   const [farm, setFarm] = useState({

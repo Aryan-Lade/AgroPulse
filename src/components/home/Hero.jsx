@@ -93,12 +93,12 @@ function Hero() {
             variants={fadeInUp}
             className="flex flex-col sm:flex-row items-center gap-4"
           >
-            <Link to={ROUTES.DASHBOARD}>
+            <Link to={ROUTES.REGISTER}>
               <Button size="lg" icon={HiArrowRight}>
                 Start Monitoring
               </Button>
             </Link>
-            <Link to={ROUTES.DISEASE}>
+            <Link to={ROUTES.LOGIN}>
               <Button size="lg" variant="secondary" icon={HiPlayCircle}>
                 Live Demo
               </Button>

@@ -13,6 +13,7 @@ import Button from '../common/Button.jsx'
 import { ROUTES } from '../../utils/constants.js'
 import { classNames } from '../../utils/formatters.js'
 import { useTheme } from '../../context/ThemeContext.jsx'
+import { useAuth } from '../../context/AuthContext.jsx'
 import { SPRING_SOFT } from '../../utils/motionVariants.js'
 
 const navLinks = [
@@ -30,6 +31,7 @@ function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
   const { isDark, toggleTheme } = useTheme()
+  const { isLoggedIn, logout } = useAuth()
 
   // Track scroll position to intensify glassmorphism on scroll
   useEffect(() => {
@@ -130,19 +132,32 @@ function Navbar() {
               )}
             </motion.button>
 
-            {/* Login — ghost */}
-            <Link to={ROUTES.DASHBOARD}>
-              <Button variant="ghost" size="sm">
-                Login
-              </Button>
-            </Link>
-
-            {/* Get Started — primary */}
-            <Link to={ROUTES.DASHBOARD}>
-              <Button size="sm" icon={HiArrowRight}>
-                Get Started
-              </Button>
-            </Link>
+            {/* Conditional Auth CTA buttons */}
+            {isLoggedIn ? (
+              <>
+                <Link to={ROUTES.DASHBOARD}>
+                  <Button size="sm" icon={HiArrowRight}>
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button variant="ghost" size="sm" onClick={() => logout()}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to={ROUTES.LOGIN}>
+                  <Button variant="ghost" size="sm">
+                    Login
+                  </Button>
+                </Link>
+                <Link to={ROUTES.REGISTER}>
+                  <Button size="sm" icon={HiArrowRight}>
+                    Get Started
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile right: theme toggle + hamburger */}
@@ -250,16 +265,38 @@ function Navbar() {
                 transition={{ delay: 0.35, duration: 0.3 }}
                 className="px-4 py-6 border-t border-white/10 flex flex-col gap-3 flex-shrink-0"
               >
-                <Link to={ROUTES.DASHBOARD} onClick={() => setMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-center">
-                    Login
-                  </Button>
-                </Link>
-                <Link to={ROUTES.DASHBOARD} onClick={() => setMenuOpen(false)}>
-                  <Button icon={HiArrowRight} className="w-full justify-center">
-                    Get Started
-                  </Button>
-                </Link>
+                {isLoggedIn ? (
+                  <>
+                    <Link to={ROUTES.DASHBOARD} onClick={() => setMenuOpen(false)}>
+                      <Button icon={HiArrowRight} className="w-full justify-center">
+                        Dashboard
+                      </Button>
+                    </Link>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-center text-accent-rose hover:bg-accent-rose/10"
+                      onClick={() => {
+                        setMenuOpen(false)
+                        logout()
+                      }}
+                    >
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link to={ROUTES.LOGIN} onClick={() => setMenuOpen(false)}>
+                      <Button variant="ghost" className="w-full justify-center">
+                        Login
+                      </Button>
+                    </Link>
+                    <Link to={ROUTES.REGISTER} onClick={() => setMenuOpen(false)}>
+                      <Button icon={HiArrowRight} className="w-full justify-center">
+                        Get Started
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </motion.div>
             </motion.div>
           </>
