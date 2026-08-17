@@ -40,18 +40,28 @@ function StarRating({ rating }) {
 function ProductCard({ product, onAddToCart }) {
   const stock = STOCK_STATUS[product.stockStatus] ?? { label: product.stockStatus, status: 'neutral' }
   const finalPrice = Math.round(product.priceINR * (1 - product.discount / 100))
+  const [imgError, setImgError] = useState(false)
 
   return (
     <motion.div
       variants={fadeInUp}
       whileHover={{ y: -4 }}
-      className="glass-card p-4 flex flex-col gap-3 card-glow"
+      className="glass-card p-4 flex flex-col gap-3 card-glow group"
     >
-      {/* Image placeholder */}
+      {/* Product Image */}
       <div className="rounded-xl bg-surface-2 aspect-square flex items-center justify-center relative overflow-hidden">
-        <HiOutlineShoppingBag className="text-5xl text-ink-3/40" />
+        {!imgError && product.imageUrl ? (
+          <img
+            src={product.imageUrl}
+            alt={product.name}
+            onError={() => setImgError(true)}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        ) : (
+          <HiOutlineShoppingBag className="text-5xl text-ink-3/40" />
+        )}
         {product.discount > 0 && (
-          <span className="absolute top-2 left-2 bg-accent-rose text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+          <span className="absolute top-2 left-2 bg-accent-rose text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm z-10">
             -{product.discount}%
           </span>
         )}
