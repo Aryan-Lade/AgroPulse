@@ -1,4 +1,5 @@
 # AgriNova AI
+
 ## Empowering Farmers with AI, Data, and Precision Agriculture
 
 AgriNova AI is a modern, full-featured precision agriculture dashboard built with React 18 and Vite 6. It brings together AI-powered crop disease detection, satellite imagery analysis, real-time weather intelligence, soil health monitoring, drone analytics, yield forecasting, and more — all in a single beautifully designed platform. Designed for the next generation of smart farming, AgriNova AI bridges the gap between traditional agriculture and cutting-edge technology.
@@ -9,38 +10,38 @@ AgriNova AI is a modern, full-featured precision agriculture dashboard built wit
 
 AgriNova AI ships with **14 modules** covering every aspect of modern farm management:
 
-| # | Module | Description |
-|---|--------|-------------|
-| 1 | 🏠 **Landing Page** | Marketing homepage with animated hero, feature showcase, stats, how-it-works, and testimonials |
-| 2 | 📊 **Dashboard** | Central hub with farm health cards, stat counters, weather summary, crop status, recent detections, quick actions, activity timeline, and AI recommendations |
-| 3 | 🔬 **Disease Detection** | AI-powered crop disease identification with image upload simulation, confidence scores, treatment recommendations, and detection history |
-| 4 | 🌦️ **Weather Intelligence** | Multi-day forecasts, hourly breakdowns, rainfall prediction charts, agricultural weather advisories, and risk assessment |
-| 5 | 🌱 **Soil Analysis** | Comprehensive soil health reports with NPK nutrient charts, pH levels, moisture content, organic matter, and remediation suggestions |
-| 6 | 🧪 **Fertilizer Advisor** | AI-driven fertilizer recommendations based on crop type, soil data, and growth stage, with cost-benefit analysis |
-| 7 | 📈 **Yield Prediction** | ML-based harvest forecasting with historical yield trends, seasonal comparisons, and factor-based projections |
-| 8 | 🚁 **Drone Analytics** | Aerial field monitoring with NDVI mapping, zone analysis, anomaly detection, and flight mission logs |
-| 9 | 🛰️ **Satellite Imagery** | Multi-spectral satellite data views (NDVI, NDWI, thermal) with field boundary overlays and time-series analysis |
-| 10 | 📋 **Reports** | Exportable farm reports with performance summaries, compliance records, and historical data tables |
-| 11 | 🛒 **Marketplace** | Agricultural inputs marketplace for seeds, fertilizers, and equipment with product listings and order tracking |
-| 12 | 👥 **Community** | Farmer forum and knowledge-sharing hub with posts, expert Q&A, and regional farming discussions |
-| 13 | ⚙️ **Settings** | User profile, notification preferences, farm configuration, display options, and API key management |
-| 14 | 🔔 **Notifications** | Real-time notification drawer with alerts for weather warnings, disease detections, and system events |
+| #   | Module                      | Description                                                                                                                                                  |
+| --- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | 🏠 **Landing Page**         | Marketing homepage with animated hero, feature showcase, stats, how-it-works, and testimonials                                                               |
+| 2   | 📊 **Dashboard**            | Central hub with farm health cards, stat counters, weather summary, crop status, recent detections, quick actions, activity timeline, and AI recommendations |
+| 3   | 🔬 **Disease Detection**    | AI-powered crop disease identification with image upload simulation, confidence scores, treatment recommendations, and detection history                     |
+| 4   | 🌦️ **Weather Intelligence** | Multi-day forecasts, hourly breakdowns, rainfall prediction charts, agricultural weather advisories, and risk assessment                                     |
+| 5   | 🌱 **Soil Analysis**        | Comprehensive soil health reports with NPK nutrient charts, pH levels, moisture content, organic matter, and remediation suggestions                         |
+| 6   | 🧪 **Fertilizer Advisor**   | AI-driven fertilizer recommendations based on crop type, soil data, and growth stage, with cost-benefit analysis                                             |
+| 7   | 📈 **Yield Prediction**     | ML-based harvest forecasting with historical yield trends, seasonal comparisons, and factor-based projections                                                |
+| 8   | 🚁 **Drone Analytics**      | Aerial field monitoring with NDVI mapping, zone analysis, anomaly detection, and flight mission logs                                                         |
+| 9   | 🛰️ **Satellite Imagery**    | Multi-spectral satellite data views (NDVI, NDWI, thermal) with field boundary overlays and time-series analysis                                              |
+| 10  | 📋 **Reports**              | Exportable farm reports with performance summaries, compliance records, and historical data tables                                                           |
+| 11  | 🛒 **Marketplace**          | Agricultural inputs marketplace for seeds, fertilizers, and equipment with product listings and order tracking                                               |
+| 12  | 👥 **Community**            | Farmer forum and knowledge-sharing hub with posts, expert Q&A, and regional farming discussions                                                              |
+| 13  | ⚙️ **Settings**             | User profile, notification preferences, farm configuration, display options, and API key management                                                          |
+| 14  | 🔔 **Notifications**        | Real-time notification drawer with alerts for weather warnings, disease detections, and system events                                                        |
 
 ---
 
 ## Tech Stack
 
-| Technology | Version | Purpose |
-|-----------|---------|---------|
-| **React** | ^18.3.1 | UI library |
-| **Vite** | ^6.0.7 | Build tool & dev server |
-| **Tailwind CSS** | ^4.0.0 | Utility-first styling |
-| **Framer Motion** | ^11.15.0 | Animations & transitions |
-| **Recharts** | ^2.15.0 | Data visualisation charts |
-| **React Router DOM** | ^6.28.1 | Client-side routing |
-| **Axios** | ^1.7.9 | HTTP client for API calls |
-| **React Icons** | ^5.4.0 | Icon library |
-| **React Hook Form** | ^7.54.2 | Form state management |
+| Technology           | Version  | Purpose                   |
+| -------------------- | -------- | ------------------------- |
+| **React**            | ^18.3.1  | UI library                |
+| **Vite**             | ^6.0.7   | Build tool & dev server   |
+| **Tailwind CSS**     | ^4.0.0   | Utility-first styling     |
+| **Framer Motion**    | ^11.15.0 | Animations & transitions  |
+| **Recharts**         | ^2.15.0  | Data visualisation charts |
+| **React Router DOM** | ^6.28.1  | Client-side routing       |
+| **Axios**            | ^1.7.9   | HTTP client for API calls |
+| **React Icons**      | ^5.4.0   | Icon library              |
+| **React Hook Form**  | ^7.54.2  | Form state management     |
 
 ---
 
@@ -49,6 +50,7 @@ AgriNova AI ships with **14 modules** covering every aspect of modern farm manag
 AgriNova AI is structured around three core architectural pillars:
 
 ### Context Layer
+
 Three React contexts drive global state:
 
 - **`ThemeContext`** — manages `dark` / `light` mode, persists preference to `localStorage`, and toggles a `.dark` class on `<html>` for Tailwind's dark mode variant.
@@ -56,6 +58,7 @@ Three React contexts drive global state:
 - **`ToastContext`** — provides a `useToast()` hook for triggering success / error / info toast notifications from any component.
 
 ### Routing & Layout
+
 Two layout shells keep page transitions clean:
 
 - **`MainLayout`** — wraps public-facing pages (landing, 404) with `Navbar` and `Footer`.
@@ -64,10 +67,12 @@ Two layout shells keep page transitions clean:
 All routes are **lazy-loaded** via `React.lazy()` + `Suspense`, keeping the initial bundle small.
 
 ### Services Layer
+
 - **`apiClient.js`** — a pre-configured Axios instance that reads `VITE_API_BASE_URL` and attaches auth headers.
 - **`farmService.js`** — abstracted farm API methods (currently wired to JSON mock data, ready to swap for real endpoints).
 
 ### Data Layer
+
 The `src/data/` directory contains rich JSON mock datasets that simulate real API responses:
 
 - `dashboardData.js`, `farmStats.json` — dashboard KPIs and farm metrics
@@ -77,6 +82,7 @@ The `src/data/` directory contains rich JSON mock datasets that simulate real AP
 - `marketplace.json`, `community.json`, `reports.json`, `recommendations.json` — content data
 
 ### Component Hierarchy
+
 ```
 App
 ├── ThemeProvider
@@ -225,6 +231,10 @@ AgroPulse/
 
 ---
 
+## Live preview: https://agropulse-six.vercel.app/
+
+---
+
 ## Installation & Setup
 
 **Prerequisites:** Node.js 18+ and npm 9+
@@ -262,8 +272,8 @@ Create a `.env` file in the project root to configure the API connection:
 VITE_API_BASE_URL=http://localhost:8000/api/v1
 ```
 
-| Variable | Description | Default |
-|----------|-------------|---------|
+| Variable            | Description                                                                                                                                                                                           | Default                  |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `VITE_API_BASE_URL` | Base URL for the backend REST API. The Axios client in `src/services/apiClient.js` reads this value at build time. When left unset, all data is served from the local JSON mock files in `src/data/`. | `undefined` (mocks used) |
 
 > **Note:** All Vite environment variables must be prefixed with `VITE_` to be exposed to client-side code.
@@ -274,27 +284,27 @@ VITE_API_BASE_URL=http://localhost:8000/api/v1
 
 ### Public Routes (MainLayout)
 
-| Route | Page | Description |
-|-------|------|-------------|
-| `/` | Home | Marketing landing page |
-| `*` | NotFound | 404 catch-all |
+| Route | Page     | Description            |
+| ----- | -------- | ---------------------- |
+| `/`   | Home     | Marketing landing page |
+| `*`   | NotFound | 404 catch-all          |
 
 ### Dashboard Routes (DashboardLayout)
 
-| Route | Page | Description |
-|-------|------|-------------|
-| `/dashboard` | Dashboard | Main overview & KPIs |
-| `/dashboard/disease-detection` | DiseaseDetection | AI crop disease analysis |
-| `/dashboard/weather` | Weather | Weather forecasts & advisories |
-| `/dashboard/soil-analysis` | SoilAnalysis | Soil health & nutrient data |
-| `/dashboard/fertilizer` | Fertilizer | Fertilizer recommendations |
-| `/dashboard/yield-prediction` | YieldPrediction | Harvest forecasting |
-| `/dashboard/drone-analytics` | DroneMonitoring | Aerial field analytics |
-| `/dashboard/satellite` | Satellite | Satellite imagery viewer |
-| `/dashboard/reports` | Reports | Farm performance reports |
-| `/dashboard/marketplace` | Marketplace | Agricultural inputs store |
-| `/dashboard/community` | Community | Farmer forum & knowledge base |
-| `/dashboard/settings` | Settings | Account & app configuration |
+| Route                          | Page             | Description                    |
+| ------------------------------ | ---------------- | ------------------------------ |
+| `/dashboard`                   | Dashboard        | Main overview & KPIs           |
+| `/dashboard/disease-detection` | DiseaseDetection | AI crop disease analysis       |
+| `/dashboard/weather`           | Weather          | Weather forecasts & advisories |
+| `/dashboard/soil-analysis`     | SoilAnalysis     | Soil health & nutrient data    |
+| `/dashboard/fertilizer`        | Fertilizer       | Fertilizer recommendations     |
+| `/dashboard/yield-prediction`  | YieldPrediction  | Harvest forecasting            |
+| `/dashboard/drone-analytics`   | DroneMonitoring  | Aerial field analytics         |
+| `/dashboard/satellite`         | Satellite        | Satellite imagery viewer       |
+| `/dashboard/reports`           | Reports          | Farm performance reports       |
+| `/dashboard/marketplace`       | Marketplace      | Agricultural inputs store      |
+| `/dashboard/community`         | Community        | Farmer forum & knowledge base  |
+| `/dashboard/settings`          | Settings         | Account & app configuration    |
 
 ---
 
@@ -304,16 +314,16 @@ VITE_API_BASE_URL=http://localhost:8000/api/v1
 
 AgriNova AI uses a green-centric palette that reflects agriculture and growth:
 
-| Token | Light | Dark | Usage |
-|-------|-------|------|-------|
-| Primary | `emerald-500` / `#10b981` | `emerald-400` | CTAs, active states, key metrics |
-| Secondary | `teal-500` | `teal-400` | Charts, secondary actions |
-| Accent | `lime-400` | `lime-300` | Highlights, NDVI indicators |
-| Surface | `white` | `gray-900` | Page backgrounds |
-| Card | `gray-50` | `gray-800` | Card backgrounds |
-| Border | `gray-200` | `gray-700` | Dividers and outlines |
-| Text Primary | `gray-900` | `gray-50` | Headings |
-| Text Secondary | `gray-500` | `gray-400` | Supporting text |
+| Token          | Light                     | Dark          | Usage                            |
+| -------------- | ------------------------- | ------------- | -------------------------------- |
+| Primary        | `emerald-500` / `#10b981` | `emerald-400` | CTAs, active states, key metrics |
+| Secondary      | `teal-500`                | `teal-400`    | Charts, secondary actions        |
+| Accent         | `lime-400`                | `lime-300`    | Highlights, NDVI indicators      |
+| Surface        | `white`                   | `gray-900`    | Page backgrounds                 |
+| Card           | `gray-50`                 | `gray-800`    | Card backgrounds                 |
+| Border         | `gray-200`                | `gray-700`    | Dividers and outlines            |
+| Text Primary   | `gray-900`                | `gray-50`     | Headings                         |
+| Text Secondary | `gray-500`                | `gray-400`    | Supporting text                  |
 
 ### Typography
 
@@ -354,23 +364,11 @@ Framer Motion powers all page transitions, card entrances, counter animations, a
 
 > Screenshots will be added once the application is deployed.
 
-| Screen | Description |
-|--------|-------------|
-| 🖼️ Dashboard | Central farm overview with live KPIs and charts |
-| 🖼️ Landing Page | Marketing homepage with animated hero and feature sections |
-| 🖼️ Disease Detection | AI disease identification interface with image upload |
-| 🖼️ Weather Intelligence | Multi-day forecast with agricultural risk advisories |
+| Screen                  | Description                                                |
+| ----------------------- | ---------------------------------------------------------- |
+| 🖼️ Dashboard            | Central farm overview with live KPIs and charts            |
+| 🖼️ Landing Page         | Marketing homepage with animated hero and feature sections |
+| 🖼️ Disease Detection    | AI disease identification interface with image upload      |
+| 🖼️ Weather Intelligence | Multi-day forecast with agricultural risk advisories       |
 
 ---
-
-## License
-
-MIT License
-
-Copyright (c) 2026 AgriNova AI
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
