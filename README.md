@@ -359,16 +359,3 @@ Framer Motion powers all page transitions, card entrances, counter animations, a
 - ☁️ **Cloud deployment** — AWS / GCP deployment with CDN, auto-scaling, and CI/CD pipeline
 
 ---
-
-## Screenshots
-
-> Screenshots will be added once the application is deployed.
-
-| Screen                  | Description                                                |
-| ----------------------- | ---------------------------------------------------------- |
-| 🖼️ Dashboard            | Central farm overview with live KPIs and charts            |
-| 🖼️ Landing Page         | Marketing homepage with animated hero and feature sections |
-| 🖼️ Disease Detection    | AI disease identification interface with image upload      |
-| 🖼️ Weather Intelligence | Multi-day forecast with agricultural risk advisories       |
-
----
