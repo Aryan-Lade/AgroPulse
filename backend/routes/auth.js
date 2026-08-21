@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const pool = require('../db')
 
-// Auto-create users table on first run
 pool.query(`
   CREATE TABLE IF NOT EXISTS users (
     id           SERIAL PRIMARY KEY,
@@ -53,7 +52,6 @@ router.post('/register', async (req, res) => {
   }
 })
 
-/* ── POST /api/auth/login ────────────────────────────────────────── */
 router.post('/login', async (req, res) => {
   const { email, password } = req.body
 

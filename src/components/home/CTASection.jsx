@@ -8,12 +8,12 @@ import { fadeInUp, staggerContainer, EASE } from '../../utils/motionVariants.js'
 function CTASection() {
   return (
     <section className="force-dark relative py-24 sm:py-32 overflow-hidden">
-      {/* Mesh gradient background */}
+      {}
       <div className="absolute inset-0 bg-night-950">
         <div className="absolute inset-0 bg-mesh" />
       </div>
 
-      {/* Animated glow orbs */}
+      {}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           animate={{
@@ -41,7 +41,7 @@ function CTASection() {
         />
       </div>
 
-      {/* Subtle grid texture overlay */}
+      {}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -51,9 +51,9 @@ function CTASection() {
         }}
       />
 
-      {/* Top border glow */}
+      {}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/40 to-transparent" />
-      {/* Bottom border glow */}
+      {}
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -64,7 +64,7 @@ function CTASection() {
           viewport={{ once: true, margin: '-80px' }}
           className="flex flex-col items-center gap-6"
         >
-          {/* Eyebrow badge */}
+          {}
           <motion.span
             variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs sm:text-sm font-medium text-primary-300"
@@ -73,7 +73,7 @@ function CTASection() {
             Powering 25,000+ Farms Worldwide
           </motion.span>
 
-          {/* Headline */}
+          {}
           <motion.h2
             variants={fadeInUp}
             className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] text-balance"
@@ -82,7 +82,7 @@ function CTASection() {
             <span className="text-gradient-animated">Farming Decisions</span>
           </motion.h2>
 
-          {/* Subtext */}
+          {}
           <motion.p
             variants={fadeInUp}
             className="max-w-xl text-night-300 text-base sm:text-lg leading-relaxed"
@@ -92,7 +92,7 @@ function CTASection() {
             intelligent farm companion is ready.
           </motion.p>
 
-          {/* CTA buttons */}
+          {}
           <motion.div
             variants={fadeInUp}
             className="flex flex-col sm:flex-row items-center gap-4 pt-2"
@@ -109,7 +109,7 @@ function CTASection() {
             </Link>
           </motion.div>
 
-          {/* Social proof strip */}
+          {}
           <motion.div
             variants={fadeInUp}
             className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-4"

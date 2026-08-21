@@ -11,8 +11,7 @@ import { fadeInUp, staggerContainer, slideInRight, EASE } from '../../utils/moti
 
 function Hero() {
   const sectionRef = useRef(null)
-  // Scroll-linked parallax — glow orbs and illustration drift at
-  // different rates as the hero scrolls away (transform-only, 60fps).
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
@@ -24,7 +23,7 @@ function Hero() {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden">
-      {/* Ambient glow orbs — parallax layer */}
+      {}
       <motion.div style={{ y: orbY }} className="absolute inset-0 pointer-events-none">
         <motion.div
           animate={{ scale: [1, 1.15, 1], opacity: [0.8, 1, 0.8] }}
@@ -43,7 +42,7 @@ function Hero() {
         />
       </motion.div>
 
-      {/* Floating background particles */}
+      {}
       <Particles count={18} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 lg:pt-24 pb-16 lg:pb-24 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -68,7 +67,7 @@ function Hero() {
             Next-Gen Smart Farming Platform
           </motion.span>
 
-          {/* Headline — per-word blur-clear reveal + animated gradient */}
+          {}
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white text-balance leading-[1.1] mb-6">
             <TextReveal text="AI Powered" as="span" className="inline" />{' '}
             <TextReveal
@@ -88,7 +87,7 @@ function Hero() {
             built for the modern farmer.
           </motion.p>
 
-          {/* CTA reveal — rises after the headline settles */}
+          {}
           <motion.div
             variants={fadeInUp}
             className="flex flex-col sm:flex-row items-center gap-4"
@@ -131,7 +130,7 @@ function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Illustration — slides in, then parallax-drifts on scroll */}
+        {}
         <motion.div
           variants={slideInRight}
           initial="hidden"
