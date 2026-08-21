@@ -16,7 +16,6 @@ const typeIcons = {
   soil: HiOutlineBeaker,
 }
 
-/** ActivityTimeline — recent platform events as a vertical timeline. */
 function ActivityTimeline() {
   return (
     <Card hover={false}>

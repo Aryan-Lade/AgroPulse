@@ -11,7 +11,6 @@ import {
 import { quickInsights } from '../../data/dashboardData.js'
 import { classNames, formatNumber } from '../../utils/formatters.js'
 
-/** Small labelled section inside the insights rail. */
 function InsightSection({ icon: Icon, title, children }) {
   return (
     <section className="glass rounded-xl p-4">

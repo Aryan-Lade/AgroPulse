@@ -9,7 +9,6 @@ const impactStyles = {
   low: 'bg-accent-sky/15 text-badge-sky',
 }
 
-/** RecommendationsCard — prioritized AI advisory list. */
 function RecommendationsCard() {
   return (
     <Card hover={false}>

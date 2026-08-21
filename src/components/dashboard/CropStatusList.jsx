@@ -2,7 +2,6 @@ import Card from '../common/Card.jsx'
 import Badge from '../common/Badge.jsx'
 import { cropStatus } from '../../data/dashboardData.js'
 
-/** CropStatusList — per-crop condition with agronomist note. */
 function CropStatusList() {
   return (
     <Card hover={false}>

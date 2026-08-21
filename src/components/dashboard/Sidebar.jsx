@@ -24,7 +24,6 @@ import { useAuth } from '@/context/AuthContext.jsx'
 import { ROUTES } from '../../utils/constants.js'
 import { classNames } from '../../utils/formatters.js'
 
-/** Sidebar navigation model — icon + label per module route. */
 const menuItems = [
   { label: 'Dashboard', to: ROUTES.DASHBOARD, icon: HiOutlineSquares2X2, end: true },
   { label: 'Disease Detection', to: ROUTES.DISEASE, icon: HiOutlineBugAnt },
@@ -42,7 +41,6 @@ const menuItems = [
   { label: 'Voice Assistant', to: ROUTES.VOICE, icon: HiOutlineSpeakerWave },
 ]
 
-/** Single nav row. Shows a floating tooltip when the rail is collapsed. */
 function SidebarLink({ item, collapsed, onNavigate }) {
   return (
     <NavLink
@@ -62,8 +60,7 @@ function SidebarLink({ item, collapsed, onNavigate }) {
     >
       {({ isActive }) => (
         <>
-          {/* Active route indicator — shared layout element glides
-              between rows with a spring when the selection changes */}
+          {}
           {isActive && (
             <motion.span
               layoutId="sidebar-active"
@@ -79,7 +76,7 @@ function SidebarLink({ item, collapsed, onNavigate }) {
           >
             <item.icon className="text-xl" />
           </motion.span>
-          {/* Label fades + slides while the rail width animates */}
+          {}
           <AnimatePresence initial={false}>
             {!collapsed && (
               <motion.span
@@ -93,7 +90,7 @@ function SidebarLink({ item, collapsed, onNavigate }) {
               </motion.span>
             )}
           </AnimatePresence>
-          {/* Tooltip — only rendered while collapsed */}
+          {}
           {collapsed && (
             <span className="pointer-events-none absolute left-full ml-3 z-50 whitespace-nowrap rounded-lg glass-strong px-3 py-1.5 text-xs font-medium text-ink opacity-0 -translate-x-1 transition-all duration-200 group-hover/link:opacity-100 group-hover/link:translate-x-0">
               {item.label}
@@ -105,7 +102,6 @@ function SidebarLink({ item, collapsed, onNavigate }) {
   )
 }
 
-/** Shared content used by both the desktop rail and the mobile drawer. */
 function SidebarContent({ collapsed = false, onNavigate }) {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
@@ -146,7 +142,7 @@ function SidebarContent({ collapsed = false, onNavigate }) {
         </ul>
       </nav>
 
-      {/* User profile + logout pinned to the bottom */}
+      {}
       <div className={classNames('border-t border-line p-3', collapsed && 'flex flex-col items-center gap-1')}>
         <div
           className={classNames(
@@ -184,23 +180,20 @@ function SidebarContent({ collapsed = false, onNavigate }) {
   )
 }
 
-/**
- * Sidebar — desktop: fixed rail with smooth width collapse (72px ↔ 264px);
- * mobile: spring-animated overlay drawer.
- */
+
 function Sidebar() {
   const { sidebarOpen, closeSidebar, sidebarCollapsed, toggleCollapse } = useApp()
 
   return (
     <>
-      {/* Desktop rail */}
+      {}
       <motion.aside
         animate={{ width: sidebarCollapsed ? 72 : 264 }}
         transition={{ type: 'spring', stiffness: 300, damping: 34 }}
         className="hidden lg:flex flex-col fixed inset-y-0 left-0 glass-strong border-y-0 border-l-0 rounded-none z-40"
       >
         <SidebarContent collapsed={sidebarCollapsed} />
-        {/* Collapse handle */}
+        {}
         <motion.button
           onClick={toggleCollapse}
           whileHover={{ scale: 1.15 }}
@@ -218,7 +211,7 @@ function Sidebar() {
         </motion.button>
       </motion.aside>
 
-      {/* Mobile drawer */}
+      {}
       <AnimatePresence>
         {sidebarOpen && (
           <>

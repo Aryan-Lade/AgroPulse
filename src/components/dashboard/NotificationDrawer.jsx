@@ -5,10 +5,7 @@ import { useApp } from '@/context/AppContext.jsx'
 import { notifications } from '../../data/dashboardData.js'
 import { classNames } from '../../utils/formatters.js'
 
-/**
- * NotificationDrawer — right-side overlay drawer listing farm notifications.
- * Opens from the topbar bell; closes on backdrop click or ✕.
- */
+
 function NotificationDrawer() {
   const { notificationsOpen, closeNotifications } = useApp()
 
@@ -16,7 +13,7 @@ function NotificationDrawer() {
     <AnimatePresence>
       {notificationsOpen && (
         <>
-          {/* Backdrop */}
+          {}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -24,7 +21,7 @@ function NotificationDrawer() {
             onClick={closeNotifications}
             className="fixed inset-0 bg-night-950/60 backdrop-blur-sm z-50"
           />
-          {/* Drawer panel */}
+          {}
           <motion.aside
             initial={{ x: '100%' }}
             animate={{ x: 0 }}

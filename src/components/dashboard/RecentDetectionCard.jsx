@@ -6,7 +6,6 @@ import { recentDetection } from '../../data/dashboardData.js'
 import { ROUTES } from '../../utils/constants.js'
 import { formatDate } from '../../utils/formatters.js'
 
-/** RecentDetectionCard — latest AI disease scan result with action. */
 function RecentDetectionCard() {
   return (
     <Card hover={false} className="flex flex-col">

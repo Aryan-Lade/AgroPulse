@@ -28,7 +28,6 @@ import {
 import { LANGUAGES, ROUTES } from '../../utils/constants.js'
 import { classNames, formatDate } from '../../utils/formatters.js'
 
-/** Close-on-outside-click helper for the topbar dropdowns. */
 function useClickOutside(onClose) {
   const ref = useRef(null)
   useEffect(() => {
@@ -41,7 +40,6 @@ function useClickOutside(onClose) {
   return ref
 }
 
-/** Icon button used across the topbar. */
 function TopbarButton({ children, badge, label, onClick, active }) {
   return (
     <button
@@ -63,7 +61,6 @@ function TopbarButton({ children, badge, label, onClick, active }) {
   )
 }
 
-/** Shared dropdown chrome with entrance animation. */
 function Dropdown({ open, children, className }) {
   return (
     <AnimatePresence>
@@ -85,16 +82,11 @@ function Dropdown({ open, children, className }) {
   )
 }
 
-/**
- * Topbar — search, date, location, weather summary, theme toggle,
- * language selector, messages, notifications and the profile dropdown.
- */
 function Topbar() {
   const { toggleSidebar, toggleNotifications, language, setLanguage } = useApp()
   const { isDark, toggleTheme } = useTheme()
   const { user, logout } = useAuth()
   const navigate = useNavigate()
-  // Which dropdown is open: 'messages' | 'language' | 'profile' | null
   const [menu, setMenu] = useState(null)
   const menuRef = useClickOutside(() => setMenu(null))
 
@@ -121,7 +113,7 @@ function Topbar() {
   return (
     <header className="sticky top-0 z-30 glass-strong border-x-0 border-t-0 rounded-none">
       <div className="h-16 px-4 sm:px-6 flex items-center gap-3">
-        {/* Mobile hamburger */}
+        {}
         <button
           onClick={toggleSidebar}
           className="lg:hidden text-2xl text-ink p-1 cursor-pointer"
@@ -130,7 +122,7 @@ function Topbar() {
           <HiBars3 />
         </button>
 
-        {/* Search */}
+        {}
         <div className="hidden sm:flex items-center gap-2 flex-1 max-w-md glass rounded-xl px-3.5 py-2 focus-within:border-primary-500/40 transition-colors">
           <HiOutlineMagnifyingGlass className="text-ink-3 shrink-0" />
           <input
@@ -144,7 +136,7 @@ function Topbar() {
         </div>
         <div className="flex-1 sm:hidden" />
 
-        {/* Date · location · weather summary (progressively revealed) */}
+        {}
         <div className="hidden xl:flex items-center gap-4 text-xs text-ink-2 pr-2">
           <span className="flex items-center gap-1.5">
             <HiOutlineCalendarDays className="text-base text-ink-3" />
@@ -161,9 +153,9 @@ function Topbar() {
           </span>
         </div>
 
-        {/* Action cluster */}
+        {}
         <div ref={menuRef} className="flex items-center gap-2 sm:gap-3">
-          {/* Dark mode toggle */}
+          {}
           <TopbarButton label={isDark ? 'Switch to light mode' : 'Switch to dark mode'} onClick={toggleTheme}>
             <motion.span
               key={isDark ? 'moon' : 'sun'}
@@ -176,7 +168,7 @@ function Topbar() {
             </motion.span>
           </TopbarButton>
 
-          {/* Language selector */}
+          {}
           <div className="relative hidden sm:block">
             <TopbarButton label="Change language" onClick={() => toggleMenu('language')} active={menu === 'language'}>
               <HiOutlineLanguage className="text-lg" />
@@ -206,7 +198,7 @@ function Topbar() {
             </Dropdown>
           </div>
 
-          {/* Messages */}
+          {}
           <div className="relative hidden sm:block">
             <TopbarButton label="Messages" badge={unreadMessages} onClick={() => toggleMenu('messages')} active={menu === 'messages'}>
               <HiOutlineEnvelope className="text-lg" />
@@ -233,12 +225,12 @@ function Topbar() {
             </Dropdown>
           </div>
 
-          {/* Notifications → opens the right-hand drawer */}
+          {}
           <TopbarButton label="Notifications" badge={unreadNotifications} onClick={toggleNotifications}>
             <HiOutlineBell className="text-lg" />
           </TopbarButton>
 
-          {/* Profile dropdown */}
+          {}
           <div className="relative">
             <button
               onClick={() => toggleMenu('profile')}

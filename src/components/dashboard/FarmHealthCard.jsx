@@ -6,12 +6,7 @@ import { farmHealth } from '../../data/dashboardData.js'
 const RADIUS = 56
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
-/**
- * FarmHealthCard — composite health score as a radial meter plus a
- * breakdown of the four factors. Meter fill uses the primary hue; the
- * unfilled track is a lighter step of the same ramp (via opacity),
- * so state reads across the whole ring.
- */
+
 function FarmHealthCard() {
   const { score, label, breakdown } = farmHealth
   const offset = CIRCUMFERENCE * (1 - score / 100)
@@ -22,7 +17,7 @@ function FarmHealthCard() {
       <p className="text-xs text-ink-3 mb-4">Composite score across four factors</p>
 
       <div className="flex items-center gap-5">
-        {/* Radial score meter */}
+        {}
         <div className="relative shrink-0">
           <svg width="136" height="136" viewBox="0 0 136 136" role="img" aria-label={`Farm health score ${score} out of 100 — ${label}`}>
             <circle
@@ -67,7 +62,7 @@ function FarmHealthCard() {
           </div>
         </div>
 
-        {/* Factor breakdown */}
+        {}
         <div className="flex-1 flex flex-col gap-3">
           {breakdown.map((factor, index) => (
             <div key={factor.id}>

@@ -30,7 +30,6 @@ const accentStyles = {
   emerald: 'bg-emerald-500/15 text-emerald-400',
 }
 
-/** QuickActionsGrid — one-tap shortcuts into each module. */
 function QuickActionsGrid() {
   return (
     <Card hover={false}>
