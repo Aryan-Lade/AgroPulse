@@ -1,11 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
-/**
- * ThemeContext — owns dark/light mode.
- * The chosen theme is stamped on <html data-theme> so CSS custom
- * properties (see index.css) re-skin the app without re-rendering styles,
- * and persisted to localStorage so it survives reloads.
- */
+
 const ThemeContext = createContext(null)
 
 const STORAGE_KEY = 'agrinova-theme'
@@ -20,7 +15,6 @@ function getInitialTheme() {
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(getInitialTheme)
 
-  // Reflect the theme on the root element + persist the choice
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     window.localStorage.setItem(STORAGE_KEY, theme)

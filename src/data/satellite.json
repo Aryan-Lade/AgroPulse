@@ -11,16 +11,68 @@
     "fields": 4
   },
   "indices": {
-    "ndvi": { "value": 0.78, "delta": 0.03, "label": "Vegetation Health", "status": "healthy" },
-    "ndwi": { "value": 0.42, "delta": -0.02, "label": "Water Content", "status": "optimal" },
-    "evi":  { "value": 0.61, "delta": 0.01, "label": "Enhanced Vegetation", "status": "good" },
-    "savi": { "value": 0.55, "delta": 0.02, "label": "Soil-Adjusted Veg.", "status": "good" }
+    "ndvi": {
+      "value": 0.78,
+      "delta": 0.03,
+      "label": "Vegetation Health",
+      "status": "healthy"
+    },
+    "ndwi": {
+      "value": 0.42,
+      "delta": -0.02,
+      "label": "Water Content",
+      "status": "optimal"
+    },
+    "evi": {
+      "value": 0.61,
+      "delta": 0.01,
+      "label": "Enhanced Vegetation",
+      "status": "good"
+    },
+    "savi": {
+      "value": 0.55,
+      "delta": 0.02,
+      "label": "Soil-Adjusted Veg.",
+      "status": "good"
+    }
   },
   "fieldHealth": [
-    { "id": "north", "name": "North Field", "crop": "Wheat",   "area": 42, "ndvi": 0.82, "stress": "low",      "coverage": 96 },
-    { "id": "east",  "name": "East Valley", "crop": "Corn",    "area": 38, "ndvi": 0.79, "stress": "low",      "coverage": 91 },
-    { "id": "south", "name": "South Ridge", "crop": "Soybean", "area": 27, "ndvi": 0.61, "stress": "moderate", "coverage": 78 },
-    { "id": "west",  "name": "West Plains", "crop": "Rice",    "area": 51, "ndvi": 0.71, "stress": "high",     "coverage": 84 }
+    {
+      "id": "north",
+      "name": "North Field",
+      "crop": "Wheat",
+      "area": 42,
+      "ndvi": 0.82,
+      "stress": "low",
+      "coverage": 96
+    },
+    {
+      "id": "east",
+      "name": "East Valley",
+      "crop": "Corn",
+      "area": 38,
+      "ndvi": 0.79,
+      "stress": "low",
+      "coverage": 91
+    },
+    {
+      "id": "south",
+      "name": "South Ridge",
+      "crop": "Soybean",
+      "area": 27,
+      "ndvi": 0.61,
+      "stress": "moderate",
+      "coverage": 78
+    },
+    {
+      "id": "west",
+      "name": "West Plains",
+      "crop": "Rice",
+      "area": 51,
+      "ndvi": 0.71,
+      "stress": "high",
+      "coverage": 84
+    }
   ],
   "historicalNdvi": [
     { "date": "Mar", "ndvi": 0.52 },
@@ -31,7 +83,19 @@
     { "date": "Aug", "ndvi": 0.78 }
   ],
   "alerts": [
-    { "id": 1, "field": "West Plains", "type": "stress",  "severity": "warning",  "message": "Elevated crop stress detected in Zone C — possible disease or water deficit." },
-    { "id": 2, "field": "South Ridge", "type": "moisture","severity": "info",     "message": "Slightly below optimal canopy moisture. Monitor over next 48h." }
+    {
+      "id": 1,
+      "field": "West Plains",
+      "type": "stress",
+      "severity": "warning",
+      "message": "Elevated crop stress detected in Zone C — possible disease or water deficit."
+    },
+    {
+      "id": 2,
+      "field": "South Ridge",
+      "type": "moisture",
+      "severity": "info",
+      "message": "Slightly below optimal canopy moisture. Monitor over next 48h."
+    }
   ]
 }

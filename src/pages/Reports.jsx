@@ -116,7 +116,7 @@ function Reports() {
           </div>
         </motion.div>
 
-        {/* Results */}
+        {}
         {visible.length === 0 ? (
           <EmptyState
             icon={HiOutlineDocumentChartBar}
@@ -125,7 +125,7 @@ function Reports() {
           />
         ) : (
           <>
-            {/* Desktop table */}
+            {}
             <motion.div variants={fadeInUp} className="glass-card overflow-hidden p-0 hidden md:block">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -189,7 +189,7 @@ function Reports() {
               </div>
             </motion.div>
 
-            {/* Mobile cards */}
+            {}
             <motion.div variants={fadeInUp} className="md:hidden flex flex-col gap-3">
               {visible.map((r) => (
                 <div key={r.id} className="glass-card p-4">

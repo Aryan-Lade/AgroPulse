@@ -1,14 +1,5 @@
 import { createContext, useContext, useMemo, useState } from 'react'
 
-/**
- * AppContext — global UI state for the dashboard shell.
- *
- *  - sidebarOpen      → mobile drawer visibility
- *  - sidebarCollapsed → desktop icon-only rail
- *  - notificationsOpen→ right-hand notification drawer
- *  - language         → active UI language (dummy, no i18n backend)
- *  - activeFarm       → currently selected farm
- */
 const AppContext = createContext(null)
 
 export function AppProvider({ children }) {
@@ -20,23 +11,18 @@ export function AppProvider({ children }) {
 
   const value = useMemo(
     () => ({
-      // Mobile sidebar drawer
       sidebarOpen,
       setSidebarOpen,
       toggleSidebar: () => setSidebarOpen((prev) => !prev),
       closeSidebar: () => setSidebarOpen(false),
-      // Desktop sidebar collapse
       sidebarCollapsed,
       toggleCollapse: () => setSidebarCollapsed((prev) => !prev),
-      // Notification drawer
       notificationsOpen,
       openNotifications: () => setNotificationsOpen(true),
       closeNotifications: () => setNotificationsOpen(false),
       toggleNotifications: () => setNotificationsOpen((prev) => !prev),
-      // Language
       language,
       setLanguage,
-      // Farm selection
       activeFarm,
       setActiveFarm,
     }),

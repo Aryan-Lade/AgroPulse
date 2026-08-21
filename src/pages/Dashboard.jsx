@@ -35,7 +35,6 @@ const statIcons = {
   'yield-forecast': HiOutlineChartBar,
 }
 
-/** Fields card — health index bars across active plots. */
 function FieldsCard() {
   return (
     <Card hover={false}>
@@ -75,7 +74,6 @@ function FieldsCard() {
   )
 }
 
-/** Alerts card — today's farm notifications. */
 function AlertsCard() {
   return (
     <Card hover={false}>
@@ -97,10 +95,6 @@ function AlertsCard() {
   )
 }
 
-/**
- * Dashboard — main farm overview. Two-column shell: fluid content grid
- * plus the fixed Quick Insights rail on very wide screens.
- */
 function Dashboard() {
   const today = formatDate(new Date('2026-08-03'), {
     weekday: 'long',
@@ -111,9 +105,9 @@ function Dashboard() {
   return (
     <PageWrapper>
       <div className="flex gap-6">
-        {/* Main column */}
+        {}
         <div className="flex-1 min-w-0 flex flex-col gap-5 sm:gap-6">
-          {/* Heading */}
+          {}
           <motion.div variants={fadeInUp} initial="hidden" animate="visible">
             <h1 className="font-display text-2xl sm:text-3xl font-bold text-ink">
               Farm Overview
@@ -123,7 +117,7 @@ function Dashboard() {
             </p>
           </motion.div>
 
-          {/* KPI strip */}
+          {}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -135,32 +129,32 @@ function Dashboard() {
             ))}
           </motion.div>
 
-          {/* Weather · farm health · latest detection */}
+          {}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
             <WeatherCard />
             <FarmHealthCard />
             <RecentDetectionCard />
           </div>
 
-          {/* Charts — row 1 */}
+          {}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-5">
             <YieldTrendChart />
             <DiseaseFrequencyChart />
           </div>
 
-          {/* Charts — row 2 */}
+          {}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-5">
             <SoilNutrientsChart />
             <WeatherTrendsChart />
           </div>
 
-          {/* Charts — row 3 */}
+          {}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-5">
             <CropDistributionChart />
             <RainfallPredictionChart />
           </div>
 
-          {/* Fields · alerts */}
+          {}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
             <div className="lg:col-span-2">
               <FieldsCard />
@@ -168,19 +162,19 @@ function Dashboard() {
             <AlertsCard />
           </div>
 
-          {/* Status · recommendations · activity */}
+          {}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
             <CropStatusList />
             <RecommendationsCard />
             <ActivityTimeline />
           </div>
 
-          {/* Quick actions + reports */}
+          {}
           <QuickActionsGrid />
           <ReportsTable />
         </div>
 
-        {/* Right insights rail (2xl+) */}
+        {}
         <QuickInsightsPanel />
       </div>
     </PageWrapper>

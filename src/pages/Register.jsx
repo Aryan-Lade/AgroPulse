@@ -74,7 +74,7 @@ function Register() {
               {errors.name && <p className="text-red-400 text-xs mt-1.5">{errors.name.message}</p>}
             </div>
 
-            {/* Email */}
+            {}
             <div>
               <label className="block text-sm font-medium text-night-200 mb-1.5">Email address</label>
               <input
@@ -90,7 +90,7 @@ function Register() {
               {errors.email && <p className="text-red-400 text-xs mt-1.5">{errors.email.message}</p>}
             </div>
 
-            {/* Password */}
+            {}
             <div>
               <label className="block text-sm font-medium text-night-200 mb-1.5">Password</label>
               <div className="relative">
@@ -112,7 +112,7 @@ function Register() {
               {errors.password && <p className="text-red-400 text-xs mt-1.5">{errors.password.message}</p>}
             </div>
 
-            {/* Confirm Password */}
+            {}
             <div>
               <label className="block text-sm font-medium text-night-200 mb-1.5">Confirm password</label>
               <input

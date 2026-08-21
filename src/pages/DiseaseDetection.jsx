@@ -16,7 +16,6 @@ import diseaseHistory from '@/data/diseaseHistory.json'
 import { staggerContainer, fadeInUp } from '@/utils/motionVariants.js'
 import { classNames, formatDate } from '@/utils/formatters.js'
 
-/* ── Realistic Disease Database for AI Vision Model ───────────────── */
 const DISEASE_DATABASE = [
   {
     crop: 'Tomato',

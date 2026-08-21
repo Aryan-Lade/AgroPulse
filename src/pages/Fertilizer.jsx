@@ -64,7 +64,7 @@ function Fertilizer() {
       />
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Form */}
+        {}
         <Card hover={false} className="xl:col-span-1 h-fit">
           <h2 className="font-display font-semibold text-ink mb-4">Farm Details</h2>
           <div className="flex flex-col gap-4">
@@ -82,11 +82,11 @@ function Fertilizer() {
           </div>
         </Card>
 
-        {/* Result */}
+        {}
         <div className="xl:col-span-2 flex flex-col gap-5">
           {result ? (
             <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col gap-5">
-              {/* Primary fertilizer */}
+              {}
               <motion.div variants={fadeInUp} className="glass-card p-5">
                 <div className="flex items-start justify-between flex-wrap gap-3 mb-4">
                   <div>
@@ -110,7 +110,7 @@ function Fertilizer() {
                 </div>
               </motion.div>
 
-              {/* Secondary + micronutrients */}
+              {}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <motion.div variants={fadeInUp} className="glass-card p-5">
                   <p className="text-xs text-ink-3 mb-2">Secondary Fertilizer</p>
@@ -134,7 +134,7 @@ function Fertilizer() {
                 </motion.div>
               </div>
 
-              {/* Organic alternative */}
+              {}
               <motion.div variants={fadeInUp} className="glass-card p-5">
                 <div className="flex items-center gap-2 text-primary-400 mb-3">
                   <HiOutlineGlobeAlt className="text-lg" />
@@ -145,7 +145,7 @@ function Fertilizer() {
                 <p className="text-xs text-ink-2 mt-1">{result.organicAlternative.benefit}</p>
               </motion.div>
 
-              {/* Cost summary + expected gain */}
+              {}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <motion.div variants={fadeInUp} className="glass-card p-4 text-center">
                   <HiOutlineCurrencyRupee className="text-2xl text-primary-400 mx-auto mb-1" />

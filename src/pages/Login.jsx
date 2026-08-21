@@ -15,7 +15,6 @@ function Login() {
   const [loading, setLoading]   = useState(false)
   const { register, handleSubmit, formState: { errors }, setError } = useForm()
 
-  // Already logged in → go straight to dashboard
   if (isLoggedIn) return <Navigate to={ROUTES.DASHBOARD} replace />
 
   const onSubmit = async ({ email, password }) => {
@@ -68,7 +67,7 @@ function Login() {
           <p className="text-night-300 text-sm mb-8">Sign in to your account to continue</p>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-            {/* Email */}
+            {}
             <div>
               <label className="block text-sm font-medium text-night-200 mb-1.5">Email address</label>
               <input
@@ -84,7 +83,7 @@ function Login() {
               {errors.email && <p className="text-red-400 text-xs mt-1.5">{errors.email.message}</p>}
             </div>
 
-            {/* Password */}
+            {}
             <div>
               <label className="block text-sm font-medium text-night-200 mb-1.5">Password</label>
               <div className="relative">
@@ -103,7 +102,7 @@ function Login() {
               {errors.password && <p className="text-red-400 text-xs mt-1.5">{errors.password.message}</p>}
             </div>
 
-            {/* Server / root error */}
+            {}
             {errors.root && (
               <div className="px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
                 {errors.root.message}

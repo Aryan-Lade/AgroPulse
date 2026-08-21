@@ -14,7 +14,6 @@ import Badge from '@/components/common/Badge.jsx'
 import { classNames } from '@/utils/formatters.js'
 import { fadeInUp, staggerContainer, SPRING } from '@/utils/motionVariants.js'
 
-/* ── Suggested questions ───────────────────────────────────────── */
 const SUGGESTED_QUESTIONS = [
   'What should I do about low soil moisture?',
   'What is the weather forecast for tomorrow?',
@@ -23,7 +22,6 @@ const SUGGESTED_QUESTIONS = [
   'How is my farm health today?',
 ]
 
-/* ── Example transcript pairs ──────────────────────────────────── */
 const TRANSCRIPTS = [
   {
     id: 1,
@@ -48,7 +46,6 @@ const TRANSCRIPTS = [
   },
 ]
 
-/* ── Waveform bars animation ───────────────────────────────────── */
 const WAVEFORM_BARS = Array.from({ length: 20 }, (_, i) => i)
 
 function WaveformVisualizer() {
@@ -74,7 +71,7 @@ function WaveformVisualizer() {
   )
 }
 
-/* ── Pulse rings around the mic button ────────────────────────── */
+
 function PulseRings() {
   return (
     <>
@@ -95,7 +92,6 @@ function PulseRings() {
   )
 }
 
-/* ── Transcript card ───────────────────────────────────────────── */
 function TranscriptCard({ item, index }) {
   return (
     <motion.div
@@ -103,7 +99,6 @@ function TranscriptCard({ item, index }) {
       custom={index}
       className="glass-card p-4 rounded-2xl flex flex-col gap-3"
     >
-      {/* User question */}
       <div className="flex items-start gap-3">
         <span className="shrink-0 size-7 rounded-full bg-surface-2 flex items-center justify-center text-sm text-ink-2">
           <HiOutlineUser />
@@ -115,10 +110,8 @@ function TranscriptCard({ item, index }) {
         <span className="shrink-0 text-xs text-ink-3">{item.time}</span>
       </div>
 
-      {/* Divider */}
       <div className="border-t border-line mx-1" />
 
-      {/* AI answer */}
       <div className="flex items-start gap-3">
         <span className="shrink-0 size-7 rounded-full bg-primary-500/15 flex items-center justify-center text-sm text-primary-400">
           <HiOutlineSparkles />
@@ -132,7 +125,6 @@ function TranscriptCard({ item, index }) {
   )
 }
 
-/* ── Page ──────────────────────────────────────────────────────── */
 function VoiceAssistant() {
   const [listening, setListening] = useState(false)
   const [selectedQuestion, setSelectedQuestion] = useState(null)
@@ -163,12 +155,10 @@ function VoiceAssistant() {
         animate="visible"
         className="max-w-3xl mx-auto flex flex-col gap-8"
       >
-        {/* ── Microphone center stage ── */}
         <motion.div
           variants={fadeInUp}
           className="glass-card rounded-3xl p-8 sm:p-12 flex flex-col items-center gap-6"
         >
-          {/* Status badge */}
           <AnimatePresence mode="wait">
             <motion.div
               key={listening ? 'listening' : 'idle'}
@@ -183,7 +173,6 @@ function VoiceAssistant() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Mic button */}
           <div className="relative flex items-center justify-center">
             {listening && <PulseRings />}
 
@@ -205,7 +194,6 @@ function VoiceAssistant() {
             </motion.button>
           </div>
 
-          {/* Waveform or static hint */}
           <AnimatePresence mode="wait">
             {listening ? (
               <motion.div
@@ -230,7 +218,6 @@ function VoiceAssistant() {
             )}
           </AnimatePresence>
 
-          {/* Active question display */}
           <AnimatePresence>
             {selectedQuestion && (
               <motion.div
@@ -249,7 +236,6 @@ function VoiceAssistant() {
           </AnimatePresence>
         </motion.div>
 
-        {/* ── Suggested questions ── */}
         <motion.div variants={fadeInUp} className="glass-card rounded-2xl p-5 sm:p-6">
           <div className="flex items-center gap-3 mb-4">
             <span className="size-8 rounded-lg bg-accent-amber/15 flex items-center justify-center text-amber-400">
@@ -282,7 +268,6 @@ function VoiceAssistant() {
           </div>
         </motion.div>
 
-        {/* ── AI response area ── */}
         <AnimatePresence>
           {selectedQuestion && (
             <motion.div
@@ -312,7 +297,6 @@ function VoiceAssistant() {
           )}
         </AnimatePresence>
 
-        {/* ── Recent transcripts ── */}
         <motion.div variants={fadeInUp} className="glass-card rounded-2xl p-5 sm:p-6">
           <div className="flex items-center gap-3 mb-4">
             <span className="size-8 rounded-lg bg-accent-sky/15 flex items-center justify-center text-sky-400">
@@ -333,7 +317,6 @@ function VoiceAssistant() {
           </motion.div>
         </motion.div>
 
-        {/* ── Development notice ── */}
         <motion.div
           variants={fadeInUp}
           className="flex items-start gap-4 glass rounded-2xl px-5 py-4 border border-accent-amber/20"

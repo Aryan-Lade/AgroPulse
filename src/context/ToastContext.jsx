@@ -10,9 +10,6 @@ import {
 import { classNames } from '@/utils/formatters.js'
 import { SPRING_SOFT } from '@/utils/motionVariants.js'
 
-/* ------------------------------------------------------------------ */
-/*  Context                                                             */
-/* ------------------------------------------------------------------ */
 const ToastContext = createContext(null)
 
 let _nextId = 0
@@ -31,9 +28,7 @@ const STYLES = {
   info:    'border-accent-sky/40 text-accent-sky',
 }
 
-/* ------------------------------------------------------------------ */
-/*  Single toast item                                                   */
-/* ------------------------------------------------------------------ */
+
 function ToastItem({ id, type = 'info', title, message, onDismiss }) {
   const Icon = ICONS[type] ?? ICONS.info
 
@@ -67,9 +62,7 @@ function ToastItem({ id, type = 'info', title, message, onDismiss }) {
   )
 }
 
-/* ------------------------------------------------------------------ */
-/*  Provider                                                            */
-/* ------------------------------------------------------------------ */
+
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([])
   const timers = useRef({})
@@ -91,7 +84,6 @@ export function ToastProvider({ children }) {
     [dismiss],
   )
 
-  /* Convenience shortcuts */
   toast.success = (title, message, opts) => toast({ type: 'success', title, message, ...opts })
   toast.error   = (title, message, opts) => toast({ type: 'error',   title, message, ...opts })
   toast.warning = (title, message, opts) => toast({ type: 'warning', title, message, ...opts })
@@ -100,7 +92,7 @@ export function ToastProvider({ children }) {
   return (
     <ToastContext.Provider value={toast}>
       {children}
-      {/* Portal-style stack — fixed bottom-right */}
+      {}
       <div className="fixed bottom-6 right-6 z-[200] flex flex-col gap-3 items-end pointer-events-none">
         <AnimatePresence initial={false}>
           {toasts.map((t) => (
@@ -114,9 +106,7 @@ export function ToastProvider({ children }) {
   )
 }
 
-/* ------------------------------------------------------------------ */
-/*  Hook                                                                */
-/* ------------------------------------------------------------------ */
+
 export function useToast() {
   const ctx = useContext(ToastContext)
   if (!ctx) throw new Error('useToast must be used inside <ToastProvider>')

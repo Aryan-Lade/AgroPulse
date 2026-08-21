@@ -1,14 +1,6 @@
-/**
- * chartTheme.js — single source of truth for Recharts styling.
- *
- * Series palettes were run through the dataviz palette validator
- * (adjacent-pair CVD ΔE, lightness band, chroma floor, surface contrast)
- * for each mode's actual chart surface — do not reorder the slots;
- * the ordering is the colorblind-safety mechanism.
- */
+
 export const chartPalettes = {
   dark: {
-    // validated against dark glass surface ≈ #111c15 (all 6 checks pass)
     series: ['#16a34a', '#0284c7', '#d97706', '#8b5cf6', '#e11d48'],
     surface: '#111c15',
     grid: 'rgba(255,255,255,0.07)',
@@ -21,7 +13,6 @@ export const chartPalettes = {
     cursorFill: 'rgba(255,255,255,0.05)',
   },
   light: {
-    // validated against light glass surface ≈ #f6f9f4 (all 6 checks pass)
     series: ['#16a34a', '#0284c7', '#d97706', '#7c3aed', '#e11d48'],
     surface: '#f6f9f4',
     grid: 'rgba(16,25,20,0.07)',
@@ -35,12 +26,10 @@ export const chartPalettes = {
   },
 }
 
-/** Resolve the palette for the current theme ('dark' | 'light'). */
 export function getChartTheme(theme) {
   return chartPalettes[theme] ?? chartPalettes.dark
 }
 
-/** Shared axis props so every chart reads identically. */
 export function axisProps(palette) {
   return {
     stroke: palette.axis,
@@ -50,7 +39,6 @@ export function axisProps(palette) {
   }
 }
 
-/** Shared tooltip content style. */
 export function tooltipStyle(palette) {
   return {
     backgroundColor: palette.tooltipBg,

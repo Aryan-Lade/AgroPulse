@@ -18,9 +18,6 @@ import { classNames } from '@/utils/formatters.js'
 import { fadeInUp, staggerContainer } from '@/utils/motionVariants.js'
 import notificationsData from '@/data/notifications.json'
 
-/* ── Helpers ───────────────────────────────────────────────────── */
-
-/** Icon resolver by category */
 function getCategoryIcon(category) {
   switch (category) {
     case 'weather':    return HiOutlineCloud
@@ -36,7 +33,6 @@ function getCategoryIcon(category) {
   }
 }
 
-/** Priority → badge status */
 function priorityToStatus(priority) {
   switch (priority) {
     case 'critical': return 'critical'
@@ -47,7 +43,6 @@ function priorityToStatus(priority) {
   }
 }
 
-/** Friendly relative time */
 function relativeTime(timestamp) {
   const now = new Date('2026-08-12T06:15:19.703Z')
   const diff = Math.floor((now - new Date(timestamp)) / 1000)
@@ -57,7 +52,6 @@ function relativeTime(timestamp) {
   return `${Math.floor(diff / 86400)}d ago`
 }
 
-/* ── Filter tab definitions ────────────────────────────────────── */
 const TABS = [
   { id: 'all',     label: 'All' },
   { id: 'unread',  label: 'Unread' },
@@ -68,7 +62,6 @@ const TABS = [
   { id: 'system',  label: 'System' },
 ]
 
-/** Maps tab id → matching categories */
 const TAB_CATEGORY_MAP = {
   all:     null,
   unread:  null,
@@ -79,7 +72,6 @@ const TAB_CATEGORY_MAP = {
   system:  ['government', 'insurance', 'drone'],
 }
 
-/* ── Single notification item ──────────────────────────────────── */
 function NotificationItem({ item, onToggleRead, index }) {
   const Icon = getCategoryIcon(item.category)
   const badgeStatus = priorityToStatus(item.priority)
@@ -99,7 +91,7 @@ function NotificationItem({ item, onToggleRead, index }) {
           : 'glass-card border-primary-500/20 bg-primary-500/5 hover:border-primary-500/40',
       )}
     >
-      {/* Category icon */}
+      {}
       <span className={classNames(
         'shrink-0 size-10 rounded-xl flex items-center justify-center text-lg transition-colors',
         item.isRead
@@ -109,7 +101,7 @@ function NotificationItem({ item, onToggleRead, index }) {
         <Icon />
       </span>
 
-      {/* Content */}
+      {}
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2 mb-0.5">
           <p className={classNames(
@@ -118,7 +110,7 @@ function NotificationItem({ item, onToggleRead, index }) {
           )}>
             {item.title}
           </p>
-          {/* Unread dot */}
+          {}
           {!item.isRead && (
             <span className="shrink-0 size-2 rounded-full bg-primary-500 mt-1.5" />
           )}
@@ -133,7 +125,6 @@ function NotificationItem({ item, onToggleRead, index }) {
   )
 }
 
-/* ── Empty state ───────────────────────────────────────────────── */
 function EmptyState({ tab }) {
   return (
     <motion.div
@@ -155,14 +146,12 @@ function EmptyState({ tab }) {
   )
 }
 
-/* ── Page ──────────────────────────────────────────────────────── */
 function Notifications() {
   const [activeTab, setActiveTab] = useState('all')
   const [items, setItems] = useState(notificationsData.data)
 
   const unreadCount = items.filter((n) => !n.isRead).length
 
-  /* Filter logic */
   const filtered = useMemo(() => {
     if (activeTab === 'unread') return items.filter((n) => !n.isRead)
     const cats = TAB_CATEGORY_MAP[activeTab]
@@ -170,10 +159,8 @@ function Notifications() {
     return items.filter((n) => cats.includes(n.category))
   }, [items, activeTab])
 
-  /* Mark all read */
   const markAllRead = () => setItems((prev) => prev.map((n) => ({ ...n, isRead: true })))
 
-  /* Toggle single item read */
   const toggleRead = (id) =>
     setItems((prev) => prev.map((n) => (n.id === id ? { ...n, isRead: !n.isRead } : n)))
 
@@ -197,7 +184,7 @@ function Notifications() {
         }
       />
 
-      {/* Summary strip */}
+      {}
       <motion.div
         variants={fadeInUp}
         initial="hidden"
@@ -213,7 +200,7 @@ function Notifications() {
         </span>
       </motion.div>
 
-      {/* Filter tabs */}
+      {}
       <motion.div
         variants={fadeInUp}
         initial="hidden"
@@ -263,7 +250,7 @@ function Notifications() {
         })}
       </motion.div>
 
-      {/* Notification list */}
+      {}
       {filtered.length === 0 ? (
         <EmptyState tab={activeTab} />
       ) : (

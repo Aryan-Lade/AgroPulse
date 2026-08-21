@@ -17,7 +17,6 @@ import { useAuth } from '@/context/AuthContext.jsx'
 import { classNames } from '@/utils/formatters.js'
 import { fadeInUp, staggerContainer } from '@/utils/motionVariants.js'
 
-/* ── Toggle switch ─────────────────────────────────────────────── */
 function Toggle({ checked, onChange, label, description }) {
   return (
     <div className="flex items-start justify-between gap-4 py-3 border-b border-line last:border-0">
@@ -43,7 +42,6 @@ function Toggle({ checked, onChange, label, description }) {
   )
 }
 
-/* ── Section card wrapper ──────────────────────────────────────── */
 function Section({ icon: Icon, title, children }) {
   return (
     <motion.div variants={fadeInUp} className="glass-card p-5 sm:p-6">
@@ -63,7 +61,6 @@ function Settings() {
   const { user } = useAuth()
   const toast = useToast()
 
-  /* ── Profile state (initialized from logged-in user) */
   const [profile, setProfile] = useState(() => ({
     name: user?.name || 'Farmer User',
     email: user?.email || 'user@example.com',
@@ -81,19 +78,19 @@ function Settings() {
     }
   }, [user])
 
-  /* ── Farm state */
+
   const [farm, setFarm] = useState({
     name: 'Greenfield Farm', location: 'Ludhiana, Punjab',
     area: '158', soilType: 'Clay Loam', primaryCrop: 'Wheat',
   })
 
-  /* ── Notification toggles */
+
   const [notifs, setNotifs] = useState({
     weatherAlerts: true, diseaseAlerts: true, soilAlerts: true,
     yieldUpdates: false, marketUpdates: true, weeklyReport: true,
   })
 
-  /* ── Language */
+
   const [lang, setLang] = useState('EN')
 
   const setP = (k) => (e) => setProfile((p) => ({ ...p, [k]: e.target.value }))
@@ -125,7 +122,7 @@ function Settings() {
 
       <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="max-w-3xl flex flex-col gap-6">
 
-        {/* Profile */}
+        {}
         <Section icon={HiOutlineUser} title="Profile">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <Input label="Full Name"    value={profile.name}  onChange={setP('name')}  />
@@ -136,7 +133,7 @@ function Settings() {
           <Button size="sm" icon={HiOutlineCheck} onClick={() => save('Profile')}>Save Profile</Button>
         </Section>
 
-        {/* Farm Information */}
+        {}
         <Section icon={HiOutlineHome} title="Farm Information">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <Input label="Farm Name"    value={farm.name}     onChange={setF('name')} />
@@ -158,7 +155,7 @@ function Settings() {
           <Button size="sm" icon={HiOutlineCheck} onClick={() => save('Farm information')}>Save Farm Details</Button>
         </Section>
 
-        {/* Notifications */}
+        {}
         <Section icon={HiOutlineBell} title="Notifications">
           <div className="flex flex-col">
             <Toggle label="Weather Alerts"  description="Receive rain, wind, and frost warnings." checked={notifs.weatherAlerts} onChange={(v) => setNotifs((p) => ({ ...p, weatherAlerts: v }))} />
@@ -171,7 +168,7 @@ function Settings() {
           <Button size="sm" icon={HiOutlineCheck} className="mt-4" onClick={() => save('Notification preferences')}>Save Preferences</Button>
         </Section>
 
-        {/* Language */}
+        {}
         <Section icon={HiOutlineLanguage} title="Language">
           <p className="text-xs text-ink-3 mb-3">
             Select your preferred display language. Full translations are coming soon — English is fully supported.
@@ -195,7 +192,7 @@ function Settings() {
           <Button size="sm" icon={HiOutlineCheck} onClick={() => save('Language')}>Save Language</Button>
         </Section>
 
-        {/* Theme */}
+        {}
         <Section icon={HiOutlineSwatch} title="Appearance">
           <div className="flex gap-3 mb-4">
             {THEMES.map((t) => (
@@ -220,7 +217,7 @@ function Settings() {
           <Badge status="info">Theme is applied instantly — no save needed.</Badge>
         </Section>
 
-        {/* Security */}
+        {}
         <Section icon={HiOutlineShieldCheck} title="Security">
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between py-3 border-b border-line">

@@ -19,7 +19,6 @@ import droneData from '@/data/droneAnalysis.json'
 import { staggerContainer, fadeInUp } from '@/utils/motionVariants.js'
 import { classNames } from '@/utils/formatters.js'
 
-/* ── Health zone block ────────────────────────────────────────── */
 function ZoneBlock({ label, pct, color }) {
   return (
     <div className={classNames('rounded-xl px-4 py-3 flex items-center justify-between', color)}>
@@ -29,23 +28,22 @@ function ZoneBlock({ label, pct, color }) {
   )
 }
 
-/* ── Farm map placeholder ──────────────────────────────────────── */
 function FarmMapPlaceholder({ zones }) {
   const colors = { healthy: '#22c55e', moderate: '#f59e0b', stressed: '#ef4444', water: '#0ea5e9' }
   return (
     <div className="relative rounded-2xl overflow-hidden bg-surface-2 aspect-square sm:aspect-video max-h-64 flex items-center justify-center">
-      {/* Simple SVG heatmap placeholder */}
+      {}
       <svg viewBox="0 0 400 240" className="w-full h-full" aria-label="Farm health heatmap">
-        {/* Field boundary */}
+        {}
         <rect x="20" y="20" width="360" height="200" rx="12" fill="none" stroke="rgb(255 255 255 / 0.15)" strokeWidth="2" />
-        {/* Zone patches */}
+        {}
         <rect x="30"  y="30"  width="120" height="90"  rx="8" fill="#22c55e" opacity="0.45" />
         <rect x="160" y="30"  width="110" height="90"  rx="8" fill="#22c55e" opacity="0.35" />
         <rect x="280" y="30"  width="90"  height="90"  rx="8" fill="#f59e0b" opacity="0.5"  />
         <rect x="30"  y="130" width="100" height="80"  rx="8" fill="#f59e0b" opacity="0.4"  />
         <rect x="140" y="130" width="130" height="80"  rx="8" fill="#ef4444" opacity="0.45" />
         <rect x="280" y="130" width="90"  height="80"  rx="8" fill="#22c55e" opacity="0.3"  />
-        {/* Labels */}
+        {}
         <text x="90"  y="80"  textAnchor="middle" fill="white" fontSize="11" opacity="0.9">Healthy</text>
         <text x="215" y="80"  textAnchor="middle" fill="white" fontSize="11" opacity="0.9">Healthy</text>
         <text x="325" y="80"  textAnchor="middle" fill="white" fontSize="11" opacity="0.9">Moderate</text>
@@ -53,7 +51,7 @@ function FarmMapPlaceholder({ zones }) {
         <text x="205" y="175" textAnchor="middle" fill="white" fontSize="11" opacity="0.9">Stress</text>
         <text x="325" y="175" textAnchor="middle" fill="white" fontSize="11" opacity="0.9">Healthy</text>
       </svg>
-      {/* Legend */}
+      {}
       <div className="absolute bottom-3 right-3 flex flex-col gap-1">
         {[['Healthy','bg-primary-500'],['Moderate','bg-accent-amber'],['Stress','bg-accent-rose']].map(([l,c]) => (
           <div key={l} className="flex items-center gap-1.5 text-[10px] text-white bg-black/40 rounded px-2 py-0.5">
@@ -121,7 +119,7 @@ function DroneMonitoring() {
       />
 
       <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
-        {/* Upload panel */}
+        {}
         <div className="xl:col-span-2 flex flex-col gap-5">
           <Card hover={false}>
             <h2 className="font-display font-semibold text-ink mb-4">Upload Drone Image</h2>
@@ -168,7 +166,7 @@ function DroneMonitoring() {
             )}
           </Card>
 
-          {/* Latest drone flights */}
+          {}
           <Card hover={false}>
             <h2 className="font-display font-semibold text-ink mb-3">Recent Flights</h2>
             <div className="flex flex-col gap-2">
@@ -187,11 +185,11 @@ function DroneMonitoring() {
           </Card>
         </div>
 
-        {/* Results */}
+        {}
         <div className="xl:col-span-3 flex flex-col gap-5">
           {result ? (
             <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col gap-5">
-              {/* Summary KPIs */}
+              {}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
                   { label: 'Farm Health',    value: `${analysis.overallHealth ?? 78}%`, status: 'optimal' },
@@ -207,7 +205,7 @@ function DroneMonitoring() {
                 ))}
               </div>
 
-              {/* Farm map */}
+              {}
               <motion.div variants={fadeInUp} className="glass-card p-5">
                 <h3 className="font-display font-semibold text-ink mb-3 flex items-center gap-2">
                   <HiOutlineMap className="text-accent-sky" /> Field Health Map
@@ -215,7 +213,7 @@ function DroneMonitoring() {
                 <FarmMapPlaceholder zones={zones} />
               </motion.div>
 
-              {/* Zone breakdown chart */}
+              {}
               <motion.div variants={fadeInUp}>
                 <Card hover={false}>
                   <h3 className="font-display font-semibold text-ink mb-4">Zone Distribution</h3>
@@ -235,7 +233,7 @@ function DroneMonitoring() {
                 </Card>
               </motion.div>
 
-              {/* AI insights */}
+              {}
               <motion.div variants={fadeInUp} className="glass-card p-5">
                 <h3 className="font-semibold text-ink mb-3">AI Recommendations</h3>
                 <div className="flex flex-col gap-2">

@@ -17,7 +17,6 @@ import weatherJson from '@/data/weather.json'
 import { staggerContainer, fadeInUp } from '@/utils/motionVariants.js'
 import { classNames } from '@/utils/formatters.js'
 
-/* ── Current weather metric tile ───────────────────────────────── */
 function MetricTile({ icon: Icon, label, value, sub, color = 'text-ink-2' }) {
   return (
     <div className="glass rounded-xl px-4 py-3 flex items-center gap-3">
@@ -31,7 +30,6 @@ function MetricTile({ icon: Icon, label, value, sub, color = 'text-ink-2' }) {
   )
 }
 
-/* ── 7-day forecast row ─────────────────────────────────────────── */
 function ForecastRow({ day, icon: Icon, high, low, rain, condition }) {
   return (
     <div className="flex items-center gap-3 py-2.5 border-b border-line last:border-0">
@@ -46,7 +44,6 @@ function ForecastRow({ day, icon: Icon, high, low, rain, condition }) {
   )
 }
 
-/* ── AI Insight card ────────────────────────────────────────────── */
 function InsightCard({ type, title, detail, priority }) {
   const colorMap = {
     high:   'border-l-accent-rose   bg-accent-rose/5',
@@ -73,10 +70,8 @@ function Weather() {
   const forecast  = weatherJson.forecast  ?? []
   const hourly    = weatherJson.hourly    ?? []
   const insights  = weatherJson.aiInsights ?? []
-  /* weather.json uses 'precipitation' — map to rainProbability for display */
   const rainProb  = current.precipitation ?? 42
 
-  /* Build hourly temp+humidity data — JSON uses 'temp' and 'rain' fields */
   const hourlyData = hourly.slice(0, 12).map((h) => ({
     time:     h.time,
     temp:     h.temp ?? h.temperature,
@@ -94,7 +89,6 @@ function Weather() {
         badge={{ label: 'Live Data', status: 'info' }}
       />
 
-      {/* Current conditions strip */}
       <motion.div variants={staggerContainer} initial="hidden" animate="visible">
         <motion.div variants={fadeInUp} className="glass-card p-5 mb-6">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
@@ -124,7 +118,6 @@ function Weather() {
           </div>
         </motion.div>
 
-        {/* Temperature + humidity chart */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 mb-5">
           <motion.div variants={fadeInUp}>
             <Card hover={false}>
@@ -143,7 +136,6 @@ function Weather() {
             </Card>
           </motion.div>
 
-          {/* Rain probability chart */}
           <motion.div variants={fadeInUp}>
             <Card hover={false}>
               <h2 className="font-display font-semibold text-ink mb-4">Rain Probability (12h)</h2>
@@ -166,7 +158,6 @@ function Weather() {
           </motion.div>
         </div>
 
-        {/* 7-day forecast + AI insights */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <motion.div variants={fadeInUp}>
             <Card hover={false}>

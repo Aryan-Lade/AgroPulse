@@ -48,7 +48,7 @@ function ProductCard({ product, onAddToCart }) {
       whileHover={{ y: -4 }}
       className="glass-card p-4 flex flex-col gap-3 card-glow group"
     >
-      {/* Product Image */}
+      {}
       <div className="rounded-xl bg-surface-2 aspect-square flex items-center justify-center relative overflow-hidden">
         {!imgError && product.imageUrl ? (
           <img
@@ -67,7 +67,7 @@ function ProductCard({ product, onAddToCart }) {
         )}
       </div>
 
-      {/* Info */}
+      {}
       <div className="flex-1">
         <p className="text-[10px] text-ink-3 uppercase tracking-wide">{product.category}</p>
         <p className="font-semibold text-ink text-sm leading-snug mt-0.5 line-clamp-2">{product.name}</p>
@@ -76,7 +76,7 @@ function ProductCard({ product, onAddToCart }) {
         <p className="text-[10px] text-ink-3">{product.reviewCount} reviews</p>
       </div>
 
-      {/* Price + status */}
+      {}
       <div className="flex items-end justify-between gap-2">
         <div>
           <p className="font-display text-lg font-bold text-ink">
@@ -148,7 +148,7 @@ function Marketplace() {
       />
 
       <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col gap-6">
-        {/* Search + categories */}
+        {}
         <motion.div variants={fadeInUp} className="flex flex-col gap-3">
           <div className="flex items-center gap-2 glass rounded-xl px-3.5 py-2 max-w-sm">
             <HiOutlineMagnifyingGlass className="text-ink-3 shrink-0" />
@@ -183,12 +183,12 @@ function Marketplace() {
           </div>
         </motion.div>
 
-        {/* Results count */}
+        {}
         <motion.p variants={fadeInUp} className="text-xs text-ink-3">
           Showing {visible.length} of {products.length} products
         </motion.p>
 
-        {/* Product grid */}
+        {}
         {visible.length === 0 ? (
           <EmptyState
             icon={HiOutlineShoppingBag}

@@ -11,16 +11,16 @@ function Home() {
     <PageWrapper>
       <Hero />
       <StatsSection />
-      {/* FeaturesSection already owns id="features" on its internal <section> */}
+      {}
       <FeaturesSection />
       <div id="how-it-works">
         <HowItWorksSection />
       </div>
-      {/* Solutions scrolls to the social-proof / testimonials section */}
+      {}
       <div id="solutions">
         <TestimonialsSection />
       </div>
-      {/* About + CTA combined — #about anchor lands here */}
+      {}
       <div id="about">
         <CTASection />
       </div>

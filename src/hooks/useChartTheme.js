@@ -2,11 +2,7 @@ import { useReducedMotion } from 'framer-motion'
 import { useTheme } from '@/context/ThemeContext.jsx'
 import { getChartTheme } from '@/utils/chartTheme.js'
 
-/**
- * useChartTheme — resolves the validated chart palette + shared
- * axis/tooltip props for the active theme. Every chart consumes this
- * so all six charts restyle together when the theme flips.
- */
+
 export function useChartTheme() {
   const { theme } = useTheme()
   const palette = getChartTheme(theme)
@@ -20,14 +16,11 @@ export function useChartTheme() {
       tickLine: false,
       axisLine: false,
     },
-    // Solid hairline grid, horizontal only — recessive, never dashed
     gridProps: {
       stroke: palette.grid,
       vertical: false,
     },
-    // Shared series animation — smooth ease-out draw on load; recharts
-    // re-runs it on data changes so value updates glide too. Disabled
-    // entirely for users with prefers-reduced-motion.
+
     animationProps: {
       isAnimationActive: !prefersReduced,
       animationDuration: 1100,

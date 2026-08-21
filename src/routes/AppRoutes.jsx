@@ -29,17 +29,14 @@ function AppRoutes() {
   return (
     <Suspense fallback={<Loader label="Loading…" />}>
       <Routes>
-        {/* Public / marketing */}
         <Route element={<MainLayout />}>
           <Route path={ROUTES.HOME}      element={<Home />} />
           <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
         </Route>
 
-        {/* Auth pages — no layout shell */}
         <Route path={ROUTES.LOGIN}    element={<Login />} />
         <Route path={ROUTES.REGISTER} element={<Register />} />
 
-        {/* App — protected dashboard shell */}
         <Route
           path="/dashboard"
           element={

@@ -17,7 +17,6 @@ import soilData from '@/data/soilAnalysis.json'
 import { staggerContainer, fadeInUp } from '@/utils/motionVariants.js'
 import { classNames } from '@/utils/formatters.js'
 
-/* ── Nutrient bar ─────────────────────────────────────────────── */
 function NutrientBar({ label, value, optimal, unit = 'mg/kg' }) {
   const pct     = Math.min((value / (optimal * 1.5)) * 100, 100)
   const optPct  = Math.min((optimal / (optimal * 1.5)) * 100, 100)
@@ -38,7 +37,6 @@ function NutrientBar({ label, value, optimal, unit = 'mg/kg' }) {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className={classNames('h-full rounded-full', colors[status])}
         />
-        {/* Optimal marker */}
         <span
           className="absolute top-1/2 -translate-y-1/2 w-0.5 h-4 bg-ink-3/50 rounded"
           style={{ left: `${optPct}%` }}
@@ -52,7 +50,6 @@ function NutrientBar({ label, value, optimal, unit = 'mg/kg' }) {
   )
 }
 
-/* ── pH gauge (simple visual) ──────────────────────────────────── */
 function PhGauge({ ph }) {
   const label = ph < 5.5 ? 'Strongly Acidic' : ph < 6.5 ? 'Slightly Acidic' : ph <= 7.5 ? 'Neutral (Ideal)' : ph <= 8.5 ? 'Alkaline' : 'Strongly Alkaline'
   const status = ph >= 6.0 && ph <= 7.5 ? 'optimal' : ph >= 5.5 && ph <= 8.0 ? 'warning' : 'critical'
@@ -124,7 +121,6 @@ function SoilAnalysis() {
       />
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Input form */}
         <Card hover={false} className="xl:col-span-1 h-fit">
           <h2 className="font-display font-semibold text-ink mb-4">Soil Parameters</h2>
           <div className="flex flex-col gap-4">
@@ -142,11 +138,9 @@ function SoilAnalysis() {
           </div>
         </Card>
 
-        {/* Results */}
         <div className="xl:col-span-2 flex flex-col gap-5">
           {result ? (
             <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col gap-5">
-              {/* Score + pH */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <motion.div variants={fadeInUp} className="glass-card p-5">
                   <p className="text-xs text-ink-3 mb-1">Soil Health Score</p>
@@ -164,7 +158,6 @@ function SoilAnalysis() {
                 </motion.div>
               </div>
 
-              {/* Nutrients */}
               <motion.div variants={fadeInUp} className="glass-card p-5">
                 <h3 className="font-semibold text-ink mb-4 flex items-center gap-2">
                   <HiOutlineChartBar className="text-accent-amber" /> Nutrient Levels
@@ -174,7 +167,6 @@ function SoilAnalysis() {
                 </div>
               </motion.div>
 
-              {/* Radar + suitable crops */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <motion.div variants={fadeInUp} className="glass-card p-5">
                   <h3 className="font-semibold text-ink mb-2">Nutrient Radar</h3>

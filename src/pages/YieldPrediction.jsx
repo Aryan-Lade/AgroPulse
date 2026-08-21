@@ -21,7 +21,6 @@ const CROPS = ['Rice','Wheat','Cotton','Maize','Soybean','Tomato','Potato','Suga
 const SOIL_TYPES = ['Sandy','Loamy','Clay','Sandy Loam','Clay Loam']
 const SEASONS = ['Kharif (Jun–Oct)','Rabi (Nov–Mar)','Zaid (Mar–Jun)']
 
-/* ── KPI result card ─────────────────────────────────────────── */
 function KpiCard({ label, value, sub, color = 'text-primary-400', icon: Icon }) {
   return (
     <motion.div variants={fadeInUp} className="glass-card p-5">
@@ -61,7 +60,6 @@ function YieldPrediction() {
     { year: '2026 (P)', yield: 5.4, revenue: 297000 },
   ]
 
-  /* Map first yield record from JSON to prediction shape */
   const firstYield = yieldData?.data?.[0]
 
   return (
@@ -75,7 +73,6 @@ function YieldPrediction() {
       />
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Form */}
         <Card hover={false} className="xl:col-span-1 h-fit">
           <h2 className="font-display font-semibold text-ink mb-4">Crop Parameters</h2>
           <div className="flex flex-col gap-4">
@@ -93,11 +90,9 @@ function YieldPrediction() {
           </div>
         </Card>
 
-        {/* Results */}
         <div className="xl:col-span-2 flex flex-col gap-5">
           {result ? (
             <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col gap-5">
-              {/* KPI strip */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <KpiCard label="Expected Yield"    value={`${firstYield?.expectedYieldTonnes ?? 5.4} t`}    sub="total production"           icon={HiOutlineChartBar}       color="text-primary-400" />
                 <KpiCard label="Area Sown"          value={`${firstYield?.areaSown ?? 5} ha`}                sub="field area"                  icon={HiOutlineChartBar}       color="text-accent-sky"  />
@@ -105,7 +100,6 @@ function YieldPrediction() {
                 <KpiCard label="Confidence"          value={`${firstYield?.confidencePercent ?? 88}%`}       sub="model confidence"           icon={HiOutlineSparkles}       color="text-accent-amber"/>
               </div>
 
-              {/* Harvest info */}
               <motion.div variants={fadeInUp} className="glass-card p-5 flex flex-wrap gap-4 items-center justify-between">
                 <div>
                   <p className="text-xs text-ink-3">Estimated Harvest Date</p>
@@ -122,7 +116,6 @@ function YieldPrediction() {
                 <Badge status="optimal">Favorable Conditions</Badge>
               </motion.div>
 
-              {/* Yield trend chart */}
               <motion.div variants={fadeInUp}>
                 <Card hover={false}>
                   <h3 className="font-display font-semibold text-ink mb-4">Historical + Predicted Yield (t/ha)</h3>
@@ -144,7 +137,6 @@ function YieldPrediction() {
                 </Card>
               </motion.div>
 
-              {/* Revenue bar */}
               <motion.div variants={fadeInUp}>
                 <Card hover={false}>
                   <h3 className="font-display font-semibold text-ink mb-4">Revenue Trend (₹)</h3>

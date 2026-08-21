@@ -15,7 +15,6 @@ import satData from '@/data/satellite.json'
 import { staggerContainer, fadeInUp } from '@/utils/motionVariants.js'
 import { classNames } from '@/utils/formatters.js'
 
-/* ── Index KPI tile ──────────────────────────────────────────── */
 function IndexTile({ label, value, delta, status }) {
   const positive = delta >= 0
   return (
@@ -35,7 +34,6 @@ function IndexTile({ label, value, delta, status }) {
   )
 }
 
-/* ── Satellite image placeholder (SVG heatmap) ───────────────── */
 function SatImage({ title, colorScheme }) {
   const palettes = {
     ndvi:     ['#052e16','#14532d','#166534','#15803d','#16a34a','#22c55e','#4ade80'],
@@ -59,7 +57,7 @@ function SatImage({ title, colorScheme }) {
             />
           ))
         )}
-        {/* Farm boundary */}
+        {}
         <rect x="40" y="30" width="320" height="165" fill="none"
           stroke="rgba(255,255,255,0.35)" strokeWidth="2" strokeDasharray="8 4" rx="8" />
         <text x="200" y="18" textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize="10">
@@ -87,7 +85,7 @@ function Satellite() {
 
       <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col gap-6">
 
-        {/* Index strip */}
+        {}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <IndexTile label={indices.ndvi.label} value={indices.ndvi.value} delta={indices.ndvi.delta} status={indices.ndvi.status} />
           <IndexTile label={indices.ndwi.label} value={indices.ndwi.value} delta={indices.ndwi.delta} status={indices.ndwi.status} />
@@ -95,7 +93,7 @@ function Satellite() {
           <IndexTile label={indices.savi.label} value={indices.savi.value} delta={indices.savi.delta} status={indices.savi.status} />
         </div>
 
-        {/* Satellite image trio */}
+        {}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { title: 'NDVI — Vegetation Health', colorScheme: 'ndvi'     },
@@ -114,7 +112,7 @@ function Satellite() {
           ))}
         </div>
 
-        {/* NDVI trend + field table */}
+        {}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <motion.div variants={fadeInUp}>
             <Card hover={false}>
@@ -170,7 +168,7 @@ function Satellite() {
           </motion.div>
         </div>
 
-        {/* Alerts */}
+        {}
         {alerts.length > 0 && (
           <motion.div variants={fadeInUp} className="glass-card p-5">
             <h3 className="font-semibold text-ink mb-3">Satellite Alerts</h3>

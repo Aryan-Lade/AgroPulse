@@ -1,16 +1,6 @@
-/**
- * weatherService.js
- * Returns mock data from weather.json.
- * To connect to a real API: replace each Promise.resolve() with an api.get() call.
- *
- * Example swap-in:
- *   import api from './api'
- *   export const getWeather = (location) => api.get('/weather/current', { params: { location } })
- */
+
 import weatherData from '@/data/weather.json'
 
-// AI-generated agronomic insights based on current forecast.
-// When a real AI endpoint is available, replace with: api.get('/weather/insights')
 const AI_INSIGHTS = [
   {
     id: 'insight-001',
@@ -54,40 +44,19 @@ const AI_INSIGHTS = [
   },
 ]
 
-/**
- * Fetch current weather for a given location.
- * @param {string} [location] — location string (ignored in mock; pass to real API)
- * @returns {Promise<object>} full weather.json payload
- */
 export const getWeather = (location) => {
-  // TODO: return api.get('/weather/current', { params: { location } })
   void location
   return Promise.resolve(weatherData)
 }
 
-/**
- * Fetch the hourly forecast array.
- * @returns {Promise<Array>}
- */
 export const getHourlyForecast = () => {
-  // TODO: return api.get('/weather/hourly')
   return Promise.resolve(weatherData.hourly)
 }
 
-/**
- * Fetch the 7-day forecast array.
- * @returns {Promise<Array>}
- */
 export const getWeeklyForecast = () => {
-  // TODO: return api.get('/weather/forecast/weekly')
   return Promise.resolve(weatherData.forecast)
 }
 
-/**
- * Fetch AI-generated agronomic insights.
- * @returns {Promise<Array>}
- */
 export const getAIInsights = () => {
-  // TODO: return api.get('/weather/insights')
   return Promise.resolve(AI_INSIGHTS)
 }
