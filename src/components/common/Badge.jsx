@@ -1,6 +1,5 @@
 import { classNames } from '../../utils/formatters.js'
 
-/* Status → theme-aware token classes (see --ap-badge-* in index.css) */
 const styles = {
   healthy: 'bg-primary-500/15 text-badge-primary border-primary-500/30',
   optimal: 'bg-primary-500/15 text-badge-primary border-primary-500/30',

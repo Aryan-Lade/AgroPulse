@@ -20,7 +20,6 @@ const sizes = {
   lg: 'px-7 py-3.5 text-base rounded-xl',
 }
 
-/** Inline spinner shown while `loading` — matches current text color. */
 function ButtonSpinner() {
   return (
     <motion.span
@@ -38,11 +37,6 @@ function ButtonSpinner() {
   )
 }
 
-/**
- * Button — spring hover/press scale, pointer-origin ripple and a
- * built-in loading state (`loading` prop swaps the icon for a spinner
- * and locks interaction without a layout shift).
- */
 function Button({
   children,
   variant = 'primary',
@@ -58,7 +52,6 @@ function Button({
   const nextId = useRef(0)
 
   const handleClick = (event) => {
-    // Spawn a ripple at the pointer position (transform+opacity only).
     const rect = event.currentTarget.getBoundingClientRect()
     const size = Math.max(rect.width, rect.height) * 2
     const ripple = {

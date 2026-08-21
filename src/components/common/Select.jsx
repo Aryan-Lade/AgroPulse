@@ -2,9 +2,7 @@ import { forwardRef } from 'react'
 import { HiOutlineChevronDown } from 'react-icons/hi2'
 import { classNames } from '@/utils/formatters.js'
 
-/**
- * Select — styled native <select> that matches the glass design system.
- */
+
 const Select = forwardRef(function Select(
   { label, helper, error, options = [], placeholder, className, id, ...props },
   ref,
@@ -32,9 +30,7 @@ const Select = forwardRef(function Select(
           aria-invalid={error ? 'true' : undefined}
           {...props}
         >
-          {/* Bug fix #3 — placeholder must not be "disabled" alone; pairing with
-              a hidden value="" ensures the controlled <select> always shows it
-              when value="" on mount / after navigation resets the parent state. */}
+          {}
           {placeholder && (
             <option value="" disabled hidden>{placeholder}</option>
           )}

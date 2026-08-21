@@ -11,10 +11,6 @@ import ChartCard from './ChartCard.jsx'
 import { diseaseFrequency } from '../../data/dashboardData.js'
 import { useChartTheme } from '../../hooks/useChartTheme.js'
 
-/**
- * DiseaseFrequencyChart — single-series line of detections per month.
- * One series → slot 1 only, no legend (the title names it).
- */
 function DiseaseFrequencyChart() {
   const { palette, axisProps, gridProps, tooltipProps } = useChartTheme()
 

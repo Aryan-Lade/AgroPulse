@@ -1,11 +1,6 @@
 import { motion } from 'framer-motion'
 import { textRevealContainer, textRevealWord } from '../../utils/motionVariants.js'
 
-/**
- * TextReveal — Apple-style per-word rise + blur-clear entrance.
- * Splits children (string) into words; each word animates as its own
- * inline-block so line wrapping stays natural at every breakpoint.
- */
 function TextReveal({ text, as: Tag = 'span', className = '', delay = 0 }) {
   const words = text.split(' ')
   const MotionTag = motion.create(Tag)

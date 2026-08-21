@@ -10,12 +10,6 @@ import { cropDistribution } from '../../data/dashboardData.js'
 import { useChartTheme } from '../../hooks/useChartTheme.js'
 import { formatNumber } from '../../utils/formatters.js'
 
-/**
- * CropDistributionChart — part-to-whole donut, 5 segments (≤6 rule),
- * separated by a 2px surface gap (stroke in the surface color, never a
- * border). Identity is carried by the side legend with values, not
- * color-matching alone.
- */
 function CropDistributionChart() {
   const { palette, tooltipProps } = useChartTheme()
   const total = cropDistribution.reduce((sum, item) => sum + item.value, 0)
@@ -56,7 +50,7 @@ function CropDistributionChart() {
           </div>
         </div>
 
-        {/* Legend with values — identity never rides on color alone */}
+        {}
         <ul className="flex-1 w-full flex flex-col gap-2">
           {cropDistribution.map((entry, index) => (
             <li key={entry.name} className="flex items-center gap-2.5 text-sm">

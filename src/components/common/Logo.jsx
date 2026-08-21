@@ -2,10 +2,6 @@ import { Link } from 'react-router-dom'
 import { FaLeaf } from 'react-icons/fa6'
 import { APP_NAME, ROUTES } from '../../utils/constants.js'
 
-/**
- * Logo — brand mark + wordmark.
- * `compact` renders the mark only (used by the collapsed sidebar rail).
- */
 function Logo({ size = 'md', compact = false }) {
   const sizes = {
     sm: { icon: 'size-8 text-sm', text: 'text-base' },

@@ -1,10 +1,6 @@
 import { forwardRef } from 'react'
 import { classNames } from '@/utils/formatters.js'
 
-/**
- * Input — styled form input that matches the app's glass design system.
- * Supports label, helper text, error state, and leading/trailing adornments.
- */
 const Input = forwardRef(function Input(
   { label, helper, error, leading: Leading, trailing: Trailing, className, id, ...props },
   ref,

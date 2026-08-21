@@ -11,13 +11,7 @@ import ChartCard from './ChartCard.jsx'
 import { weatherTrends } from '../../data/dashboardData.js'
 import { useChartTheme } from '../../hooks/useChartTheme.js'
 
-/**
- * WeatherTrendsChart — temperature, humidity and rainfall are three
- * different scales, so they render as small multiples (one mini panel
- * each, shared x-axis) instead of a misleading dual-axis chart.
- * Color follows the entity: temp = amber (slot 2), humidity = blue (slot 1),
- * rainfall = violet (slot 3) — fixed slots, never re-assigned.
- */
+
 const METRICS = [
   { key: 'temperature', label: 'Temperature', unit: '°C', slot: 2 },
   { key: 'humidity', label: 'Humidity', unit: '%', slot: 1 },

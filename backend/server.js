@@ -15,12 +15,12 @@ app.use(cors({
 
 app.use(express.json())
 
-/* ── Routes ─────────────────────────────────────────────────────── */
+
 app.use('/api/auth', authRoutes)
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }))
 
-/* ── Start ───────────────────────────────────────────────────────── */
+
 app.listen(PORT, () =>
   console.log(`🚀  AgroPulse backend running on http://localhost:${PORT}`)
 )

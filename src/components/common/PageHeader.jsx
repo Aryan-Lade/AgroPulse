@@ -3,10 +3,6 @@ import { fadeInUp } from '@/utils/motionVariants.js'
 import { classNames } from '@/utils/formatters.js'
 import Badge from './Badge.jsx'
 
-/**
- * PageHeader — consistent top section for every module page.
- * Shows icon, badge, title, description, and an optional action slot.
- */
 function PageHeader({ icon: Icon, accent = 'primary', badge, title, description, action, className }) {
   const accentMap = {
     primary: 'bg-primary-500/15 text-primary-300 border-primary-500/30',

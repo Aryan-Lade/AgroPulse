@@ -15,7 +15,6 @@ pool.query(`
   )
 `).catch(err => console.error('Table init error:', err.message))
 
-/* ── POST /api/auth/register ─────────────────────────────────────── */
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body
 

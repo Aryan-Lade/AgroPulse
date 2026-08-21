@@ -1,13 +1,6 @@
 import { classNames } from '../../utils/formatters.js'
 
-/**
- * Skeleton — pulse + shimmer placeholder blocks (CSS-driven, honors
- * prefers-reduced-motion via the global media query).
- *
- * <Skeleton className="h-4 w-32" />           — single line
- * <Skeleton.Text lines={3} />                 — paragraph
- * <Skeleton.Card />                           — full card placeholder
- */
+
 function Skeleton({ className, ...props }) {
   return (
     <div

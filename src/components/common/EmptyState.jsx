@@ -2,9 +2,7 @@ import { motion } from 'framer-motion'
 import { fadeInUp } from '@/utils/motionVariants.js'
 import { classNames } from '@/utils/formatters.js'
 
-/**
- * EmptyState — zero-data placeholder used across all module pages.
- */
+
 function EmptyState({ icon: Icon, title, description, action, className }) {
   return (
     <motion.div

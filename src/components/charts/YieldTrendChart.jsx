@@ -11,10 +11,7 @@ import ChartCard from './ChartCard.jsx'
 import { yieldTrend } from '../../data/dashboardData.js'
 import { useChartTheme } from '../../hooks/useChartTheme.js'
 
-/**
- * YieldTrendChart — single-series area of forecast yield (t/ha).
- * Area wash at 10% opacity; the 2px line carries the value.
- */
+
 function YieldTrendChart() {
   const { palette, axisProps, gridProps, tooltipProps } = useChartTheme()
 

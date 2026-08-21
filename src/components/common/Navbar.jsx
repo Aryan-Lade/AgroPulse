@@ -33,14 +33,12 @@ function Navbar() {
   const { isDark, toggleTheme } = useTheme()
   const { isLoggedIn, logout } = useAuth()
 
-  // Track scroll position to intensify glassmorphism on scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Lock body scroll when mobile drawer is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
@@ -85,12 +83,12 @@ function Navbar() {
         )}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-          {/* Logo */}
+          {}
           <div className="flex-shrink-0">
             <Logo />
           </div>
 
-          {/* Desktop nav links */}
+          {}
           <ul className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <li key={link.label}>
@@ -114,9 +112,9 @@ function Navbar() {
             ))}
           </ul>
 
-          {/* Desktop right section */}
+          {}
           <div className="hidden lg:flex items-center gap-2">
-            {/* Theme toggle */}
+            {}
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.92 }}
@@ -132,7 +130,7 @@ function Navbar() {
               )}
             </motion.button>
 
-            {/* Conditional Auth CTA buttons */}
+            {}
             {isLoggedIn ? (
               <>
                 <Link to={ROUTES.DASHBOARD}>
@@ -160,7 +158,7 @@ function Navbar() {
             )}
           </div>
 
-          {/* Mobile right: theme toggle + hamburger */}
+          {}
           <div className="lg:hidden flex items-center gap-1">
             <motion.button
               whileHover={{ scale: 1.08 }}
@@ -189,11 +187,11 @@ function Navbar() {
         </nav>
       </header>
 
-      {/* Mobile full-screen drawer */}
+      {}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop */}
+            {}
             <motion.div
               key="backdrop"
               initial={{ opacity: 0 }}
@@ -205,7 +203,7 @@ function Navbar() {
               aria-hidden="true"
             />
 
-            {/* Drawer panel */}
+            {}
             <motion.div
               key="drawer"
               initial={{ opacity: 0, x: '100%' }}
@@ -214,7 +212,7 @@ function Navbar() {
               transition={SPRING_SOFT}
               className="fixed top-0 right-0 bottom-0 z-50 w-80 max-w-full force-dark glass-strong border-l border-white/10 flex flex-col lg:hidden"
             >
-              {/* Drawer header */}
+              {}
               <div className="flex items-center justify-between px-5 h-16 border-b border-white/10 flex-shrink-0">
                 <Logo size="sm" />
                 <button
@@ -226,7 +224,7 @@ function Navbar() {
                 </button>
               </div>
 
-              {/* Nav links */}
+              {}
               <nav className="flex-1 overflow-y-auto px-4 py-6">
                 <ul className="flex flex-col gap-1">
                   {navLinks.map((link, i) => (
@@ -258,7 +256,7 @@ function Navbar() {
                 </ul>
               </nav>
 
-              {/* Drawer CTA buttons */}
+              {}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}

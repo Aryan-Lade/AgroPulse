@@ -12,11 +12,7 @@ import ChartCard from './ChartCard.jsx'
 import { soilNutrients } from '../../data/dashboardData.js'
 import { useChartTheme } from '../../hooks/useChartTheme.js'
 
-/**
- * SoilNutrientsChart — measured level vs optimal, grouped bars.
- * Two series → legend present; thin bars (≤24px), 4px rounded data-end,
- * square at the baseline.
- */
+
 function SoilNutrientsChart() {
   const { palette, axisProps, gridProps, tooltipProps, legendProps } = useChartTheme()
 

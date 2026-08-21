@@ -1,12 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useInView, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
 
-/**
- * CountUp — spring-driven animated number.
- * Counts up when scrolled into view, and re-animates smoothly whenever
- * `value` changes (live data updates). Writes to the DOM directly via
- * a motion value subscription, so React never re-renders per frame.
- */
 function CountUp({
   value,
   decimals = 0,

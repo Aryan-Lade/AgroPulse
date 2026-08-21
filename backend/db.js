@@ -8,9 +8,9 @@ const pool = new Pool({
 
 pool.connect((err) => {
   if (err) {
-    console.error('❌  Database connection failed:', err.message)
+    console.error('Database connection failed:', err.message)
   } else {
-    console.log('✅  Connected to Railway PostgreSQL')
+    console.log('Connected to Railway PostgreSQL')
   }
 })
 

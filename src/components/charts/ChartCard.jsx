@@ -1,11 +1,5 @@
 import Card from '../common/Card.jsx'
 
-/**
- * ChartCard — shared chrome for every dashboard chart:
- * title + one-line subtitle, then the plot area. Heights are set by
- * the chart itself (ResponsiveContainer) so the axis band is never
- * clipped by a fixed card height.
- */
 function ChartCard({ title, subtitle, actions, children, className }) {
   return (
     <Card hover={false} className={className}>

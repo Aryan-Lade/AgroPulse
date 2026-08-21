@@ -5,11 +5,6 @@ import { HiOutlineXMark } from 'react-icons/hi2'
 import { modalOverlay, modalPanel } from '../../utils/motionVariants.js'
 import { classNames } from '../../utils/formatters.js'
 
-/**
- * Modal — scale-in panel over a blurred backdrop.
- * Closes on backdrop click and Escape; the exit animation runs fully
- * before unmount via AnimatePresence.
- */
 function Modal({ open, onClose, title, children, className }) {
   useEffect(() => {
     if (!open) return undefined
@@ -17,7 +12,6 @@ function Modal({ open, onClose, title, children, className }) {
       if (event.key === 'Escape') onClose?.()
     }
     document.addEventListener('keydown', handleKey)
-    // Lock body scroll while open
     const previous = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
@@ -30,7 +24,7 @@ function Modal({ open, onClose, title, children, className }) {
     <AnimatePresence>
       {open && (
         <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6">
-          {/* Blurred backdrop */}
+          {}
           <motion.div
             variants={modalOverlay}
             initial="hidden"
@@ -39,7 +33,7 @@ function Modal({ open, onClose, title, children, className }) {
             onClick={onClose}
             className="absolute inset-0 bg-night-950/60 backdrop-blur-md"
           />
-          {/* Panel */}
+          {}
           <motion.div
             variants={modalPanel}
             initial="hidden"

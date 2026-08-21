@@ -2,13 +2,7 @@ import { motion } from 'framer-motion'
 import { classNames } from '../../utils/formatters.js'
 import { scaleIn, SPRING } from '../../utils/motionVariants.js'
 
-/**
- * Card — glass surface with scroll-reveal entrance.
- * `hover` adds the premium lift: spring-driven -5px translate plus a
- * brand glow halo (`card-glow`, opacity-only on a pseudo-element so
- * the shadow itself is never animated on the compositor-critical path).
- * `float` adds a slow idle bob for spotlight cards.
- */
+
 function Card({
   children,
   className,
@@ -18,8 +12,7 @@ function Card({
   ...props
 }) {
   const Component = animate ? motion.div : 'div'
-  // `float` runs an idle bob via `animate`, which supersedes the
-  // scroll-reveal variants — the two would fight over `y` otherwise.
+
   const motionProps = animate
     ? float
       ? {

@@ -1,12 +1,7 @@
 import { useMemo } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 
-/**
- * Particles — ambient floating specks for the hero background.
- * A small fixed set of divs animating transform+opacity only (fully
- * GPU-composited). Positions are deterministic per mount; density is
- * intentionally low to stay well within a 60fps budget.
- */
+
 function Particles({ count = 18, className = '' }) {
   const prefersReduced = useReducedMotion()
 
