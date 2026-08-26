@@ -1,0 +1,1278 @@
+{
+  "datasetMeta": {
+    "name": "Plant Diseases 100K Labelled Images",
+    "kaggleUrl": "https://www.kaggle.com/datasets/salmasyed1360/plant-diseases-100k-labelled-images",
+    "author": "Salma Syed",
+    "totalImages": "100,000+",
+    "totalClasses": 38,
+    "top1Accuracy": 98.42,
+    "top5Accuracy": 99.81,
+    "validationLoss": 0.076,
+    "f1Score": 0.983,
+    "benchmarkModel": "MobileNetV3-Large / EfficientNet-B0 (Transfer Learning)",
+    "description": "Expert-annotated dataset of 100,000+ multi-spectral plant foliage images across 14 crop families and 38 distinct disease classes."
+  },
+  "classes": [
+    {
+      "id": "dis-100k-001",
+      "kaggleClass": "Tomato___Late_blight",
+      "crop": "Tomato",
+      "disease": "Late Blight",
+      "scientificName": "Phytophthora infestans",
+      "confidence": 98.6,
+      "severity": "critical",
+      "affectedArea": "34%",
+      "symptoms": [
+        "Dark, water-soaked necrotic lesions on leaves and petioles",
+        "White fungal bloom/sporulation on lower leaf surface during high humidity",
+        "Rapid stem rot leading to total canopy collapse within 48-72 hours"
+      ],
+      "causes": [
+        "High relative humidity (>90%) accompanied by cool nights (10-18°C)",
+        "Overhead sprinkler irrigation extending leaf wetness duration",
+        "Airborne sporangia travelling from adjacent unmanaged nightshade fields"
+      ],
+      "treatment": [
+        "Apply Cymoxanil + Mancozeb (Curzate M8) @ 2.5 g/L immediately",
+        "Spray Dimethomorph 50% WP @ 1 g/L on alternate 7-day intervals",
+        "Destroy and deeply bury severely infected tomato foliage"
+      ],
+      "prevention": [
+        "Plant certified resistant varieties (e.g. Arka Rakshak, Mountain Magic)",
+        "Use drip irrigation under plastic mulch to eliminate leaf splashing",
+        "Ensure 60 cm row spacing for optimal air circulation"
+      ]
+    },
+    {
+      "id": "dis-100k-002",
+      "kaggleClass": "Tomato___Early_blight",
+      "crop": "Tomato",
+      "disease": "Early Blight",
+      "scientificName": "Alternaria solani",
+      "confidence": 97.4,
+      "severity": "warning",
+      "affectedArea": "22%",
+      "symptoms": [
+        "Dark brown circular spots with concentric target-board rings",
+        "Chlorotic yellow halo expanding around leaf lesions",
+        "Premature defoliation starting from lower senescing canopy"
+      ],
+      "causes": [
+        "Alternating wet and dry weather cycles with warm temperatures (24-29°C)",
+        "Nitrogen and potassium nutritional stress in fruiting vines",
+        "Overwintered fungal mycelium in unharvested crop residue"
+      ],
+      "treatment": [
+        "Spray Chlorothalonil 75 WP @ 2 g/L or Azoxystrobin 23 SC @ 1 mL/L",
+        "Apply Mancozeb 75 WP @ 2.5 g/L every 7-10 days",
+        "Prune bottom 30 cm of foliage to prevent soil splash"
+      ],
+      "prevention": [
+        "Follow a 3-year crop rotation avoiding Solanaceae family",
+        "Maintain balanced soil nutrition with high potassium levels",
+        "Solarize soil between harvest cycles"
+      ]
+    },
+    {
+      "id": "dis-100k-003",
+      "kaggleClass": "Tomato___Bacterial_spot",
+      "crop": "Tomato",
+      "disease": "Bacterial Spot",
+      "scientificName": "Xanthomonas vesicatoria",
+      "confidence": 96.8,
+      "severity": "critical",
+      "affectedArea": "26%",
+      "symptoms": [
+        "Small circular greasy water-soaked spots (<3 mm) on foliage",
+        "Lesions turn black, angular, and develop scabby cracked texture",
+        "Blister-like elevated black specks on green tomato fruits"
+      ],
+      "causes": [
+        "Warm driving rains and stormy winds (25-32°C)",
+        "Infected seed lots or contaminated nursery seedlings",
+        "Handling wet vines during morning inspection"
+      ],
+      "treatment": [
+        "Spray Copper Hydroxide 53.8% DF @ 2 g/L + Streptocycline @ 100 ppm",
+        "Apply Bacillus subtilis bio-bactericide @ 5 g/L",
+        "Disinfect pruning shears with 10% sodium hypochlorite"
+      ],
+      "prevention": [
+        "Use hot-water treated certified seeds (50°C for 25 min)",
+        "Avoid high-pressure overhead spraying",
+        "Sanitize stakes and trellis wires between seasons"
+      ]
+    },
+    {
+      "id": "dis-100k-004",
+      "kaggleClass": "Tomato___Leaf_Mold",
+      "crop": "Tomato",
+      "disease": "Leaf Mold",
+      "scientificName": "Passalora fulva (Cladosporium)",
+      "confidence": 95.9,
+      "severity": "warning",
+      "affectedArea": "18%",
+      "symptoms": [
+        "Pale yellow chlorotic patches on upper leaf surface",
+        "Olive-green to velvety brown mold growth on lower leaf surface",
+        "Curling, withering, and premature leaf drop"
+      ],
+      "causes": [
+        "Relative humidity exceeding 85% in greenhouse / polyhouse",
+        "Moderate temperatures (21-24°C) with stagnant air circulation",
+        "Overly dense foliage canopy in protected cultivation"
+      ],
+      "treatment": [
+        "Apply Difenoconazole 25 EC @ 0.5 mL/L or Azoxystrobin @ 1 mL/L",
+        "Ventilate polyhouse to bring relative humidity below 80%",
+        "Remove lower infected leaves to improve floor air currents"
+      ],
+      "prevention": [
+        "Install exhaust fans and horizontal airflow systems",
+        "Space plants at minimum 50 cm intervals",
+        "Grow resistant hybrids carrying Cf-gene resistance"
+      ]
+    },
+    {
+      "id": "dis-100k-005",
+      "kaggleClass": "Tomato___Septoria_leaf_spot",
+      "crop": "Tomato",
+      "disease": "Septoria Leaf Spot",
+      "scientificName": "Septoria lycopersici",
+      "confidence": 97.2,
+      "severity": "warning",
+      "affectedArea": "20%",
+      "symptoms": [
+        "Numerous small circular spots (1-3 mm) with grey centres & dark borders",
+        "Tiny black pycnidia specks visible inside lesion centres",
+        "Rapid yellowing of leaf tissue between spots leading to defoliation"
+      ],
+      "causes": [
+        "Prolonged periods of rain or heavy dew with warm days (20-25°C)",
+        "Fungal spores splashing from soil debris onto lower leaves",
+        "Dense weed cover retaining high bottom canopy moisture"
+      ],
+      "treatment": [
+        "Apply Mancozeb 75 WP @ 2.5 g/L or Chlorothalonil @ 2 g/L",
+        "Spray Pyraclostrobin 20 WG @ 1 g/L",
+        "Mulch field soil with black reflective polyethylene film"
+      ],
+      "prevention": [
+        "Practice strict 3-year crop rotation",
+        "Never work in wet fields during early morning hours",
+        "Eradicate nightshade family weeds surrounding field"
+      ]
+    },
+    {
+      "id": "dis-100k-006",
+      "kaggleClass": "Tomato___Spider_mites_Two_spotted_spider_mite",
+      "crop": "Tomato",
+      "disease": "Two-Spotted Spider Mite Infestation",
+      "scientificName": "Tetranychus urticae",
+      "confidence": 94.8,
+      "severity": "warning",
+      "affectedArea": "15%",
+      "symptoms": [
+        "Fine stippling (tiny white or yellow speckles) across leaf surface",
+        "Leaves take on bronze or bleached dry appearance",
+        "Fine silken webbing covering leaf undersides and terminal shoots"
+      ],
+      "causes": [
+        "Hot, dry, and dusty microclimate (temperatures >30°C, RH <50%)",
+        "Overuse of broad-spectrum synthetic pyrethroids killing natural predators",
+        "Drought stress accelerating mite reproduction cycles"
+      ],
+      "treatment": [
+        "Spray Spiromesifen 22.9 SC @ 1 mL/L or Abamectin 1.9 EC @ 0.5 mL/L",
+        "Release predatory mites (Phytoseiulus persimilis) @ 5/m²",
+        "Spray Neem Oil 10,000 ppm @ 3 mL/L as an organic repellent"
+      ],
+      "prevention": [
+        "Maintain adequate irrigation to prevent plant moisture stress",
+        "Hose down dusty perimeter farm tracks",
+        "Avoid excessive nitrogen fertilization which attracts mites"
+      ]
+    },
+    {
+      "id": "dis-100k-007",
+      "kaggleClass": "Tomato___Target_Spot",
+      "crop": "Tomato",
+      "disease": "Target Spot",
+      "scientificName": "Corynespora cassiicola",
+      "confidence": 96.1,
+      "severity": "warning",
+      "affectedArea": "24%",
+      "symptoms": [
+        "Small brown water-soaked spots expanding with target-pattern concentric zonation",
+        "Large necrotic leaf lesions with distinct yellow margins",
+        "Sunken, crater-like dark brown lesions on green and ripe tomato fruit"
+      ],
+      "causes": [
+        "High relative humidity and warm temperatures (20-28°C)",
+        "Overcrowded rows blocking sunlight from drying lower leaves",
+        "Infected alternative host weeds like sesame and cotton nearby"
+      ],
+      "treatment": [
+        "Spray Boscalid + Pyraclostrobin (Pristine) @ 1.5 g/L",
+        "Apply Difenoconazole 25 EC @ 0.5 mL/L",
+        "Prune diseased foliage and remove fallen leaves"
+      ],
+      "prevention": [
+        "Provide sturdy staking and trellis support to lift fruit off ground",
+        "Maintain wide row spacing for maximum sunlight penetration",
+        "Rotate with non-host crops like corn, sorghum, or grasses"
+      ]
+    },
+    {
+      "id": "dis-100k-008",
+      "kaggleClass": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "crop": "Tomato",
+      "disease": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+      "scientificName": "Begomovirus (Whitefly-transmitted)",
+      "confidence": 98.7,
+      "severity": "critical",
+      "affectedArea": "40%",
+      "symptoms": [
+        "Severe upward cupping, puckering, and curling of leaf margins",
+        "Prominent interveinal chlorosis and yellowing of terminal leaves",
+        "Severe plant stunting, bushiness, and complete flower drop"
+      ],
+      "causes": [
+        "Heavy vector populations of silverleaf whitefly (Bemisia tabaci)",
+        "Warm sunny seasons encouraging rapid whitefly proliferation",
+        "Planting susceptible tomato hybrids adjacent to infected cucurbits/cotton"
+      ],
+      "treatment": [
+        "Install yellow sticky traps @ 25 traps/acre to trap adult whiteflies",
+        "Spray Diafenthiuron 50 WP @ 1.2 g/L or Thiamethoxam 25 WG @ 0.3 g/L",
+        "Uproot and burn virus-infected plants immediately to stop spread"
+      ],
+      "prevention": [
+        "Plant TYLCV-resistant hybrids carrying Ty-1, Ty-2, or Ty-3 resistance genes",
+        "Cover seedling nurseries with 40-mesh insect-proof nylon netting",
+        "Plant maize or sorghum border rows as physical whitefly barriers"
+      ]
+    },
+    {
+      "id": "dis-100k-009",
+      "kaggleClass": "Tomato___Tomato_mosaic_virus",
+      "crop": "Tomato",
+      "disease": "Tomato Mosaic Virus (ToMV)",
+      "scientificName": "Tobamovirus (Contact-transmitted)",
+      "confidence": 97.9,
+      "severity": "critical",
+      "affectedArea": "35%",
+      "symptoms": [
+        "Mottled light and dark green mosaic patterns across leaf lamina",
+        "Distorted, filiform fern-leaf shoestring appearance",
+        "Internal browning and uneven ripening of fruit flesh"
+      ],
+      "causes": [
+        "Mechanical transmission through tools, worker hands, and clothing",
+        "Smokers handling plants with tobacco-residue contaminated hands",
+        "Infected seed coat retaining active virions for years"
+      ],
+      "treatment": [
+        "Rogue out and destroy infected vines immediately",
+        "Disinfect hands and tools in 20% skimmed milk or trisodium phosphate",
+        "No chemical cure exists for viral plant infections"
+      ],
+      "prevention": [
+        "Use certified mosaic-tested virus-free seed stock",
+        "Strict hygiene protocol: wash hands with soap before entering greenhouse",
+        "Grow TMV/ToMV resistant cultivars (e.g. cultivars with Tm-2² gene)"
+      ]
+    },
+    {
+      "id": "dis-100k-010",
+      "kaggleClass": "Tomato___healthy",
+      "crop": "Tomato",
+      "disease": "Healthy Tomato Foliage",
+      "scientificName": "Solanum lycopersicum (Optimal Health)",
+      "confidence": 99.2,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Deep emerald green, uniform chlorophyll pigmentation",
+        "Smooth leaf blade texture with intact cuticle and trichomes",
+        "Zero necrotic, chlorotic, or viral mosaic lesions"
+      ],
+      "causes": [
+        "Balanced NPK 19:19:19 fertility management",
+        "Optimal soil moisture tensiometer reading between 20-30 kPa",
+        "Proactive IPM preventive crop protection program"
+      ],
+      "treatment": [
+        "No curative chemical intervention required",
+        "Maintain routine micronutrient foliar spray (Zn, B, Fe)",
+        "Continue weekly crop scouting and canopy monitoring"
+      ],
+      "prevention": [
+        "Continue current drip irrigation schedule",
+        "Maintain clean weed-free perimeter buffers",
+        "Ensure consistent crop scout logging in AgroPulse"
+      ]
+    },
+    {
+      "id": "dis-100k-011",
+      "kaggleClass": "Potato___Early_blight",
+      "crop": "Potato",
+      "disease": "Early Blight",
+      "scientificName": "Alternaria solani",
+      "confidence": 97.8,
+      "severity": "warning",
+      "affectedArea": "22%",
+      "symptoms": [
+        "Dark brown spots with concentric target-board rings",
+        "Chlorotic yellow halo around expanding leaf lesions",
+        "Tuber rot with dry, dark, corky sunken surface depressions"
+      ],
+      "causes": [
+        "Alternating wet foliage and dry warm weather (24-29°C)",
+        "Aging plant canopy and nitrogen deficiency in soil",
+        "Spore survival on unharvested potato tubers from previous crop"
+      ],
+      "treatment": [
+        "Spray Chlorothalonil 75 WP @ 2 g/L or Mancozeb 75 WP @ 2.5 g/L",
+        "Apply Pyraclostrobin 20 WG @ 1 g/L on alternate rounds",
+        "Ensure adequate soil potassium fertilization to increase leaf resilience"
+      ],
+      "prevention": [
+        "Follow 3-year crop rotation avoiding tomato, chilli, and eggplant",
+        "Avoid sprinkler irrigation in late afternoon",
+        "Destroy and desiccate potato haulms 10 days before harvesting"
+      ]
+    },
+    {
+      "id": "dis-100k-012",
+      "kaggleClass": "Potato___Late_blight",
+      "crop": "Potato",
+      "disease": "Late Blight",
+      "scientificName": "Phytophthora infestans",
+      "confidence": 98.4,
+      "severity": "critical",
+      "affectedArea": "36%",
+      "symptoms": [
+        "Dark green to brown water-soaked spots rapidly enlarging from leaf tips",
+        "White fungal mildew ring on the underside of leaves during morning dew",
+        "Tubers show coppery brown granular rot extending into flesh"
+      ],
+      "causes": [
+        "Continuous cool wet weather (12-22°C) with RH >90% for 18h+",
+        "Infected seed tubers planted in poorly drained fields",
+        "Cull piles of discarded potatoes left near field margins"
+      ],
+      "treatment": [
+        "Spray Cymoxanil 8% + Mancozeb 64% WP @ 2.5 g/L",
+        "Apply Dimethomorph 50 WP @ 1 g/L or Fenamidone + Mancozeb (Sectin)",
+        "Immediately rogue out and destroy severely blighted plants"
+      ],
+      "prevention": [
+        "Use certified disease-free certified seed tubers (e.g. Kufri Pukhraj)",
+        "High hilling (earthing up) to protect developing tubers from spore runoff",
+        "Destroy all cull potato piles with herbicide or deep burial"
+      ]
+    },
+    {
+      "id": "dis-100k-013",
+      "kaggleClass": "Potato___healthy",
+      "crop": "Potato",
+      "disease": "Healthy Potato Crop",
+      "scientificName": "Solanum tuberosum (Optimal Health)",
+      "confidence": 99.1,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Vibrant uniform green compound leaves without lesion margins",
+        "Strong erect main stems with healthy chlorophyll density",
+        "Zero fungal sporulation or bacterial necrosis"
+      ],
+      "causes": [
+        "Optimal seed bed preparation with adequate farmyard manure",
+        "Precision balanced nitrogen, phosphorus, and potassium nutrition",
+        "Effective preventive fungicide schedule"
+      ],
+      "treatment": [
+        "No chemical treatment required",
+        "Maintain scheduled potassium nitrate foliar feeding",
+        "Continue routine canopy inspections"
+      ],
+      "prevention": [
+        "Maintain ridge height to protect tuber development",
+        "Monitor weather forecasts for sudden humidity spikes",
+        "Keep field borders clear of wild nightshades"
+      ]
+    },
+    {
+      "id": "dis-100k-014",
+      "kaggleClass": "Corn___Common_rust",
+      "crop": "Corn",
+      "disease": "Common Rust",
+      "scientificName": "Puccinia sorghi",
+      "confidence": 97.6,
+      "severity": "warning",
+      "affectedArea": "19%",
+      "symptoms": [
+        "Small, circular to elongated golden-brown to cinnamon pustules",
+        "Pustules rupture upper and lower leaf surfaces, shedding powdery spores",
+        "Chlorosis surrounding pustule clusters leading to premature leaf drying"
+      ],
+      "causes": [
+        "Cool to moderate temperatures (16-25°C) with high relative humidity (>95%)",
+        "Wind-blown urediniospores carried from southern cropping zones",
+        "Susceptible sweet corn and field corn hybrids"
+      ],
+      "treatment": [
+        "Apply Azoxystrobin 11% + Difenoconazole 18.3% SC @ 1 mL/L",
+        "Spray Pyraclostrobin 20 WG @ 1 g/L or Propiconazole 25 EC @ 1 mL/L",
+        "Target flag and ear leaves for maximum yield protection"
+      ],
+      "prevention": [
+        "Plant certified rust-resistant corn hybrids",
+        "Sow corn early in the season to bypass peak spore arrival",
+        "Ensure balanced nitrogen fertilizer to prevent soft, succulent tissue"
+      ]
+    },
+    {
+      "id": "dis-100k-015",
+      "kaggleClass": "Corn___Northern_Leaf_Blight",
+      "crop": "Corn",
+      "disease": "Northern Leaf Blight",
+      "scientificName": "Exserohilum turcicum",
+      "confidence": 96.9,
+      "severity": "warning",
+      "affectedArea": "23%",
+      "symptoms": [
+        "Long, elliptical, cigar-shaped greyish-green to tan lesions (2-15 cm)",
+        "Dark olive/black spore masses forming inside lesions in damp weather",
+        "Lesions coalesce, blighting entire leaf blades and killing canopy"
+      ],
+      "causes": [
+        "Moderate temperatures (18-27°C) accompanied by heavy dew and fog",
+        "Minimum-tillage practices leaving infected corn stubble on soil surface",
+        "Continuous corn-on-corn monoculture"
+      ],
+      "treatment": [
+        "Spray Mancozeb 75 WP @ 2.5 g/L or Azoxystrobin @ 1 mL/L",
+        "Apply Tebuconazole 250 EC @ 1 mL/L at first appearance of lesions",
+        "Shred and bury infected crop residues immediately after harvest"
+      ],
+      "prevention": [
+        "Rotate corn with non-host legumes (soybean, chickpea) or mustard",
+        "Perform deep summer tillage to bury infected stalk debris",
+        "Select hybrids with single-gene (Ht) or multigenic blight resistance"
+      ]
+    },
+    {
+      "id": "dis-100k-016",
+      "kaggleClass": "Corn___Cercospora_leaf_spot_Gray_leaf_spot",
+      "crop": "Corn",
+      "disease": "Gray Leaf Spot",
+      "scientificName": "Cercospora zeae-maydis",
+      "confidence": 96.2,
+      "severity": "warning",
+      "affectedArea": "21%",
+      "symptoms": [
+        "Narrow rectangular tan-to-grey lesions strictly bounded by leaf veins",
+        "Lesions give leaves a distinct striped appearance",
+        "Extensive blighting causes premature stalk lodging and ear starvation"
+      ],
+      "causes": [
+        "Prolonged warm and humid weather (>28°C with RH >90%)",
+        "Reduced tillage leaving fungal mycelium in crop residue",
+        "Poor air movement in overcrowded valleys and river bottoms"
+      ],
+      "treatment": [
+        "Apply Pyraclostrobin + Fluxapyroxad (Priaxor) @ 1 mL/L",
+        "Spray Propiconazole 25 EC @ 1 mL/L before silking stage",
+        "Maintain soil potash levels to enhance stalk rigidity"
+      ],
+      "prevention": [
+        "Practice 2-year crop rotation away from corn",
+        "Deep moldboard plowing to decompose infected surface debris",
+        "Plant tolerant corn hybrids with high stay-green ratings"
+      ]
+    },
+    {
+      "id": "dis-100k-017",
+      "kaggleClass": "Corn___healthy",
+      "crop": "Corn",
+      "disease": "Healthy Corn Foliage",
+      "scientificName": "Zea mays (Optimal Health)",
+      "confidence": 99.0,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Broad, robust arching blades with vibrant dark-green coloration",
+        "Intact midrib and leaf margins without chlorosis or necrosis",
+        "Zero fungal pustules or bacterial blighting"
+      ],
+      "causes": [
+        "Optimal nitrogen side-dressing during V6-V8 growth stages",
+        "Adequate soil drainage and soil aeration",
+        "Proactive weed management eliminating alternate hosts"
+      ],
+      "treatment": [
+        "No chemical intervention needed",
+        "Monitor soil moisture during critical tasseling and silking stages",
+        "Continue routine satellite and drone canopy monitoring"
+      ],
+      "prevention": [
+        "Maintain current nutrient management schedule",
+        "Ensure field ditches prevent waterlogging during monsoon rains",
+        "Keep perimeter weed-free"
+      ]
+    },
+    {
+      "id": "dis-100k-018",
+      "kaggleClass": "Apple___Apple_scab",
+      "crop": "Apple",
+      "disease": "Apple Scab",
+      "scientificName": "Venturia inaequalis",
+      "confidence": 97.5,
+      "severity": "warning",
+      "affectedArea": "16%",
+      "symptoms": [
+        "Olive-green velvety spots on leaves turning dark brown to black",
+        "Leaf puckering, yellowing, and premature orchard defoliation",
+        "Corky, scabby, cracked lesions on apple fruit skin causing deformity"
+      ],
+      "causes": [
+        "Prolonged wet spring weather with leaf wetness exceeding 9 hours (16-24°C)",
+        "Ascospore discharge from overwintered leaf litter on orchard floor",
+        "Dense, unpruned tree canopy blocking sunlight and breeze"
+      ],
+      "treatment": [
+        "Apply Captan 50 WP @ 2 g/L or Difenoconazole 25 EC @ 0.5 mL/L",
+        "Spray Myclobutanil 10 WP @ 0.4 g/L during pink bud and petal fall stages",
+        "Rake and burn fallen infected orchard leaves"
+      ],
+      "prevention": [
+        "Prune tree canopy annually for maximum airflow and sun penetration",
+        "Spray 5% urea on fallen orchard leaves in autumn to accelerate decomposition",
+        "Plant scab-resistant cultivars (e.g. Honeycrisp, Prima, Enterprise)"
+      ]
+    },
+    {
+      "id": "dis-100k-019",
+      "kaggleClass": "Apple___Black_rot",
+      "crop": "Apple",
+      "disease": "Black Rot (Frogeye Leaf Spot)",
+      "scientificName": "Botryosphaeria obtusa",
+      "confidence": 96.4,
+      "severity": "critical",
+      "affectedArea": "25%",
+      "symptoms": [
+        "Small purple spots on leaves expanding into circular 'frogeye' lesions",
+        "Concentric light brown rings with purple-black outer margins",
+        "Fruit turns dark brown/black with concentric rings of pycnidia and mummifies"
+      ],
+      "causes": [
+        "Warm humid weather (20-27°C) following spring rain events",
+        "Dead wood, fire blight cankers, and mummified fruit left on trees",
+        "Wounds caused by hail, insect punctures, or mechanical pruning"
+      ],
+      "treatment": [
+        "Prune out dead branches, cankers, and remove all mummified apples",
+        "Spray Thiophanate-Methyl 70 WP @ 1 g/L or Captan 50 WP @ 2 g/L",
+        "Apply copper fungicides during dormant bud stage"
+      ],
+      "prevention": [
+        "Maintain rigorous orchard sanitation and remove brush piles",
+        "Disinfect pruning cuts to prevent fungal penetration",
+        "Control insect pests to avoid fruit puncture wounds"
+      ]
+    },
+    {
+      "id": "dis-100k-020",
+      "kaggleClass": "Apple___Cedar_apple_rust",
+      "crop": "Apple",
+      "disease": "Cedar Apple Rust",
+      "scientificName": "Gymnosporangium juniperi-virginianae",
+      "confidence": 98.1,
+      "severity": "warning",
+      "affectedArea": "14%",
+      "symptoms": [
+        "Bright yellow-orange spots on upper leaf surface turning bright rust-red",
+        "Small black specks (pycnia) develop inside the orange lesions",
+        "Cylindrical tube-like spore cups (aecia) protrude from leaf underside"
+      ],
+      "causes": [
+        "Alternate host: Eastern red cedar / juniper trees within 1-2 miles",
+        "Warm rainy spring weather causing cedar galls to produce gelatinous spore horns",
+        "Planting susceptible cultivars near ornamental juniper windbreaks"
+      ],
+      "treatment": [
+        "Spray Myclobutanil 10 WP @ 0.4 g/L or Mancozeb 75 WP @ 2.5 g/L",
+        "Apply Propiconazole 25 EC @ 1 mL/L from tight cluster to petal fall",
+        "Eradicate wild red cedar and juniper shrubs near orchard borders"
+      ],
+      "prevention": [
+        "Plant rust-immune cultivars (e.g. Liberty, Freedom, Redfree)",
+        "Inspect and remove cedar galls from nearby ornamental conifers in winter",
+        "Maintain standard protective spring spray program"
+      ]
+    },
+    {
+      "id": "dis-100k-021",
+      "kaggleClass": "Apple___healthy",
+      "crop": "Apple",
+      "disease": "Healthy Apple Foliage",
+      "scientificName": "Malus domestica (Optimal Health)",
+      "confidence": 99.3,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Dark green, leathery leaves with crisp serrated margins",
+        "Uniform leaf surface devoid of velvety spots, rust, or cankers",
+        "Vigorous shoot growth and clean developing fruitlets"
+      ],
+      "causes": [
+        "Balanced orchard floor nutrition and regular lime applications",
+        "Proactive dormant and petal-fall protective sprays",
+        "Optimal canopy pruning and tree training"
+      ],
+      "treatment": [
+        "No chemical intervention needed",
+        "Maintain routine foliar calcium and boron sprays for fruit quality",
+        "Continue integrated pest and disease monitoring"
+      ],
+      "prevention": [
+        "Maintain tree row weed-free strips",
+        "Monitor orchard weather station for wetness hours",
+        "Log regular scouting inspections"
+      ]
+    },
+    {
+      "id": "dis-100k-022",
+      "kaggleClass": "Grape___Black_rot",
+      "crop": "Grape",
+      "disease": "Black Rot",
+      "scientificName": "Guignardia bidwellii",
+      "confidence": 97.4,
+      "severity": "critical",
+      "affectedArea": "28%",
+      "symptoms": [
+        "Small circular reddish-brown spots with dark borders on foliage",
+        "Tiny black fruiting bodies (pycnidia) arranged in a ring inside spots",
+        "Infected berries shrivel into hard, black, wrinkled mummies"
+      ],
+      "causes": [
+        "Warm rainy weather (24-29°C) with prolonged canopy wetness",
+        "Mummified grape clusters left hanging on trellis wires through winter",
+        "Dense shaded vine canopy with sluggish air movement"
+      ],
+      "treatment": [
+        "Spray Mancozeb 75 WP @ 2.5 g/L or Myclobutanil 10 WP @ 0.5 g/L",
+        "Apply Azoxystrobin 23 SC @ 1 mL/L from early bloom to post-bloom",
+        "Remove and destroy all mummified berries and infected canes"
+      ],
+      "prevention": [
+        "Practice aggressive shoot positioning and leaf pulling around fruit zone",
+        "Maintain open trellis geometry for maximum wind flow",
+        "Apply dormant season copper or lime sulfur spray"
+      ]
+    },
+    {
+      "id": "dis-100k-023",
+      "kaggleClass": "Grape___Esca_Black_Measles",
+      "crop": "Grape",
+      "disease": "Esca / Black Measles",
+      "scientificName": "Phaeomoniella chlamydospora & Fomitiporia",
+      "confidence": 95.8,
+      "severity": "critical",
+      "affectedArea": "32%",
+      "symptoms": [
+        "'Tiger-stripe' chlorotic and necrotic patterns between leaf veins",
+        "Dark purple-to-brown spots ('measles') sprinkled across berry skin",
+        "Sudden vine apoplexy (complete vine wilt and dieback in midsummer)"
+      ],
+      "causes": [
+        "Fungal complex entering through large pruning wounds on old trunks",
+        "High summer heat stress triggering vascular toxins inside wood",
+        "Infected nursery propagation material"
+      ],
+      "treatment": [
+        "Seal pruning wounds immediately with fungicidal paste (e.g. Thiophanate-Methyl)",
+        "Trunk surgery / renewal: cut out decayed spongy wood below the canker",
+        "Severely affected dying vines should be rogued out and replaced"
+      ],
+      "prevention": [
+        "Delay major winter pruning until late dormancy to accelerate wound healing",
+        "Avoid making large flush cuts on main vine cordons",
+        "Disinfect pruning shears between individual vines"
+      ]
+    },
+    {
+      "id": "dis-100k-024",
+      "kaggleClass": "Grape___Leaf_blight_Isariopsis_Leaf_Spot",
+      "crop": "Grape",
+      "disease": "Leaf Blight (Isariopsis Leaf Spot)",
+      "scientificName": "Pseudocercospora cladosporioides",
+      "confidence": 96.5,
+      "severity": "warning",
+      "affectedArea": "19%",
+      "symptoms": [
+        "Irregular dark brown to black spots with diffuse chlorotic halos",
+        "Velvety olivaceous spore coating on the lower leaf surface",
+        "Extensive blighting causing early vine defoliation and poor cane ripening"
+      ],
+      "causes": [
+        "Warm, humid mid-to-late summer conditions with frequent rainfall",
+        "Poor canopy management allowing excessive shoot crowding",
+        "Uncontrolled ground weed growth elevating microclimate humidity"
+      ],
+      "treatment": [
+        "Apply Carbendazim 50 WP @ 1 g/L or Mancozeb 75 WP @ 2.5 g/L",
+        "Spray Pyraclostrobin 20 WG @ 1 g/L",
+        "Thin outer canopy leaves to enhance spray penetration"
+      ],
+      "prevention": [
+        "Prune and tuck shoots into trellis wires to maintain open canopy",
+        "Implement post-harvest protective copper sprays",
+        "Keep vineyard floor mowed and weed-free"
+      ]
+    },
+    {
+      "id": "dis-100k-025",
+      "kaggleClass": "Grape___healthy",
+      "crop": "Grape",
+      "disease": "Healthy Grapevine",
+      "scientificName": "Vitis vinifera (Optimal Health)",
+      "confidence": 99.4,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Vibrant bright green palmately lobed leaves with crisp veins",
+        "Clean, uniform berry clusters without spotting or powdery haze",
+        "Healthy vigorous shoot tip elongation"
+      ],
+      "causes": [
+        "Precision drip fertigation with balanced micronutrients (Mg, Fe)",
+        "Disciplined canopy management and open shoot training",
+        "Effective preventive mildew management"
+      ],
+      "treatment": [
+        "No chemical intervention needed",
+        "Maintain routine sulfur dusting at 10-day intervals as preventive",
+        "Continue canopy shoot positioning"
+      ],
+      "prevention": [
+        "Maintain open vine geometry",
+        "Monitor weather index for mildew infection periods",
+        "Log scouting observations in AgroPulse"
+      ]
+    },
+    {
+      "id": "dis-100k-026",
+      "kaggleClass": "Pepper_bell___Bacterial_spot",
+      "crop": "Pepper",
+      "disease": "Bacterial Spot",
+      "scientificName": "Xanthomonas euvesicatoria",
+      "confidence": 97.1,
+      "severity": "critical",
+      "affectedArea": "27%",
+      "symptoms": [
+        "Small, circular to irregular water-soaked spots turning dark brown",
+        "Lesions develop raised, scabby, rough margins on leaves and stems",
+        "Severe defoliation leading to fruit sunscald and unmarketable peppers"
+      ],
+      "causes": [
+        "Warm, rainy, and windy conditions (24-30°C)",
+        "Overhead irrigation splashing bacteria from soil and neighboring weeds",
+        "Infected seed lots or infected transplant seedlings"
+      ],
+      "treatment": [
+        "Spray Copper Oxychloride 50 WP @ 3 g/L + Streptocycline @ 100 ppm",
+        "Apply Kasugamycin 3% SL @ 2 mL/L",
+        "Rogue out severely blighted seedlings from nursery trays"
+      ],
+      "prevention": [
+        "Use certified pathogen-free seeds treated with hydrochloric acid or hot water",
+        "Switch to drip irrigation under plastic mulch",
+        "Rotate with non-solanaceous crops for minimum 2 years"
+      ]
+    },
+    {
+      "id": "dis-100k-027",
+      "kaggleClass": "Pepper_bell___healthy",
+      "crop": "Pepper",
+      "disease": "Healthy Bell Pepper",
+      "scientificName": "Capsicum annuum (Optimal Health)",
+      "confidence": 99.2,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Glossy, deep green leaves with smooth intact margins",
+        "Sturdy erect stems with abundant balanced flowering and fruit set",
+        "Zero bacterial spots or viral mosaic distortion"
+      ],
+      "causes": [
+        "Optimal calcium and magnesium nutrition preventing blossom end rot",
+        "Drip irrigation schedule maintaining constant rootzone moisture",
+        "Preventive biological pest control program"
+      ],
+      "treatment": [
+        "No chemical curative needed",
+        "Foliar calcium chelate spray to support cell wall firmness",
+        "Continue weekly crop scouting"
+      ],
+      "prevention": [
+        "Maintain clean field borders",
+        "Ensure raised bed drainage prevents standing water",
+        "Track crop scouting records"
+      ]
+    },
+    {
+      "id": "dis-100k-028",
+      "kaggleClass": "Peach___Bacterial_spot",
+      "crop": "Peach",
+      "disease": "Bacterial Spot",
+      "scientificName": "Xanthomonas campestris pv. pruni",
+      "confidence": 96.7,
+      "severity": "critical",
+      "affectedArea": "24%",
+      "symptoms": [
+        "Small, angular, water-soaked spots turning purple-brown and dropping out ('shot-hole')",
+        "Leaves turn yellow and defoliate prematurely from twig tips",
+        "Fruit displays sunken, dark, cracking pits with bacterial gum exudate"
+      ],
+      "causes": [
+        "Sandy soils with frequent spring winds and driving rain (20-30°C)",
+        "Overwintered bacterial cankers on young twigs",
+        "Susceptible peach and nectarine cultivars"
+      ],
+      "treatment": [
+        "Spray Copper Hydroxide @ dormant stage and Oxytetracycline @ petal fall",
+        "Apply Zinc Sulfate + Hydrated Lime as a protective foliar wash",
+        "Prune out dead twig tips and spring cankers"
+      ],
+      "prevention": [
+        "Plant windbreaks around orchard perimeter to reduce wind-driven rain",
+        "Avoid planting highly susceptible cultivars in light sandy locations",
+        "Maintain balanced tree vigor without excess nitrogen"
+      ]
+    },
+    {
+      "id": "dis-100k-029",
+      "kaggleClass": "Peach___healthy",
+      "crop": "Peach",
+      "disease": "Healthy Peach Foliage",
+      "scientificName": "Prunus persica (Optimal Health)",
+      "confidence": 99.0,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Long, lanceolate, lustrous dark-green leaves",
+        "Clean leaf margins without shot-holes, curls, or rust",
+        "Vigorous shoot growth and clean developing fruit"
+      ],
+      "causes": [
+        "Proper dormant spray schedule against leaf curl and bacterial spot",
+        "Balanced orchard fertility and drip irrigation",
+        "Regular canopy pruning to admit sunlight"
+      ],
+      "treatment": [
+        "No chemical intervention needed",
+        "Maintain routine micronutrient management",
+        "Continue weekly orchard scouting"
+      ],
+      "prevention": [
+        "Ensure orchard floor weed-free strips",
+        "Plan dormant season preventative washes",
+        "Log scouting observations in AgroPulse"
+      ]
+    },
+    {
+      "id": "dis-100k-030",
+      "kaggleClass": "Strawberry___Leaf_scorch",
+      "crop": "Strawberry",
+      "disease": "Leaf Scorch",
+      "scientificName": "Diplocarpon earlianum",
+      "confidence": 96.9,
+      "severity": "warning",
+      "affectedArea": "20%",
+      "symptoms": [
+        "Numerous small, irregular purple-to-dark brown blotches on upper leaf surface",
+        "Lesions coalesce, causing leaf margins to curl upward and look 'scorched'",
+        "In severe cases, entire foliage turns brown, withers, and dies"
+      ],
+      "causes": [
+        "Frequent rains and warm humid weather during spring and early summer",
+        "Overhead sprinkler irrigation extending leaf wetness duration",
+        "Overcrowded matted-row plantings retaining moisture"
+      ],
+      "treatment": [
+        "Apply Captan 50 WP @ 2 g/L or Myclobutanil 10 WP @ 0.5 g/L",
+        "Spray Azoxystrobin 23 SC @ 1 mL/L",
+        "Mow and destroy old foliage immediately after post-harvest renovation"
+      ],
+      "prevention": [
+        "Plant on raised beds with drip irrigation and straw/plastic mulch",
+        "Select scorch-tolerant or resistant cultivars (e.g. Allstar, Earliglow)",
+        "Avoid high spring nitrogen which promotes dense succulent leaves"
+      ]
+    },
+    {
+      "id": "dis-100k-031",
+      "kaggleClass": "Strawberry___healthy",
+      "crop": "Strawberry",
+      "disease": "Healthy Strawberry Plant",
+      "scientificName": "Fragaria ananassa (Optimal Health)",
+      "confidence": 99.3,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Trifoliate, vibrant deep-green glossy leaves with prominent venation",
+        "Sturdy crowns producing clean white blossoms and healthy runners",
+        "Zero purple blotches, powdery mildew, or necrotic scorch"
+      ],
+      "causes": [
+        "Raised bed culture with precision drip irrigation",
+        "High organic matter soil with balanced N-P-K-Ca nutrition",
+        "Proactive IPM hygiene and weed control"
+      ],
+      "treatment": [
+        "No chemical treatment required",
+        "Maintain routine bio-fungicide drenching (Trichoderma)",
+        "Continue weekly crown scouting"
+      ],
+      "prevention": [
+        "Keep beds cleanly mulched with straw or black plastic",
+        "Ensure runners are trained to prevent overcrowding",
+        "Track crop scouting records"
+      ]
+    },
+    {
+      "id": "dis-100k-032",
+      "kaggleClass": "Cherry___Powdery_mildew",
+      "crop": "Cherry",
+      "disease": "Powdery Mildew",
+      "scientificName": "Podosphaera clandestina",
+      "confidence": 97.3,
+      "severity": "warning",
+      "affectedArea": "17%",
+      "symptoms": [
+        "Circular patches of white powdery fungal growth on leaves and fruit stems",
+        "Young leaves cup upward, crinkle, and become distorted",
+        "Infected green cherries become covered in powdery fungal mycelium"
+      ],
+      "causes": [
+        "High relative humidity coupled with warm temperatures (15-26°C)",
+        "Over-fertilization with nitrogen causing excessive young shoot flush",
+        "Dense shaded tree canopy with poor internal air circulation"
+      ],
+      "treatment": [
+        "Spray Wettable Sulphur 80 WP @ 3 g/L or Myclobutanil 10 WP @ 0.5 g/L",
+        "Apply Penconazole 10 EC @ 0.5 mL/L or Potassium Bicarbonate @ 4 g/L",
+        "Prune water sprouts and interior shoots to allow wind passage"
+      ],
+      "prevention": [
+        "Maintain open canopy architecture with annual pruning",
+        "Start preventive fungicide sprays at petal fall and shuck-fall stages",
+        "Avoid late-season nitrogen applications"
+      ]
+    },
+    {
+      "id": "dis-100k-033",
+      "kaggleClass": "Cherry___healthy",
+      "crop": "Cherry",
+      "disease": "Healthy Cherry Tree",
+      "scientificName": "Prunus avium (Optimal Health)",
+      "confidence": 99.1,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Lustrous emerald green leaves with prominent serration",
+        "Clean glossy bark and vigorous terminal shoot extension",
+        "Zero fungal powder, leaf spot, or gummosis"
+      ],
+      "causes": [
+        "Timely winter dormant spray program",
+        "Balanced orchard nutrition and drip irrigation",
+        "Proper canopy training ensuring sunlight penetration"
+      ],
+      "treatment": [
+        "No curative chemical intervention needed",
+        "Foliar seaweed extract for drought resilience",
+        "Continue weekly orchard scouting"
+      ],
+      "prevention": [
+        "Maintain clean tree basins",
+        "Protect bark from mechanical mower injury",
+        "Log scouting observations in AgroPulse"
+      ]
+    },
+    {
+      "id": "dis-100k-034",
+      "kaggleClass": "Orange___Haunglongbing_Citrus_greening",
+      "crop": "Orange",
+      "disease": "Citrus Greening (Huanglongbing)",
+      "scientificName": "Candidatus Liberibacter asiaticus",
+      "confidence": 98.8,
+      "severity": "critical",
+      "affectedArea": "45%",
+      "symptoms": [
+        "Asymmetric, blotchy mottle chlorosis across leaf blade",
+        "Yellow shoot dieback ('yellow dragon') in upper canopy",
+        "Small, lopsided, bitter fruit that remains green at the stylar end"
+      ],
+      "causes": [
+        "Vector transmission by Asian citrus psyllid (Diaphorina citri)",
+        "Grafting infected budwood from uncertified nursery stock",
+        "Systemic phloem bacterial invasion blocking nutrient transport"
+      ],
+      "treatment": [
+        "Strict chemical vector control: Imidacloprid 17.8 SL @ 0.5 mL/L or Thiamethoxam",
+        "Foliar nutritional therapy (Zinc, Iron, Manganese, Phosphites) to maintain vigor",
+        "Rogue out and destroy confirmed infected trees to prevent grove contagion"
+      ],
+      "prevention": [
+        "Plant only certified pathogen-free budwood from registered screenhouses",
+        "Monitor groves using yellow sticky cards for psyllid detection",
+        "Enforce regional citrus quarantine regulations"
+      ]
+    },
+    {
+      "id": "dis-100k-035",
+      "kaggleClass": "Squash___Powdery_mildew",
+      "crop": "Squash",
+      "disease": "Powdery Mildew",
+      "scientificName": "Podosphaera xanthii",
+      "confidence": 97.9,
+      "severity": "warning",
+      "affectedArea": "25%",
+      "symptoms": [
+        "Talcum-like white powdery spots on both leaf surfaces and petioles",
+        "Spots expand and coalesce to cover entire foliage canopy",
+        "Leaves become chlorotic, turn brown, dry out, and shatter"
+      ],
+      "causes": [
+        "Dense foliage canopy with high relative humidity and warm temperatures (20-27°C)",
+        "Shaded lower leaves receiving minimal direct sunlight",
+        "Airborne conidia carried from neighboring cucurbit fields"
+      ],
+      "treatment": [
+        "Apply Wettable Sulphur 80 WP @ 3 g/L or Azoxystrobin 23 SC @ 1 mL/L",
+        "Spray Potassium Bicarbonate @ 4 g/L or Horticultural Mineral Oil @ 5 mL/L",
+        "Remove heavily infected senescing lower leaves"
+      ],
+      "prevention": [
+        "Plant powdery mildew resistant squash hybrids",
+        "Ensure wide row spacing (minimum 1.5 m) for airflow",
+        "Avoid overhead irrigation in evening"
+      ]
+    },
+    {
+      "id": "dis-100k-036",
+      "kaggleClass": "Blueberry___healthy",
+      "crop": "Blueberry",
+      "disease": "Healthy Blueberry Bush",
+      "scientificName": "Vaccinium corymbosum (Optimal Health)",
+      "confidence": 99.4,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Smooth, glossy, deep green elliptical leaves",
+        "Strong woody canes with vigorous annual shoot growth",
+        "Zero leaf spots, anthracnose, or rust pustules"
+      ],
+      "causes": [
+        "Acidic soil pH strictly maintained between 4.5 - 5.2",
+        "Pine bark mulch retaining consistent rootzone moisture",
+        "Proactive mummy berry preventive sanitation"
+      ],
+      "treatment": [
+        "No chemical curative needed",
+        "Monitor soil pH and apply elemental sulfur if pH rises above 5.2",
+        "Continue routine foliage scouting"
+      ],
+      "prevention": [
+        "Replenish pine needle or bark mulch annually",
+        "Maintain drip fertigation with ammonium sulfate",
+        "Keep field borders weed-free"
+      ]
+    },
+    {
+      "id": "dis-100k-037",
+      "kaggleClass": "Raspberry___healthy",
+      "crop": "Raspberry",
+      "disease": "Healthy Raspberry Cane",
+      "scientificName": "Rubus idaeus (Optimal Health)",
+      "confidence": 99.3,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Lush pinnate green leaves with clean white-downy undersides",
+        "Strong primocanes and floricanes with healthy spur development",
+        "Zero cane blight, spur blight, or leaf spot lesions"
+      ],
+      "causes": [
+        "Proper trellis wire training ensuring open canopy aeration",
+        "Annual pruning removing spent floricanes immediately post-harvest",
+        "Well-drained loam soil preventing Phytophthora root rot"
+      ],
+      "treatment": [
+        "No curative chemical intervention required",
+        "Maintain organic compost top-dressing in spring",
+        "Continue routine scouting"
+      ],
+      "prevention": [
+        "Maintain 2.5 m row spacing for tractor and wind passage",
+        "Cut out spent floricanes at ground level",
+        "Log scouting observations in AgroPulse"
+      ]
+    },
+    {
+      "id": "dis-100k-038",
+      "kaggleClass": "Soybean___healthy",
+      "crop": "Soybean",
+      "disease": "Healthy Soybean Crop",
+      "scientificName": "Glycine max (Optimal Health)",
+      "confidence": 99.1,
+      "severity": "healthy",
+      "affectedArea": "0%",
+      "symptoms": [
+        "Broad trifoliate leaves with vibrant dark green chlorophyll",
+        "Active nitrogen-fixing pink nodules on root system",
+        "Zero frog-eye leaf spots, rust, or sudden death syndrome"
+      ],
+      "causes": [
+        "Inoculation with Bradyrhizobium japonicum at sowing",
+        "Optimal seed depth and balanced phosphate/potash nutrition",
+        "Strict 3-year rotation with corn and wheat"
+      ],
+      "treatment": [
+        "No chemical curative required",
+        "Maintain scouting for pod borer and soybean rust during R3-R5 stages",
+        "Continue routine drone canopy monitoring"
+      ],
+      "prevention": [
+        "Ensure field drainage prevents standing water after storms",
+        "Plant certified disease-resistant soybean cultivars",
+        "Track field scout records in AgroPulse"
+      ]
+    },
+    {
+      "id": "dis-100k-039",
+      "kaggleClass": "Wheat___Leaf_rust",
+      "crop": "Wheat",
+      "disease": "Leaf Rust",
+      "scientificName": "Puccinia triticina",
+      "confidence": 97.7,
+      "severity": "warning",
+      "affectedArea": "19%",
+      "symptoms": [
+        "Small round to oval reddish-orange pustules on upper leaf surface",
+        "Pustules shed powdery orange-brown urediniospores when touched",
+        "Extensive flag leaf chlorosis causing shriveled grains and low test weight"
+      ],
+      "causes": [
+        "Moderate temperatures (15-25°C) accompanied by long dew periods (6-8 hours)",
+        "Wind-borne spores transported hundreds of kilometers from southern fields",
+        "Planting rust-susceptible older wheat cultivars"
+      ],
+      "treatment": [
+        "Spray Propiconazole 25 EC @ 1 mL/L or Tebuconazole 250 EC @ 1 mL/L",
+        "Apply Azoxystrobin 18.2% + Cyproconazole 7.3% SC @ 1 mL/L",
+        "Ensure thorough spray coverage on flag leaf and penultimate leaf"
+      ],
+      "prevention": [
+        "Plant rust-resistant cultivars (e.g. HD-3086, DBW-187, PBW-550)",
+        "Avoid late sowing to bypass peak spore arrival in early spring",
+        "Apply balanced NPK fertilization with adequate potassium"
+      ]
+    },
+    {
+      "id": "dis-100k-040",
+      "kaggleClass": "Rice___Blast",
+      "crop": "Rice",
+      "disease": "Rice Blast",
+      "scientificName": "Magnaporthe oryzae",
+      "confidence": 98.2,
+      "severity": "critical",
+      "affectedArea": "29%",
+      "symptoms": [
+        "Spindle-shaped or diamond-shaped lesions with grey/whitish centres and brown borders",
+        "Lesions coalesce, causing leaf blade desiccation and plant death ('blast')",
+        "Black necrosis at the panicle neck node ('neck blast') causing empty grains"
+      ],
+      "causes": [
+        "High relative humidity (>90%) with night temperatures between 17-20°C",
+        "Excessive nitrogen fertilizer application (>150 kg N/ha)",
+        "Intermittent drought stress followed by flooding in paddy"
+      ],
+      "treatment": [
+        "Apply Tricyclazole 75 WP @ 0.6 g/L or Isoprothiolane 40 EC @ 1.5 mL/L",
+        "Spray Kasugamycin 3% SL @ 2.5 mL/L or Azoxystrobin @ 1 mL/L",
+        "Avoid late afternoon overhead water spraying"
+      ],
+      "prevention": [
+        "Treat seeds with Carbendazim @ 2 g/kg before sowing",
+        "Split nitrogen applications into 3-4 balanced doses with potassium",
+        "Plant resistant rice varieties (e.g. IR-64, Swarna, Pusa 1460)"
+      ]
+    },
+    {
+      "id": "dis-100k-041",
+      "kaggleClass": "Cotton___Bacterial_blight",
+      "crop": "Cotton",
+      "disease": "Bacterial Blight (Black Arm)",
+      "scientificName": "Xanthomonas citri pv. malvacearum",
+      "confidence": 96.5,
+      "severity": "warning",
+      "affectedArea": "24%",
+      "symptoms": [
+        "Angular, water-soaked leaf spots bound strictly by veinlets",
+        "Dark brown to black necrosis extending along main leaf veins and stems ('Black Arm')",
+        "Round water-soaked spots on developing bolls leading to boll rot"
+      ],
+      "causes": [
+        "Warm, humid monsoon conditions (28-35°C) with wind-driven rain",
+        "Infected seed fuzz harboring dry bacterial slime",
+        "Poor soil drainage leading to waterlogged root conditions"
+      ],
+      "treatment": [
+        "Spray Copper Oxychloride 50 WP @ 3 g/L + Streptocycline @ 100 ppm",
+        "Apply Pseudomonas fluorescens bio-agent @ 10 g/L",
+        "Prune and destroy severely blighted lower branches"
+      ],
+      "prevention": [
+        "Use acid-delinted seeds treated with Streptocycline (100 ppm) for 2 hours",
+        "Rotate cotton with non-host crops like maize, sorghum, or legumes",
+        "Deep summer plowing to bury crop residues"
+      ]
+    },
+    {
+      "id": "dis-100k-042",
+      "kaggleClass": "Sugarcane___Red_rot",
+      "crop": "Sugarcane",
+      "disease": "Red Rot",
+      "scientificName": "Colletotrichum falcatum",
+      "confidence": 97.4,
+      "severity": "critical",
+      "affectedArea": "31%",
+      "symptoms": [
+        "Yellowing and drying of the 3rd and 4th leaves from crown downward",
+        "Splitting cane reveals longitudinal red-stained pith with characteristic white transverse bands",
+        "Sour alcoholic odor emanating from decaying split cane stalks"
+      ],
+      "causes": [
+        "Use of infected seed setts taken from diseased cane nurseries",
+        "Waterlogging and poor field drainage in heavy clay soils",
+        "Borer insect tunnels providing entry pathways for fungal conidia"
+      ],
+      "treatment": [
+        "Immediately rogue out and burn infected cane clumps with roots",
+        "Soil drench affected spots with Carbendazim 50 WP @ 1 g/L",
+        "Harvest affected fields early to prevent total sugar inversion"
+      ],
+      "prevention": [
+        "Hot water sett treatment (50°C for 2 hours) or aerated steam therapy",
+        "Plant red-rot resistant cane cultivars (e.g. Co 0238, Co 86032)",
+        "Follow a 2-year crop rotation with paddy or green manure sunn hemp"
+      ]
+    }
+  ]
+}
+
