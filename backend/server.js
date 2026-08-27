@@ -3,6 +3,7 @@ const cors    = require('cors')
 require('dotenv').config()
 
 const authRoutes = require('./routes/auth')
+const diseaseRoutes = require('./routes/disease')
 
 const app  = express()
 const PORT = process.env.PORT || 5000
@@ -17,6 +18,7 @@ app.use(express.json())
 
 
 app.use('/api/auth', authRoutes)
+app.use('/api/disease', diseaseRoutes)
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }))
 
